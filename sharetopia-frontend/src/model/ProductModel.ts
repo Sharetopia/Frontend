@@ -4,4 +4,5 @@ export type ProductModel = {
   price: number;
   description: string;
   tags: string[];
+  coordinates: number[]
 };

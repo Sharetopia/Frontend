@@ -6,7 +6,7 @@
       </h1>
       <div class="flex-grow"></div>
       <div class="flex-none text-3xl">
-        {{ productModel.price }}€ <span class="text-lg">/day</span> 
+        {{ productModel.price }}€ <span class="text-lg">/day</span>
       </div>
     </div>
     <div class="space-x-4">
@@ -28,17 +28,12 @@ import { Options, Vue } from "vue-class-component";
 import { ProductModel } from "../model/ProductModel";
 
 @Options({
-  props: {},
+  props: {
+    productModel: Object,
+  },
 })
 export default class ProductTextDetail extends Vue {
+  productModel!: ProductModel;
   color = "text-white";
-  productModel: ProductModel = {
-    id: "224132454315243523",
-    title: "Canyon Grail 6",
-    price: 10.99,
-    description:
-      "Ich biete hier mein Gravel Bike zum Verleih an, da ich zur Zeit einen Bruch habe und es daher nicht nutzen kann. Ich biete hier mein Gravel Bike zum Verleih an, da ich zur Zeit einen Bruch habe und es daher nicht nutzen kann.",
-    tags: ["BIKE", "GRAVEL", "OUTDOOR"],
-  };
 }
 </script>
