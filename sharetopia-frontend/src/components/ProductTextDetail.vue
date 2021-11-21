@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="">
     <div class="flex items-center">
       <h1 class="font-semibold text-black font-sans text-4xl flex-none">
         {{ productModel.title }}
