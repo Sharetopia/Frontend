@@ -35,13 +35,12 @@ export default class LeafletMap extends Vue {
     .bindPopup(this.name)
     .openPopup();
       
-    // this.mymap.on('click', (e: any) => {
-    //   if(this.mymap)
-    //     leaflet.popup()
-    //       .setLatLng(e.latlng)
-    //       .setContent("You clicked the map at " + e.latlng.toString())
-    //       .openOn(this.mymap);
-    // });
+    this.mymap.on('click', (e: any) => {
+      leaflet.popup()
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(this.mymap!);
+    });
   }
 }
 </script>
