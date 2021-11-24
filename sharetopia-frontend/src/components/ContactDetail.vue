@@ -1,9 +1,17 @@
 <template>
-  <div class="">
-    <img src="../assets/profile_blank.png" alt="User Profile image" />
-    <div>
-      <StarRating :rate="userModel.rating" />
-      <p>{{ userModel.forename }} {{ userModel.surname }}</p>
+  <div class="flex w-max">
+    <div class="max-w-max mr-4 overflow-hidden">
+      <img
+        src="../assets/profile_blank.png"
+        alt="User Profile image"
+        class="rounded-full object-cover max-h-16 min-h-16"
+      />
+    </div>
+    <div class="pr-4">
+      <p class="text-xl font-bold">
+        {{ userModel.forename }} {{ userModel.surname }}
+      </p>
+      <StarRating :rate="userModel.rating" class="mb-4" />
       <p>{{ userModel.address }}</p>
       <p>{{ userModel.postalCode }} {{ userModel.city }}</p>
     </div>

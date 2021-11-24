@@ -6,7 +6,3 @@
   </div>
   <router-view />
 </template>
-
-<style lang="scss">
-// insert global css sach hier
-</style>

@@ -1,13 +1,46 @@
 <template>
-  <div class="home m-4">
-    <ProductTextDetail :productModel="productModel" />
-    <div class="h-36">
-      <LeafletMap
-        :coordinates="productModel.coordinates"
-        :name="productModel.title"
-      />
+  <div class="flex">
+    <div class="w-1/2"></div>
+    <div class="w-1/2">
+      <div class="">
+        <button class="">
+          <div class="flex">
+            <img src="../assets/star_1.png" alt="" class="h-6" />
+            <span class=""> Zurück </span>
+          </div>
+        </button>
+      </div>
+      <div class="divide-y divide-black divide-opacity-25">
+        <div class="m-4">
+          <ProductTextDetail :productModel="productModel" />
+          <div class="flex mt-8">
+            <div class="w-max">
+              <ContactDetail :userId="productModel.userId" />
+            </div>
+            <div class="h-36 w-full">
+              <LeafletMap
+                :coordinates="productModel.coordinates"
+                :name="productModel.title"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mt-4">
+            <DatePicker
+              v-model="range"
+              title-position="left"
+              :columns="2"
+              is-range
+              range
+            />
+          </div>
+          <div class="mt-4">
+            <button class="btn-red">Anfrage stellen</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <ContactDetail :userId="productModel.userId" />
   </div>
 </template>
 
@@ -17,15 +50,23 @@ import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an a
 import LeafletMap from "@/components/LeafletMap.vue"; // @ is an alias to /src
 import ContactDetail from "@/components/ContactDetail.vue"; // @ is an alias to /src
 import { ProductModel } from "../model/ProductModel";
+import { Calendar, DatePicker } from "v-calendar";
 
 @Options({
   components: {
     ProductTextDetail,
     LeafletMap,
     ContactDetail,
+    Calendar,
+    DatePicker,
   },
 })
 export default class ProductDetail extends Vue {
+  range = {
+    start: Date,
+    end: Date,
+  };
+
   productModel: ProductModel = {
     id: "224132454315243523",
     userId: "Dein Mutter",
