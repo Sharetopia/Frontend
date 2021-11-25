@@ -1,7 +1,9 @@
 <template>
-  <div class="flex p-8 shadow-md sticky top-0 bg-white">
+  <div class="flex p-8 shadow-md sticky top-0 bg-white items-center">
     <img src="../assets/logo.svg" class="flex-none" />
-    <div class="flex-1"></div>
+    <div class="flex-1">
+      <Searchbar />
+    </div>
     <div class="flex items-center">
       <Menu as="div" class="relative inline-block text-left">
         <div class="">
@@ -120,6 +122,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import Searchbar from "./Searchbar.vue";
 
 @Options({
   props: {},
@@ -128,6 +131,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
     MenuButton,
     MenuItem,
     MenuItems,
+    Searchbar,
   },
 })
 export default class HeaderSearch extends Vue {}
