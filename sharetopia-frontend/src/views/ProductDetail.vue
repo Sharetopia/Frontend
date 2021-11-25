@@ -1,4 +1,5 @@
 <template>
+  <HeaderSearch />
   <div class="flex">
     <div class="w-1/2"></div>
     <div class="w-1/2">
@@ -47,8 +48,9 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an alias to /src
-import LeafletMap from "@/components/LeafletMap.vue"; // @ is an alias to /src
-import ContactDetail from "@/components/ContactDetail.vue"; // @ is an alias to /src
+import LeafletMap from "@/components/LeafletMap.vue";
+import ContactDetail from "@/components/ContactDetail.vue";
+import HeaderSearch from "@/components/HeaderSearch.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 
@@ -59,6 +61,7 @@ import { Calendar, DatePicker } from "v-calendar";
     ContactDetail,
     Calendar,
     DatePicker,
+    HeaderSearch,
   },
 })
 export default class ProductDetail extends Vue {
