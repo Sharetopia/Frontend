@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-full">
     <!-- Map -->
-    <div id="mapid" class="h-full z-10 rounded-3xl"></div>
+    <div id="mapid" class="h-full z-0 rounded-3xl"></div>
   </div>
 </template>
 
@@ -22,7 +22,6 @@ export default class LeafletMap extends Vue {
 
   // mounted lifecycle hook, creates the map
   mounted(): void {
-    console.log("mounted");
     this.mymap = leaflet.map("mapid").setView([48.9471455, 9.4341813], 15);
     leaflet
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
