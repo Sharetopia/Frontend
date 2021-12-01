@@ -2,7 +2,7 @@
   <div class="flex p-8 shadow-md sticky top-0 bg-white items-center">
     <img src="../assets/logo.svg" class="flex-none" />
     <div class="flex-1">
-      <Modal />
+      <Search />
     </div>
     <div class="flex items-center">
       <Menu as="div" class="relative inline-block text-left">
@@ -122,7 +122,7 @@
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import Searchbar from "./Searchbar.vue";
-import Modal from "./Modal.vue";
+import Search from "./Search.vue";
 
 @Options({
   props: {},
@@ -132,7 +132,7 @@ import Modal from "./Modal.vue";
     MenuItem,
     MenuItems,
     Searchbar,
-    Modal,
+    Search,
   },
 })
 export default class HeaderSearch extends Vue {}

@@ -1,26 +1,8 @@
 <template>
   <div>
     <div class="">
-      <button
-        type="button"
-        @click="openModal"
-        class="
-          px-4
-          py-2
-          text-sm
-          font-medium
-          text-white
-          bg-black
-          rounded-md
-          bg-opacity-20
-          hover:bg-opacity-30
-          focus:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-white
-          focus-visible:ring-opacity-75
-        "
-      >
-        Suchen
+      <button type="button" @click="openModal" class="w-full">
+        <SearchbarButton :searchModel="searchModel" />
       </button>
     </div>
     <TransitionRoot appear :show="isOpen" as="template">
@@ -65,7 +47,7 @@
                 "
               >
                 <!-- Write here the content of the modal -->
-                <Searchbar @close="closeModal()" />
+                <Searchbar @close="closeModal()" v-model="searchModel" />
               </div>
             </TransitionChild>
           </div>
@@ -84,6 +66,8 @@ import {
   DialogOverlay,
 } from "@headlessui/vue";
 import Searchbar from "./Searchbar.vue";
+import SearchbarButton from "./SearchbarButton.vue";
+import { SearchModel } from "../model/SearchModel";
 
 @Options({
   props: {},
@@ -93,9 +77,20 @@ import Searchbar from "./Searchbar.vue";
     Dialog,
     DialogOverlay,
     Searchbar,
+    SearchbarButton,
   },
 })
-export default class Modal extends Vue {
+export default class Search extends Vue {
+  searchModel: SearchModel = {
+    query: "Gravel Bike Test",
+    radius: 10,
+    postalCode: "71549",
+    timeRange: {
+      start: new Date(),
+      end: new Date(),
+    },
+  };
+
   isOpen = false;
   closeModal(): void {
     this.isOpen = false;
