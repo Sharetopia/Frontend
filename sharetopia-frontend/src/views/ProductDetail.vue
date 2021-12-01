@@ -1,43 +1,45 @@
 <template>
-  <HeaderSearch />
-  <div class="flex">
-    <div class="w-1/2"></div>
-    <div class="w-1/2">
-      <div class="">
-        <button class="">
-          <div class="flex">
-            <img src="../assets/star_1.png" alt="" class="h-6" />
-            <span class=""> Zurück </span>
-          </div>
-        </button>
-      </div>
-      <div class="divide-y divide-black divide-opacity-25">
-        <div class="m-4">
-          <ProductTextDetail :productModel="productModel" />
-          <div class="flex mt-8">
-            <div class="w-max">
-              <ContactDetail :userId="productModel.userId" />
+  <div>
+    <HeaderSearch />
+    <div class="flex">
+      <div class="w-1/2"></div>
+      <div class="w-1/2">
+        <div class="">
+          <button class="">
+            <div class="flex">
+              <img src="../assets/star_1.png" alt="" class="h-6" />
+              <span class=""> Zurück </span>
             </div>
-            <div class="h-36 w-full">
-              <LeafletMap
-                :coordinates="productModel.coordinates"
-                :name="productModel.title"
+          </button>
+        </div>
+        <div class="divide-y divide-black divide-opacity-25">
+          <div class="m-4">
+            <ProductTextDetail :productModel="productModel" />
+            <div class="flex mt-8">
+              <div class="w-max">
+                <ContactDetail :userId="productModel.userId" />
+              </div>
+              <div class="h-36 w-full">
+                <LeafletMap
+                  :coordinates="productModel.coordinates"
+                  :name="productModel.title"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="mt-4">
+              <DatePicker
+                v-model="range"
+                title-position="left"
+                :columns="2"
+                is-range
+                range
               />
             </div>
-          </div>
-        </div>
-        <div>
-          <div class="mt-4">
-            <DatePicker
-              v-model="range"
-              title-position="left"
-              :columns="2"
-              is-range
-              range
-            />
-          </div>
-          <div class="mt-4">
-            <button class="btn-red">Anfrage stellen</button>
+            <div class="mt-4">
+              <button class="btn-red">Anfrage stellen</button>
+            </div>
           </div>
         </div>
       </div>
