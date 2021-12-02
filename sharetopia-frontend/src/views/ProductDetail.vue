@@ -2,14 +2,14 @@
   <div>
     <HeaderSearch />
     <div class="flex">
-      <div class="w-1/2"></div>
+      <div class="w-1/2">
+        <PhotoGallery />
+      </div>
       <div class="w-1/2">
         <div class="">
-          <button class="">
-            <div class="flex">
-              <img src="../assets/star_1.png" alt="" class="h-6" />
-              <span class=""> Zurück </span>
-            </div>
+          <button class="flex items-center pt-4 pl-4">
+            <img src="../assets/backArrow.svg" alt="" class="h-6" />
+            <span class="pl-2"> Zurück </span>
           </button>
         </div>
         <div class="divide-y divide-black divide-opacity-25">
@@ -53,6 +53,7 @@ import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an a
 import LeafletMap from "@/components/LeafletMap.vue";
 import ContactDetail from "@/components/ContactDetail.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
+import PhotoGallery from "@/components/PhotoGallery.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 
@@ -64,6 +65,7 @@ import { Calendar, DatePicker } from "v-calendar";
     Calendar,
     DatePicker,
     HeaderSearch,
+    PhotoGallery,
   },
 })
 export default class ProductDetail extends Vue {
