@@ -9,7 +9,7 @@
         <Popover class="relative">
           <PopoverButton>Umkreis: {{ modelValue.radius }}km</PopoverButton>
 
-          <PopoverPanel class="absolute z-10 p-4 bg-white rounded-2xl">
+          <PopoverPanel class="absolute z-10 p-4 bg-white rounded-b-2xl">
             <div class="flex items-center">
               <button @click="decreaseRadius()">
                 <img class="h-8" src="../assets/minus_round_red.svg" />
@@ -35,8 +35,9 @@
           </PopoverButton>
 
           <PopoverPanel class="absolute z-10">
-            <div class="bg-white w-full">
+            <div class="bg-white w-full rounded-b-xl">
               <DatePicker
+                class="border-none"
                 v-model="modelValue.timeRange"
                 title-position="left"
                 :columns="1"
@@ -44,7 +45,6 @@
                 range
               />
             </div>
-
             <img src="/solutions.jpg" alt="" />
           </PopoverPanel>
         </Popover>
@@ -55,6 +55,7 @@
         </a>
       </div>
     </div>
+    <div class="h-full" @click="$emit('close')"></div>
   </div>
 </template>
 
