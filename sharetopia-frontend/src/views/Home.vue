@@ -1,17 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <div class="h-52 w-screen flex flex-row-reverse">
+      <div class="h-44 bg-gray-300 absolute w-screen top-0 left-0"></div>
+      <div class="z-10 absolute top-9 left-0 w-screen flex justify-center">
+        <img src="../assets/share-banner.png" alt="share-banner" class="h-52" />
+      </div>
+      <MenuBurgerButton class=""/>
+    </div>
+    <div class=""></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import MenuBurgerButton from "../components/MenuBurgerButton.vue";
 
 @Options({
   components: {
-    HelloWorld,
+    MenuBurgerButton,
   },
 })
 export default class Home extends Vue {}
