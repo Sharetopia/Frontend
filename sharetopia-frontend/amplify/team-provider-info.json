@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sharetopiafrontend-dev-110230-authRole",
+      "UnauthRoleArn": "arn:aws:iam::283433289038:role/amplify-sharetopiafrontend-dev-110230-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::283433289038:role/amplify-sharetopiafrontend-dev-110230-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-sharetopiafrontend-dev-110230-deployment",
+      "UnauthRoleName": "amplify-sharetopiafrontend-dev-110230-unauthRole",
+      "StackName": "amplify-sharetopiafrontend-dev-110230",
+      "StackId": "arn:aws:cloudformation:eu-central-1:283433289038:stack/amplify-sharetopiafrontend-dev-110230/f77ee370-580d-11ec-9c0c-0242036a7fa8",
+      "AmplifyAppId": "d2a9w778ptl9fh"
+    },
+    "categories": {
+      "auth": {
+        "sharetopiafrontend22ad5f32": {}
+      }
+    }
+  }
+}
