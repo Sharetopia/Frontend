@@ -1,23 +1,23 @@
 <template>
   <div>
-    <div class="h-52 w-screen flex flex-row-reverse">
-      <div class="h-44 bg-gray-300 absolute w-screen top-0 left-0"></div>
-      <div class="z-10 absolute top-9 left-0 w-screen flex justify-center">
-        <img src="../assets/share-banner.png" alt="share-banner" class="h-52" />
-      </div>
-      <MenuBurgerButton class=""/>
+    <HomeHeader />
+    <div class="mt-10 flex justify-center">
+      <Search class="flex-1 max-w-5xl" />
     </div>
-    <div class=""></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import MenuBurgerButton from "../components/MenuBurgerButton.vue";
+import Search from "../components/Search.vue";
+import HomeHeader from "../components/HomeHeader.vue";
 
 @Options({
   components: {
     MenuBurgerButton,
+    Search,
+    HomeHeader,
   },
 })
 export default class Home extends Vue {}
