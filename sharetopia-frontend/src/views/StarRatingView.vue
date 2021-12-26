@@ -25,7 +25,7 @@ import { Options, Vue } from "vue-class-component";
     rate: Number,
   },
 })
-export default class StarRating extends Vue {
+export default class StarRatingView extends Vue {
   rate!: number;
 
   getNumberOfUnfilledStars(): number {

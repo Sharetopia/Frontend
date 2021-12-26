@@ -44,5 +44,5 @@ import { Options, Vue } from "vue-class-component";
   emits: [],
   components: {},
 })
-export default class PhotoGallery extends Vue {}
+export default class PhotoGalleryView extends Vue {}
 </script>

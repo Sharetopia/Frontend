@@ -21,11 +21,11 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { UserModel } from "../model/UserModel";
-import StarRating from "../views/StarRating.vue";
+import StarRatingView from "../views/StarRatingView.vue";
 
 @Options({
   components: {
-    StarRating,
+    StarRating: StarRatingView,
   },
   props: {
     userId: String,

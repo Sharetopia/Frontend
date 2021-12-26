@@ -15,7 +15,7 @@ import { Options, Vue } from "vue-class-component";
     name: String,
   },
 })
-export default class LeafletMap extends Vue {
+export default class LeafletMapView extends Vue {
   coordinates!: number[];
   name!: string;
   mymap?: leaflet.Map;

@@ -26,7 +26,7 @@ import { ProductModel } from "../model/ProductModel";
     ResultListItem,
   },
 })
-export default class ResultList extends Vue {
+export default class SearchResultScreen extends Vue {
   productModels: ProductModel[] = [
     {
       id: "1243",

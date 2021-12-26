@@ -50,25 +50,25 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an alias to /src
-import LeafletMap from "@/views/LeafletMap.vue";
+import LeafletMapView from "@/views/LeafletMapView.vue";
 import ContactDetail from "@/components/ContactDetail.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
-import PhotoGallery from "@/views/PhotoGallery.vue";
+import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 
 @Options({
   components: {
     ProductTextDetail,
-    LeafletMap,
+    LeafletMap: LeafletMapView,
     ContactDetail,
     Calendar,
     DatePicker,
     HeaderSearch,
-    PhotoGallery,
+    PhotoGallery: PhotoGalleryView,
   },
 })
-export default class ProductDetail extends Vue {
+export default class ProductDetailScreen extends Vue {
   range = {
     start: Date,
     end: Date,

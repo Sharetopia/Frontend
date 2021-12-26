@@ -20,5 +20,5 @@ import HomeHeader from "../components/HomeHeader.vue";
     HomeHeader,
   },
 })
-export default class Home extends Vue {}
+export default class HomeScreen extends Vue {}
 </script>

@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../screens/Home.vue";
-import ProductDetail from "../screens/ProductDetail.vue";
+import HomeScreen from "../screens/HomeScreen.vue";
+import ProductDetailScreen from "../screens/ProductDetailScreen.vue";
 import Auth from "../screens/Auth.vue";
-import Authentication from "../screens/Authentication.vue";
-import ResultList from "../screens/ResultList.vue";
+import Authentication from "../screens/AuthenticationScreen.vue";
+import SearchResultScreen from "../screens/SearchResultScreen.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: HomeScreen,
   },
   {
     path: "/login",
@@ -19,12 +19,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/search",
     name: "ResultList",
-    component: ResultList,
+    component: SearchResultScreen,
   },
   {
     path: "/productDetail",
     name: "ProductDetail",
-    component: ProductDetail,
+    component: ProductDetailScreen,
   },
   {
     path: "/Authentication",
