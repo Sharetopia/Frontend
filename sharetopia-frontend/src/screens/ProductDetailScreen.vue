@@ -52,7 +52,7 @@ import { Options, Vue } from "vue-class-component";
 import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is an alias to /src
 import LeafletMapView from "@/views/LeafletMapView.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
-import HeaderSearch from "@/components/HeaderSearch.vue";
+import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
@@ -64,7 +64,7 @@ import { Calendar, DatePicker } from "v-calendar";
     ContactDetail,
     Calendar,
     DatePicker,
-    HeaderSearch,
+    HeaderSearch: MenuComponent,
     PhotoGallery: PhotoGalleryView,
   },
 })

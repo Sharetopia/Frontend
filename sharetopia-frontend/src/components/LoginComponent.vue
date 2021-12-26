@@ -1,7 +1,5 @@
 <template>
-  <div class="">
-    Ich werde einmal eine Login Komponente.
-  </div>
+  <div class="">Ich werde einmal eine Login Komponente.</div>
 </template>
 
 <script lang="ts">
@@ -11,6 +9,5 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   props: {},
 })
-export default class LoginComponent extends Vue {
-}
+export default class LoginComponent extends Vue {}
 </script>

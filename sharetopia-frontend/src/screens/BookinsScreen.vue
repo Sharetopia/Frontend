@@ -1,7 +1,5 @@
 <template>
-  <div class="">
-    Ich werde einmal Meine Buchungen anzeigen
-  </div>
+  <div class="">Ich werde einmal Meine Buchungen anzeigen</div>
 </template>
 
 <script lang="ts">
@@ -11,6 +9,5 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   props: {},
 })
-export default class BookingScreens extends Vue {
-}
+export default class BookingScreens extends Vue {}
 </script>

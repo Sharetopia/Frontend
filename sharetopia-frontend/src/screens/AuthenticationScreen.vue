@@ -53,9 +53,9 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuBurgerButton from "../uiElements/MenuBurgerButton.vue";
+import MenuBurgerButton from "../archiv/MenuBurgerButton.vue";
 import SearchComponent from "../components/SearchComponent.vue";
-import HomeHeader from "../components/HomeHeader.vue";
+import HomeHeader from "../archiv/HomeHeader.vue";
 
 @Options({
   components: {

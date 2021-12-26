@@ -7,21 +7,13 @@
     <div class="flex-1"></div>
 
     <MenuBurgerButton class="z-20 m-10 flex-none" />
-
-    <div class="z-10 absolute top-9 left-0 w-screen flex justify-center">
-      <img
-        src="../assets/share-banner.png"
-        alt="share-banner"
-        class="h-36 md:h-52"
-      />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuBurgerButton from "../uiElements/MenuBurgerButton.vue";
-import SearchComponent from "./SearchComponent.vue";
+import MenuBurgerButton from "./MenuBurgerButton.vue";
+import SearchComponent from "../components/SearchComponent.vue";
 
 @Options({
   components: {

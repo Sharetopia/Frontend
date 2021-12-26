@@ -16,13 +16,13 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HeaderSearch from "@/components/HeaderSearch.vue";
+import MenuComponent from "@/components/MenuComponent.vue";
 import ResultListItemView from "@/views/ResultListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
 
 @Options({
   components: {
-    HeaderSearch,
+    HeaderSearch: MenuComponent,
     ResultListItem: ResultListItemView,
   },
 })
