@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ProductDetailScreen,
   },
   {
-    path: "/Authentication",
+    path: "/authentication",
     name: "Authentication",
     component: Authentication,
   },

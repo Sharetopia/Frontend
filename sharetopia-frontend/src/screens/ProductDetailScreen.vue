@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <HeaderSearch />
-    <div class="flex">
+  <div class="layout">
+    <HeaderComponent
+      :show-searchbar="true"
+      :show-menu-button="true"
+      class="flex-none"
+    />
+    <div class="flex-1 flex">
       <div class="w-1/2">
         <PhotoGallery />
       </div>
@@ -44,6 +48,7 @@
         </div>
       </div>
     </div>
+    <Footer class="flex-none" />
   </div>
 </template>
 
@@ -56,9 +61,13 @@ import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 @Options({
   components: {
+    FooterComponent,
+    HeaderComponent,
     ProductTextDetail: ProductTextDetailView,
     LeafletMap: LeafletMapView,
     ContactDetail,

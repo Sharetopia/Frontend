@@ -13,3 +13,7 @@
 .btn-red:hover {
     @apply bg-red-700;
 }
+
+.layout {
+    @apply flex flex-col min-h-screen mx-10
+}

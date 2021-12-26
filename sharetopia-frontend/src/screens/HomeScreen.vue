@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <Header :show-menu-button="true" class="flex-none" />
+  <div class="layout">
+    <Header :show-menu-button="true" :show-searchbar="true" class="flex-none" />
     <div class="flex-1">
       Hallo
       <!--      <Search class="flex-1 max-w-5xl" />-->

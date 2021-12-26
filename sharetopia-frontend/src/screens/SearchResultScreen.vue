@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <HeaderSearch />
-    <div class="flex">
+  <div class="layout">
+    <HeaderComponent
+      :show-searchbar="true"
+      :show-menu-button="true"
+      class="flex-none"
+    />
+    <div class="flex-1 flex">
       <div class="w-1/2">
         <ResultListItem
           :key="productModel.id"
@@ -11,18 +15,21 @@
       </div>
       <div class="w-1/2"></div>
     </div>
+    <Footer class="flex-none" />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuComponent from "@/components/MenuComponent.vue";
 import ResultListItemView from "@/views/ResultListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 @Options({
   components: {
-    HeaderSearch: MenuComponent,
+    FooterComponent,
+    HeaderComponent,
     ResultListItem: ResultListItemView,
   },
 })

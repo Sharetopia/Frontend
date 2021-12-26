@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <HomeHeader class="" />
-    <div class="mt-10 flex justify-center">
+  <div class="layout">
+    <HeaderComponent class="flex-none" />
+    <div class="flex-1 mt-10 flex justify-center">
       <div class="flex md:w-1/2 w-screen divide-black divide-x-2">
         <div class="w-1/2 pr-5">
           <h2 class="font-bold mb-5">Registrieren</h2>
@@ -48,6 +48,7 @@
         </div>
       </div>
     </div>
+    <Footer class="flex-none" />
   </div>
 </template>
 
@@ -56,9 +57,13 @@ import { Options, Vue } from "vue-class-component";
 import MenuBurgerButton from "../archiv/MenuBurgerButton.vue";
 import SearchComponent from "../components/SearchComponent.vue";
 import HomeHeader from "../archiv/HomeHeader.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 @Options({
   components: {
+    FooterComponent,
+    HeaderComponent,
     MenuBurgerButton,
     Search: SearchComponent,
     HomeHeader,
