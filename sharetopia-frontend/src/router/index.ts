@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
-import ProductDetail from "../views/ProductDetail.vue";
-import Auth from "../views/Auth.vue";
-import Authentication from "../views/Authentication.vue";
-import ResultList from "../views/ResultList.vue";
+import Home from "../screens/Home.vue";
+import ProductDetail from "../screens/ProductDetail.vue";
+import Auth from "../screens/Auth.vue";
+import Authentication from "../screens/Authentication.vue";
+import ResultList from "../screens/ResultList.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,6 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Login",
     component: Auth,
   },
+  {
     path: "/search",
     name: "ResultList",
     component: ResultList,

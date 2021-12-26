@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuBurgerButton from "./MenuBurgerButton.vue";
+import MenuBurgerButton from "../uiElements/MenuBurgerButton.vue";
 import Search from "./Search.vue";
 
 @Options({

@@ -66,7 +66,7 @@ import {
   DialogOverlay,
 } from "@headlessui/vue";
 import Searchbar from "./Searchbar.vue";
-import SearchbarButton from "./SearchbarButton.vue";
+import SearchbarButton from "../uiElements/SearchbarButton.vue";
 import { SearchModel } from "../model/SearchModel";
 
 @Options({

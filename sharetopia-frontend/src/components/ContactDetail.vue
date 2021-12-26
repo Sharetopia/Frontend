@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { UserModel } from "../model/UserModel";
-import StarRating from "./StarRating.vue";
+import StarRating from "../views/StarRating.vue";
 
 @Options({
   components: {

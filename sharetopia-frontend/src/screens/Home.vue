@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MenuBurgerButton from "../components/MenuBurgerButton.vue";
+import MenuBurgerButton from "../uiElements/MenuBurgerButton.vue";
 import Search from "../components/Search.vue";
 import HomeHeader from "../components/HomeHeader.vue";
 

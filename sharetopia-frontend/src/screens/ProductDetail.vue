@@ -50,10 +50,10 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an alias to /src
-import LeafletMap from "@/components/LeafletMap.vue";
+import LeafletMap from "@/views/LeafletMap.vue";
 import ContactDetail from "@/components/ContactDetail.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
-import PhotoGallery from "@/components/PhotoGallery.vue";
+import PhotoGallery from "@/views/PhotoGallery.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 
