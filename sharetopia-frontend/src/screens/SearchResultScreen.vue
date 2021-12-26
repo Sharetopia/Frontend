@@ -17,13 +17,13 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import HeaderSearch from "@/components/HeaderSearch.vue";
-import ResultListItem from "@/components/ResultListItem.vue";
+import ResultListItemView from "@/views/ResultListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
 
 @Options({
   components: {
     HeaderSearch,
-    ResultListItem,
+    ResultListItem: ResultListItemView,
   },
 })
 export default class SearchResultScreen extends Vue {

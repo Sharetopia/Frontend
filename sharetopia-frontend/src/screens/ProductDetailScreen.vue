@@ -49,9 +49,9 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import ProductTextDetail from "@/components/ProductTextDetail.vue"; // @ is an alias to /src
+import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is an alias to /src
 import LeafletMapView from "@/views/LeafletMapView.vue";
-import ContactDetail from "@/components/ContactDetail.vue";
+import ContactDetail from "@/views/ContactDetailView.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import { ProductModel } from "../model/ProductModel";
@@ -59,7 +59,7 @@ import { Calendar, DatePicker } from "v-calendar";
 
 @Options({
   components: {
-    ProductTextDetail,
+    ProductTextDetail: ProductTextDetailView,
     LeafletMap: LeafletMapView,
     ContactDetail,
     Calendar,

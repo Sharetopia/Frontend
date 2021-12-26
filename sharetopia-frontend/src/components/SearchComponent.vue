@@ -65,7 +65,7 @@ import {
   Dialog,
   DialogOverlay,
 } from "@headlessui/vue";
-import Searchbar from "./Searchbar.vue";
+import SearchbarView from "../views/SearchbarView.vue";
 import SearchbarButton from "../uiElements/SearchbarButton.vue";
 import { SearchModel } from "../model/SearchModel";
 
@@ -76,11 +76,11 @@ import { SearchModel } from "../model/SearchModel";
     TransitionChild,
     Dialog,
     DialogOverlay,
-    Searchbar,
+    Searchbar: SearchbarView,
     SearchbarButton,
   },
 })
-export default class Search extends Vue {
+export default class SearchComponent extends Vue {
   searchModel: SearchModel = {
     query: "Gravel Bike Test",
     radius: 10,

@@ -16,17 +16,17 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { ProductModel } from "../model/ProductModel";
-import ProductTextDetail from "../components/ProductTextDetail.vue";
+import ProductTextDetailView from "./ProductTextDetailView.vue";
 
 @Options({
   components: {
-    ProductTextDetail,
+    ProductTextDetail: ProductTextDetailView,
   },
   props: {
     productModel: Object,
   },
 })
-export default class ResultListItem extends Vue {
+export default class ResultListItemView extends Vue {
   productModel!: ProductModel;
 }
 </script>

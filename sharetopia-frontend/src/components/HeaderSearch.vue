@@ -121,8 +121,8 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import Searchbar from "./Searchbar.vue";
-import Search from "./Search.vue";
+import SearchbarView from "../views/SearchbarView.vue";
+import SearchComponent from "./SearchComponent.vue";
 
 @Options({
   props: {},
@@ -131,8 +131,8 @@ import Search from "./Search.vue";
     MenuButton,
     MenuItem,
     MenuItems,
-    Searchbar,
-    Search,
+    Searchbar: SearchbarView,
+    Search: SearchComponent,
   },
 })
 export default class HeaderSearch extends Vue {}

@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { UserModel } from "../model/UserModel";
-import StarRatingView from "../views/StarRatingView.vue";
+import StarRatingView from "./StarRatingView.vue";
 
 @Options({
   components: {
@@ -31,7 +31,7 @@ import StarRatingView from "../views/StarRatingView.vue";
     userId: String,
   },
 })
-export default class ProductTextDetail extends Vue {
+export default class ContactDetailView extends Vue {
   userId!: string;
   userModel: UserModel = {
     id: "Dein Mutter",

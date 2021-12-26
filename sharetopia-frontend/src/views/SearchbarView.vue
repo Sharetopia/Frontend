@@ -77,7 +77,7 @@ import { SearchModel } from "../model/SearchModel";
     DatePicker,
   },
 })
-export default class Searchbar extends Vue {
+export default class SearchbarView extends Vue {
   modelValue!: SearchModel;
 
   decreaseRadius(): void {

@@ -21,12 +21,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import MenuBurgerButton from "../uiElements/MenuBurgerButton.vue";
-import Search from "./Search.vue";
+import SearchComponent from "./SearchComponent.vue";
 
 @Options({
   components: {
     MenuBurgerButton,
-    Search,
+    Search: SearchComponent,
   },
 })
 export default class HomeHeader extends Vue {}

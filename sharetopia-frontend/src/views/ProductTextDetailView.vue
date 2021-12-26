@@ -32,7 +32,7 @@ import { ProductModel } from "../model/ProductModel";
     productModel: Object,
   },
 })
-export default class ProductTextDetail extends Vue {
+export default class ProductTextDetailView extends Vue {
   productModel!: ProductModel;
   color = "text-white";
 }
