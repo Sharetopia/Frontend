@@ -1,11 +1,5 @@
 <template>
-  <div class="layout">
-    <HeaderComponent
-      :show-searchbar="true"
-      :show-menu-button="true"
-      class="flex-none"
-    />
-    <div class="flex-1 flex">
+    <div class="flex">
       <div class="w-1/2">
         <PhotoGallery />
       </div>
@@ -48,8 +42,6 @@
         </div>
       </div>
     </div>
-    <Footer class="flex-none" />
-  </div>
 </template>
 
 <script lang="ts">
@@ -61,13 +53,13 @@ import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
-import HeaderComponent from "@/components/HeaderComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import Header from "@/uiElements/Header.vue";
+import Footer from "@/uiElements/Footer.vue";
 
 @Options({
   components: {
-    FooterComponent,
-    HeaderComponent,
+    FooterComponent: Footer,
+    HeaderComponent: Header,
     ProductTextDetail: ProductTextDetailView,
     LeafletMap: LeafletMapView,
     ContactDetail,
@@ -77,7 +69,7 @@ import FooterComponent from "@/components/FooterComponent.vue";
     PhotoGallery: PhotoGalleryView,
   },
 })
-export default class ProductDetailScreen extends Vue {
+export default class ProductDetailComponent extends Vue {
   range = {
     start: Date,
     end: Date,

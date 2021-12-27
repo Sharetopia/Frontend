@@ -20,7 +20,7 @@ import SearchComponent from "@/components/SearchComponent.vue";
     showSearchbar: Boolean,
   },
 })
-export default class HeaderComponent extends Vue {
+export default class Header extends Vue {
   showMenuButton!: boolean;
   showSearchbar!: boolean;
 }

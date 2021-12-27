@@ -1,10 +1,4 @@
 <template>
-  <div class="layout">
-    <HeaderComponent
-      :show-searchbar="true"
-      :show-menu-button="true"
-      class="flex-none"
-    />
     <div class="flex-1 flex">
       <div class="w-1/2">
         <ResultListItem
@@ -15,25 +9,21 @@
       </div>
       <div class="w-1/2"></div>
     </div>
-    <Footer class="flex-none" />
-  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ResultListItemView from "@/views/ResultListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
-import HeaderComponent from "@/components/HeaderComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import Header from "@/uiElements/Header.vue";
+import Footer from "@/uiElements/Footer.vue";
 
 @Options({
   components: {
-    FooterComponent,
-    HeaderComponent,
     ResultListItem: ResultListItemView,
   },
 })
-export default class SearchResultScreen extends Vue {
+export default class SearchResultComponent extends Vue {
   productModels: ProductModel[] = [
     {
       id: "1243",

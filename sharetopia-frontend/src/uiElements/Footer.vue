@@ -1,7 +1,7 @@
 <template>
-  <div class="h-32">
+  <div class="h-32 mt-32">
     Ich werde einmal ein Footer werden
-    <div class="w-screen flex justify-center">
+    <div class="w-full flex justify-center">
       <img
         src="../assets/share-banner.png"
         alt="share-banner"
@@ -18,5 +18,5 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   props: {},
 })
-export default class FooterComponent extends Vue {}
+export default class Footer extends Vue {}
 </script>

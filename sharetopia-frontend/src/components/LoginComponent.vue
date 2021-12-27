@@ -1,5 +1,22 @@
 <template>
-  <div class="">Ich werde einmal eine Login Komponente.</div>
+  <div class="">
+    <div class="flex md:w-1/2 w-screen divide-black divide-x-2">
+      <div class="w-1/2 pl-5">
+        <h2 class="font-bold mb-5">Einloggen</h2>
+        <input
+          type="text"
+          class="border rounded-2xl px-3 py-1 mb-3 w-full"
+          placeholder="E-Mail"
+        />
+        <input
+          type="text"
+          class="border rounded-2xl px-3 py-1 mb-3 w-full"
+          placeholder="Passwort"
+        />
+        <button class="btn-red w-full">Anmelden</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

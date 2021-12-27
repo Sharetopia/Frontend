@@ -2,8 +2,7 @@
   <div class="layout">
     <Header :show-menu-button="true" :show-searchbar="true" class="flex-none" />
     <div class="flex-1">
-      Hallo
-      <!--      <Search class="flex-1 max-w-5xl" />-->
+      <router-view></router-view>
     </div>
     <Footer class="flex-none" />
   </div>
@@ -13,16 +12,16 @@
 import { Options, Vue } from "vue-class-component";
 import MenuBurgerButton from "../archiv/MenuBurgerButton.vue";
 import SearchComponent from "../components/SearchComponent.vue";
-import HeaderComponent from "@/components/HeaderComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import Header from "@/uiElements/Header.vue";
+import Footer from "@/uiElements/Footer.vue";
 
 @Options({
   components: {
-    Footer: FooterComponent,
-    Header: HeaderComponent,
+    Footer: Footer,
+    Header: Header,
     MenuBurgerButton,
     Search: SearchComponent,
   },
 })
-export default class HomeScreen extends Vue {}
+export default class MainScreen extends Vue {}
 </script>

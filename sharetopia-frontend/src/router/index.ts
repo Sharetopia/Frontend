@@ -1,35 +1,73 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeScreen from "../screens/HomeScreen.vue";
-import ProductDetailScreen from "../screens/ProductDetailScreen.vue";
+import MainScreen from "../screens/MainScreen.vue";
+import ProductDetailComponent from "../components/ProductDetailComponent.vue";
 import Auth from "../screens/Auth.vue";
-import Authentication from "../screens/AuthenticationScreen.vue";
-import SearchResultScreen from "../screens/SearchResultScreen.vue";
+import AuthenticationScreen from "../screens/AuthenticationScreen.vue";
+import SearchResultComponent from "../components/SearchResultComponent.vue";
+import LoginComponent from "@/components/LoginComponent.vue";
+import RegistrationComponent from "@/components/RegistrationComponent.vue";
+import HomeComponent from "@/components/HomeComponent.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: HomeScreen,
+    component: MainScreen,
+    children: [
+      {
+        path: "",
+        component: HomeComponent,
+      },
+    ],
   },
   {
-    path: "/login",
+    path: "/login2",
     name: "Login",
     component: Auth,
   },
   {
     path: "/search",
     name: "ResultList",
-    component: SearchResultScreen,
+    component: MainScreen,
+    children: [
+      {
+        path: "",
+        component: SearchResultComponent,
+      },
+    ],
   },
   {
     path: "/productDetail",
     name: "ProductDetail",
-    component: ProductDetailScreen,
+    component: MainScreen,
+    children: [
+      {
+        path: "",
+        component: ProductDetailComponent,
+      },
+    ],
   },
   {
-    path: "/authentication",
-    name: "Authentication",
-    component: Authentication,
+    path: "/login",
+    name: "Login",
+    component: AuthenticationScreen,
+    children: [
+      {
+        path: "",
+        component: LoginComponent,
+      },
+    ],
+  },
+  {
+    path: "/registration",
+    name: "AuthenticationScreen",
+    component: AuthenticationScreen,
+    children: [
+      {
+        path: "",
+        component: RegistrationComponent,
+      },
+    ],
   },
 ];
 
