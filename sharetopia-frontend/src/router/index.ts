@@ -6,6 +6,8 @@ import SearchResultComponent from "../components/SearchResultComponent.vue";
 import LoginComponent from "@/components/LoginComponent.vue";
 import RegistrationComponent from "@/components/RegistrationComponent.vue";
 import HomeComponent from "@/components/HomeComponent.vue";
+import MyBookingsComponent from "@/components/MyBookingsComponent.vue";
+import MyAdvertsComponent from "@/components/MyAdvertsComponent.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -27,6 +29,21 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         component: SearchResultComponent,
+      },
+    ],
+  },
+  {
+    path: "/my",
+    name: "MyOverview",
+    component: MainScreen,
+    children: [
+      {
+        path: "bookings",
+        component: MyBookingsComponent,
+      },
+      {
+        path: "adverts",
+        component: MyAdvertsComponent,
       },
     ],
   },
