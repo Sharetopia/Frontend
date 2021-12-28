@@ -1,14 +1,14 @@
 <template>
-    <div class="flex-1 flex">
-      <div class="w-1/2">
-        <ResultListItem
-          :key="productModel.id"
-          v-for="productModel in productModels"
-          :productModel="productModel"
-        />
-      </div>
-      <div class="w-1/2"></div>
+  <div class="flex-1 flex">
+    <div class="w-1/2">
+      <ResultListItem
+        :key="productModel.id"
+        v-for="productModel in productModels"
+        :productModel="productModel"
+      />
     </div>
+    <div class="w-1/2"></div>
+  </div>
 </template>
 
 <script lang="ts">

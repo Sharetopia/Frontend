@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import MainScreen from "../screens/MainScreen.vue";
 import ProductDetailComponent from "../components/ProductDetailComponent.vue";
-import Auth from "../screens/Auth.vue";
 import AuthenticationScreen from "../screens/AuthenticationScreen.vue";
 import SearchResultComponent from "../components/SearchResultComponent.vue";
 import LoginComponent from "@/components/LoginComponent.vue";
@@ -19,11 +18,6 @@ const routes: Array<RouteRecordRaw> = [
         component: HomeComponent,
       },
     ],
-  },
-  {
-    path: "/login2",
-    name: "Login",
-    component: Auth,
   },
   {
     path: "/search",

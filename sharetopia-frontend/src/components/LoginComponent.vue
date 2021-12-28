@@ -16,6 +16,10 @@
         <button class="btn-red w-full">Anmelden</button>
       </div>
     </div>
+
+    <amplify-authenticator>
+      <amplify-sign-out></amplify-sign-out>
+    </amplify-authenticator>
   </div>
 </template>
 

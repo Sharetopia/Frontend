@@ -15,7 +15,6 @@ import SearchComponent from "../components/SearchComponent.vue";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
 
-
 @Options({
   components: {
     FooterComponent: Footer,
