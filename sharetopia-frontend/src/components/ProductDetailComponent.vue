@@ -47,7 +47,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is an alias to /src
-import LeafletMapView from "@/views/LeafletMapView.vue";
+import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
@@ -61,7 +61,7 @@ import Footer from "@/uiElements/Footer.vue";
     FooterComponent: Footer,
     HeaderComponent: Header,
     ProductTextDetail: ProductTextDetailView,
-    LeafletMap: LeafletMapView,
+    LeafletMap: LeafletMapComponent,
     ContactDetail,
     Calendar,
     DatePicker,

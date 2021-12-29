@@ -1,5 +1,5 @@
 <template>
-  <div class="h-32 mt-32">
+  <div class="h-32">
     Ich werde einmal ein Footer werden
     <div class="w-full flex justify-center">
       <img
