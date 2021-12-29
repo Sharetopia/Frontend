@@ -3,7 +3,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ["RobotoMono", "Roboto", "Arial"],
+      sans: ["Inter-Regular", "Roboto", "Arial"],
+
     },
     extend: {},
   },

@@ -4,6 +4,34 @@
 
 @tailwind utilities;
 
+@font-face {
+    font-family: "Inter";
+    font-weight: bold;
+    src: local("Inter-Bold"),
+    url(./fonts/Inter-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-weight: 700;
+    src: local("Inter-SemiBold"),
+    url(./fonts/Inter-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-weight: normal;
+    src: local("Inter-Reagular"),
+    url(./fonts/Inter-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-weight: 300;
+    src: local("Inter-Thin"),
+    url(./fonts/Inter-Thin.ttf) format("truetype");
+}
+
 .btn {
     @apply font-bold py-2 px-4 rounded;
 }

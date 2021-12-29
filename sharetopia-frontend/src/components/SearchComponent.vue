@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="">
-      <button type="button" @click="openModal" class="w-full">
+    <div class="w-full flex justify-around">
+      <button type="button" v-if="!isOpen" @click="openModal" class="">
         <SearchbarButton :searchModel="searchModel" />
       </button>
     </div>
@@ -47,7 +47,7 @@
                 "
               >
                 <!-- Write here the content of the modal -->
-                <Searchbar @close="closeModal()" v-model="searchModel" />
+                <Searchbar @close="search()" v-model="searchModel" />
               </div>
             </TransitionChild>
           </div>
@@ -82,19 +82,49 @@ import { SearchModel } from "../model/SearchModel";
 })
 export default class SearchComponent extends Vue {
   searchModel: SearchModel = {
-    query: "Gravel Bike Test",
+    query: "",
     radius: 10,
-    postalCode: "71549",
+    postalCode: "",
     timeRange: {
       start: new Date(),
       end: new Date(),
     },
   };
-
   isOpen = false;
+
+
+  beforeMount() {
+    let query = this.$route.query["query"]
+    let postalCode = this.$route.query["postalCode"]
+    let radius = this.$route.query["radius"]
+    let start = this.$route.query["start"]
+    let end = this.$route.query["end"]
+
+    this.searchModel.query = query ? query.toString() : ""
+    this.searchModel.postalCode = postalCode ? postalCode.toString() : ""
+    this.searchModel.radius = radius ? parseInt(radius.toString()) : 10
+    this.searchModel.timeRange.start = start ? new Date(start.toString()) : new Date()
+    this.searchModel.timeRange.end = end ? new Date(end.toString()) : new Date()
+  }
+
   closeModal(): void {
     this.isOpen = false;
   }
+
+  search(): void {
+    this.$router.push({ path: 'search',
+      query: {
+        query: this.searchModel.query,
+        radius: this.searchModel.radius,
+        postalCode: this.searchModel.postalCode,
+        start: this.searchModel.timeRange.start?.toDateString(),
+        end: this.searchModel.timeRange.end?.toDateString()
+      }
+    })
+
+    this.closeModal()
+  }
+
   openModal(): void {
     this.isOpen = true;
   }

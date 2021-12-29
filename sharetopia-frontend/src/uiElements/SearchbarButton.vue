@@ -12,7 +12,7 @@
       mx-12
     "
   >
-    <div class="flex flex-1 divide-x items-center">
+    <div v-if="queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
       <div class="flex flex-col flex-1">
         <p>{{ searchModel.query }}</p>
       </div>
@@ -26,6 +26,9 @@
           {{ getReadableDate(searchModel.timeRange.end) }}
         </p>
       </div>
+    </div>
+    <div v-if="!queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
+        <p>Suche nach Produkten</p>
     </div>
     <div class="flex-none flex flex-col">
       <a>
@@ -58,6 +61,10 @@ export default class SearchbarButton extends Vue {
       month: "numeric",
       day: "numeric",
     });
+  }
+
+  queryIsNotEmpty(): boolean {
+    return this.searchModel.query != ""
   }
 }
 </script>
