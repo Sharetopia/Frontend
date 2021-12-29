@@ -17,18 +17,69 @@
       </div>
     </div>
 
-    <amplify-authenticator>
-      <amplify-sign-out></amplify-sign-out>
-    </amplify-authenticator>
+<!--    <amplify-authenticator style="&#45;&#45;border-radius: 30px">-->
+<!--      <amplify-sign-out></amplify-sign-out>-->
+<!--    </amplify-authenticator>-->
+
+
+    <div v-if="authState !== 'signedin'">You are signed out.</div>
+    <amplify-auth-container>
+      <amplify-authenticator>
+<!--        <amplify-sign-up-->
+<!--            v-slots="sign-up"-->
+<!--            username-alias="email"-->
+<!--            :formFields="formFields"-->
+<!--        ></amplify-sign-up>-->
+        <amplify-sign-out></amplify-sign-out>
+      </amplify-authenticator>
+    </amplify-auth-container>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { onAuthUIStateChange } from '@aws-amplify/ui-components'
 
 @Options({
   components: {},
   props: {},
 })
-export default class LoginComponent extends Vue {}
+export default class LoginComponent extends Vue {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  user?: object
+  authState?: any
+  unsubscribeAuth?: () => void
+  formFields = [
+    {
+      type: 'email',
+      label: 'Custom Email Label',
+      placeholder: 'Custom email placeholder',
+      inputProps: { required: true, autocomplete: 'username' },
+    },
+    {
+      type: 'password',
+      label: 'Custom Password Label',
+      placeholder: 'Custom password placeholder',
+      inputProps: { required: true, autocomplete: 'new-password' },
+    },
+    {
+      type: 'phone_number',
+      label: 'Custom Phone Label',
+      placeholder: 'Custom phone placeholder',
+    },
+  ]
+
+  created() {
+    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
+      this.authState = authState;
+      this.user = authData;
+    })
+  }
+
+  beforeUnmount() {
+    if(this.unsubscribeAuth) {
+      this.unsubscribeAuth();
+    }
+  }
+}
 </script>
