@@ -66,7 +66,7 @@ import {
   DialogOverlay,
 } from "@headlessui/vue";
 import SearchbarView from "../views/SearchbarView.vue";
-import SearchbarButton from "../uiElements/SearchbarButton.vue";
+import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
 
 @Options({
@@ -77,7 +77,7 @@ import { SearchModel } from "../model/SearchModel";
     Dialog,
     DialogOverlay,
     Searchbar: SearchbarView,
-    SearchbarButton,
+    SearchbarButton: SearchbarButtonView,
   },
 })
 export default class SearchComponent extends Vue {
@@ -92,19 +92,22 @@ export default class SearchComponent extends Vue {
   };
   isOpen = false;
 
+  beforeMount(): void {
+    let query = this.$route.query["query"];
+    let postalCode = this.$route.query["postalCode"];
+    let radius = this.$route.query["radius"];
+    let start = this.$route.query["start"];
+    let end = this.$route.query["end"];
 
-  beforeMount() {
-    let query = this.$route.query["query"]
-    let postalCode = this.$route.query["postalCode"]
-    let radius = this.$route.query["radius"]
-    let start = this.$route.query["start"]
-    let end = this.$route.query["end"]
-
-    this.searchModel.query = query ? query.toString() : ""
-    this.searchModel.postalCode = postalCode ? postalCode.toString() : ""
-    this.searchModel.radius = radius ? parseInt(radius.toString()) : 10
-    this.searchModel.timeRange.start = start ? new Date(start.toString()) : new Date()
-    this.searchModel.timeRange.end = end ? new Date(end.toString()) : new Date()
+    this.searchModel.query = query ? query.toString() : "";
+    this.searchModel.postalCode = postalCode ? postalCode.toString() : "";
+    this.searchModel.radius = radius ? parseInt(radius.toString()) : 10;
+    this.searchModel.timeRange.start = start
+      ? new Date(start.toString())
+      : new Date();
+    this.searchModel.timeRange.end = end
+      ? new Date(end.toString())
+      : new Date();
   }
 
   closeModal(): void {
@@ -112,17 +115,18 @@ export default class SearchComponent extends Vue {
   }
 
   search(): void {
-    this.$router.push({ path: 'search',
+    this.$router.push({
+      path: "search",
       query: {
         query: this.searchModel.query,
         radius: this.searchModel.radius,
         postalCode: this.searchModel.postalCode,
         start: this.searchModel.timeRange.start?.toDateString(),
-        end: this.searchModel.timeRange.end?.toDateString()
-      }
-    })
+        end: this.searchModel.timeRange.end?.toDateString(),
+      },
+    });
 
-    this.closeModal()
+    this.closeModal();
   }
 
   openModal(): void {

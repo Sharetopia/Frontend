@@ -1,7 +1,7 @@
 <template>
   <div class="flex-1 flex">
     <div class="w-1/2">
-      <ResultListItem
+      <ProductListItemView
         :key="productModel.id"
         v-for="productModel in productModels"
         :productModel="productModel"
@@ -13,14 +13,12 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import ResultListItemView from "@/views/ResultListItemView.vue";
+import ProductListItemView from "@/views/ProductListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
-import Header from "@/uiElements/Header.vue";
-import Footer from "@/uiElements/Footer.vue";
 
 @Options({
   components: {
-    ResultListItem: ResultListItemView,
+    ProductListItemView,
   },
 })
 export default class SearchResultComponent extends Vue {

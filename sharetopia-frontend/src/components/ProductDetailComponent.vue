@@ -36,7 +36,7 @@
             />
           </div>
           <div class="mt-4">
-            <button class="btn-red">Anfrage stellen</button>
+            <PrimaryButton title="Anfrage stellen" />
           </div>
         </div>
       </div>
@@ -55,9 +55,11 @@ import { ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
+import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 
 @Options({
   components: {
+    PrimaryButton,
     FooterComponent: Footer,
     HeaderComponent: Header,
     ProductTextDetail: ProductTextDetailView,

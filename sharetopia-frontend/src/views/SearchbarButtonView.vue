@@ -28,7 +28,7 @@
       </div>
     </div>
     <div v-if="!queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
-        <p>Suche nach Produkten</p>
+      <p>Suche nach Produkten</p>
     </div>
     <div class="flex-none flex flex-col">
       <a>
@@ -49,7 +49,7 @@ import { SearchModel } from "../model/SearchModel";
   emits: ["close"],
   components: {},
 })
-export default class SearchbarButton extends Vue {
+export default class SearchbarButtonView extends Vue {
   searchModel!: SearchModel;
 
   getReadableDate(date: Date): string {
@@ -64,7 +64,7 @@ export default class SearchbarButton extends Vue {
   }
 
   queryIsNotEmpty(): boolean {
-    return this.searchModel.query != ""
+    return this.searchModel.query != "";
   }
 }
 </script>

@@ -45,8 +45,7 @@
           right-0
           mt-2
           w-56
-          rounded-2xl
-          shadow-lg
+          card
           bg-white
           ring-1 ring-black ring-opacity-5
           focus:outline-none

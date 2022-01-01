@@ -1,5 +1,5 @@
 <template>
-  <div class="">Hier kommt der Profil Editierungs ding rein</div>
+  <div class="card">Hier kommt der Profil Editierungs ding rein</div>
 </template>
 
 <script lang="ts">
