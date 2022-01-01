@@ -28,7 +28,7 @@
       </div>
     </div>
     <div v-if="!queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
-      <p>Suche nach Produkten</p>
+      <p class="mr-8">Suche nach Produkten</p>
     </div>
     <div class="flex-none flex flex-col">
       <a>

@@ -1,20 +1,14 @@
 <template>
   <div class="flex">
-    <div class="w-1/2">
+    <div class="w-1/2 px-16">
       <PhotoGallery />
     </div>
-    <div class="w-1/2">
-      <div class="">
-        <button class="flex items-center pt-4 pl-4">
-          <img src="../assets/backArrow.svg" alt="" class="h-6" />
-          <span class="pl-2"> Zurück </span>
-        </button>
-      </div>
+    <div class="w-1/2 px-16">
       <div class="divide-y divide-black divide-opacity-25">
-        <div class="m-4">
+        <div class="m-4 mb-8">
           <ProductTextDetail :productModel="productModel" />
           <div class="flex mt-8">
-            <div class="w-max">
+            <div class="w-max mr-6">
               <ContactDetail :userId="productModel.userId" />
             </div>
             <div class="h-36 w-full">
@@ -26,7 +20,7 @@
           </div>
         </div>
         <div>
-          <div class="mt-4">
+          <div class="mt-8 flex justify-center">
             <DatePicker
               v-model="range"
               title-position="left"
@@ -35,7 +29,7 @@
               range
             />
           </div>
-          <div class="mt-4">
+          <div class="mt-4 flex justify-center">
             <PrimaryButton title="Anfrage stellen" />
           </div>
         </div>

@@ -1,12 +1,13 @@
 <template>
-  <div class="h-32">
-    Ich werde einmal ein Footer werden
-    <div class="w-full flex justify-center">
-      <img
-        src="../assets/share-banner.png"
-        alt="share-banner"
-        class="h-36 md:h-52"
-      />
+  <div class="h-52 mt-32">
+    <div class="flex justify-center">
+      <div>
+        <img
+            src="../assets/share-banner-with-bottom.png"
+            alt="share-banner"
+            class="h-36 md:h-52"
+        />
+      </div>
     </div>
   </div>
 </template>

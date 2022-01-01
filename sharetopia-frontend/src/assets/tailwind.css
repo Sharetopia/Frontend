@@ -33,7 +33,20 @@
 }
 
 .layout {
-    @apply flex flex-col min-h-screen mx-10
+    @apply flex flex-col mx-10 h-screen
+}
+
+h1 {
+    font-weight: 500;
+    @apply text-2xl
+}
+
+.caption {
+    font-weight: 500;
+}
+
+.smallText {
+    @apply text-sm
 }
 
 .card {

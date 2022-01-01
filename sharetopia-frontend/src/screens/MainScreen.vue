@@ -1,10 +1,12 @@
 <template>
   <div class="layout">
     <Header :show-menu-button="true" :show-searchbar="true" class="flex-none" />
-    <div class="flex-1">
+    <div class="flex-1 grow">
       <router-view></router-view>
     </div>
-    <Footer class="flex-none" />
+    <footer>
+      <Footer class="flex-none" />
+    </footer>
   </div>
 </template>
 

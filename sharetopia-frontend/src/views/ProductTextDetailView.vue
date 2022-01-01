@@ -1,11 +1,11 @@
 <template>
   <div class="">
     <div class="flex items-center">
-      <h1 class="font-semibold text-black font-sans text-4xl flex-none">
+      <h1 class="flex-none">
         {{ productModel.title }}
       </h1>
       <div class="flex-grow"></div>
-      <div class="flex-none text-3xl">
+      <div class="flex-none text-2xl">
         {{ productModel.price }}€ <span class="text-lg">/day</span>
       </div>
     </div>
@@ -13,8 +13,8 @@
       <div
         v-for="tag in productModel.tags"
         :key="tag"
-        class="inline-block bg-gray-500 p-2 rounded-md my-4"
-        :class="color"
+        class="inline-block smallText px-2 py-0 rounded-md my-4 text-white bg-gray-500"
+        :class="getBackgroundColor()"
       >
         {{ tag }}
       </div>
@@ -34,6 +34,23 @@ import { ProductModel } from "../model/ProductModel";
 })
 export default class ProductTextDetailView extends Vue {
   productModel!: ProductModel;
-  color = "text-white";
+
+  getBackgroundColor(): string {
+    let value = Math.random() * 10
+
+    console.log("hier")
+    switch(value) {
+      case 1: return "bg-red-600"
+      case 2: return "bg-lime-600"
+      case 4: return "bg-green-600"
+      case 5: return "bg-emerald-600"
+      case 3: return "bg-cyan-600"
+      case 6: return "bg-sky-600"
+      case 7: return "bg-violet600"
+      case 8: return "bg-rose-600"
+      case 9: return "bg-indigo-600"
+      default: return "bg-stone-600"
+    }
+  }
 }
 </script>
