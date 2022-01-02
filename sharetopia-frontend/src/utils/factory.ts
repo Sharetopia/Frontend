@@ -1,5 +1,3 @@
-import { Auth } from "aws-amplify";
-import { Product } from "@/api/product";
 import { SearchModel } from "@/model/SearchModel";
 import { LocationQuery, LocationQueryValue } from "vue-router";
 
@@ -16,7 +14,7 @@ class Factory {
     if (
       typeof query !== "string" ||
       typeof postalCode !== "string" ||
-      typeof radius !== "number" ||
+      typeof radius !== "string" ||
       typeof start !== "string" ||
       typeof end !== "string"
     ) {
@@ -26,7 +24,7 @@ class Factory {
     return {
       postalCode: postalCode,
       query: query,
-      radius: radius,
+      radius: Number(radius),
       timeRange: {
         start: new Date(start),
         end: new Date(end),

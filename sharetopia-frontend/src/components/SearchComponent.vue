@@ -73,6 +73,7 @@ import SearchbarView from "../views/SearchbarView.vue";
 import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
 import { Routes } from "../router/routes";
+import {Factory} from "@/utils/factory";
 
 @Options({
   props: {},
@@ -98,21 +99,10 @@ export default class SearchComponent extends Vue {
   isOpen = false;
 
   beforeMount(): void {
-    let query = this.$route.query["query"];
-    let postalCode = this.$route.query["postalCode"];
-    let radius = this.$route.query["radius"];
-    let start = this.$route.query["start"];
-    let end = this.$route.query["end"];
-
-    this.searchModel.query = query ? query.toString() : "";
-    this.searchModel.postalCode = postalCode ? postalCode.toString() : "";
-    this.searchModel.radius = radius ? parseInt(radius.toString()) : 10;
-    this.searchModel.timeRange.start = start
-      ? new Date(start.toString())
-      : new Date();
-    this.searchModel.timeRange.end = end
-      ? new Date(end.toString())
-      : new Date();
+    let model = Factory.createSearchModel(this.$route.query)
+    if(model) {
+      this.searchModel = model
+    }
   }
 
   closeModal(): void {
@@ -120,7 +110,9 @@ export default class SearchComponent extends Vue {
   }
 
   search(): void {
+    console.log("es wird gesucht")
     if (this.searchModel.query === "") {
+      console.log("rausgeflogen")
       // TODO: Show an Error!
       return;
     }

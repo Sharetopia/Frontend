@@ -12,8 +12,9 @@ class Routes {
     router: Router,
     searchModel: SearchModel
   ): void {
+    console.log("wir pushen search", searchModel)
     router.push({
-      path: "search",
+      path: "/search",
       query: {
         query: searchModel.query,
         radius: searchModel.radius,

@@ -1,9 +1,14 @@
 export type ProductModel = {
   id: string;
-  userId: string;
   title: string;
-  price: number;
   description: string;
   tags: string[];
-  coordinates: number[];
+  address: AddressModel;
+  location: number[][];
+};
+
+export type AddressModel = {
+  street: string;
+  city: string;
+  zip: string;
 };

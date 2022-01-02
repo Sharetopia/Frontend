@@ -1,21 +1,7 @@
 import { Auth } from "aws-amplify";
+import {ProductModel} from "@/model/ProductModel";
 
-type Product = {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  address: Address;
-  location: number[][];
-};
-
-type Address = {
-  street: string;
-  city: string;
-  zip: string;
-};
-
-const dummyBike: Product = {
+const dummyBike: ProductModel = {
   id: "4637453",
   title: "Fahrrad",
   description: "Ich bin schön",
@@ -32,7 +18,7 @@ const dummyBike: Product = {
 };
 
 class ProductApi {
-  public async findById(id: string): Promise<Product> {
+  public static async findById(id: string): Promise<ProductModel> {
     return dummyBike;
 
     const token = (await Auth.currentSession()).getAccessToken();
@@ -47,17 +33,11 @@ class ProductApi {
     return res.json();
   }
 
-  public async searchFor(
-    query: string,
-    postalCode: string,
-    radius: number,
-    startDate: string,
-    endDate: string
-  ): Promise<Product[]> {
-    return [dummyBike, dummyBike];
+  public static async searchFor(productModel: ProductModel): Promise<ProductModel[]> {
+    return [];
 
     const token = (await Auth.currentSession()).getAccessToken();
-    const res = await fetch(`http://localhost:8080/api/v1/search/${query}`, {
+    const res = await fetch(`http://localhost:8080/api/v1/search/test`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -71,4 +51,4 @@ class ProductApi {
   // AB HIER RATEN
 }
 
-export { Product, ProductApi };
+export { ProductApi };
