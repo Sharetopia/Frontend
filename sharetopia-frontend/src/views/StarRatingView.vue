@@ -5,14 +5,14 @@
       :key="index"
       src="../assets/star_1.png"
       alt=""
-      class="h-6"
+      class="h-4"
     />
     <img
       v-for="index in getNumberOfUnfilledStars()"
       :key="index"
       src="../assets/star_2.png"
       alt=""
-      class="h-6"
+      class="h-4"
     />
   </div>
 </template>

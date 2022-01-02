@@ -4,7 +4,6 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Inter-Regular", "Roboto", "Arial"],
-
     },
     extend: {},
   },

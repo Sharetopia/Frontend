@@ -4,14 +4,14 @@
       <img
         src="../assets/profile_blank.png"
         alt="User Profile image"
-        class="rounded-full object-cover max-h-16 min-h-16"
+        class="rounded-full object-cover max-h-12 min-h-12"
       />
     </div>
     <div class="pr-4">
-      <p class="text-xl font-bold">
+      <p class="caption">
         {{ userModel.forename }} {{ userModel.surname }}
       </p>
-      <StarRating :rate="userModel.rating" class="mb-4" />
+      <StarRating :rate="userModel.rating" class="mb-4 mt-2" />
       <p>{{ userModel.address }}</p>
       <p>{{ userModel.postalCode }} {{ userModel.city }}</p>
     </div>

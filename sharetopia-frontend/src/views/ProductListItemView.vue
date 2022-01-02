@@ -1,5 +1,5 @@
 <template>
-  <div class="flex rounded-3xl shadow-xl">
+  <div class="flex card">
     <div class="w-1/3">
       <img
         src="@/assets/TestImage1.png"
@@ -26,7 +26,7 @@ import ProductTextDetailView from "./ProductTextDetailView.vue";
     productModel: Object,
   },
 })
-export default class ResultListItemView extends Vue {
+export default class ProductListItemView extends Vue {
   productModel!: ProductModel;
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="px-8 py-4">
+  <div class="py-4">
     <div class="flex h-2/3">
       <div class="w-2/3">
         <img
