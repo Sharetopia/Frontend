@@ -55,8 +55,8 @@
         <div class="py-1">
           <MenuItem v-slot="{ active }">
             <button
-                @click="pushMyAdverts"
-                :class="[
+              @click="pushMyAdverts"
+              :class="[
                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                 'block w-full text-left px-4 py-2 text-sm',
               ]"
@@ -68,8 +68,8 @@
         <div class="py-1">
           <MenuItem v-slot="{ active }">
             <button
-                @click="pushMyBookings"
-                :class="[
+              @click="pushMyBookings"
+              :class="[
                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                 'block w-full text-left px-4 py-2 text-sm',
               ]"
@@ -126,7 +126,7 @@ import { Routes } from "@/router/routes";
 })
 export default class MenuComponent extends Vue {
   async logout(): Promise<void> {
-    console.log("wir sind hier")
+    console.log("wir sind hier");
     await Auth.signOut().then(
       (success) => {
         Routes.pushLoginRoute(this.$router);
@@ -140,11 +140,11 @@ export default class MenuComponent extends Vue {
   }
 
   pushMyBookings(): void {
-    Routes.pushMyBookingsRoute(this.$router)
+    Routes.pushMyBookingsRoute(this.$router);
   }
 
   pushMyAdverts(): void {
-    Routes.pushMyAdvertsRoute(this.$router)
+    Routes.pushMyAdvertsRoute(this.$router);
   }
 
   showMyProfile(): void {

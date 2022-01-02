@@ -73,7 +73,7 @@ import SearchbarView from "../views/SearchbarView.vue";
 import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
 import { Routes } from "../router/routes";
-import {Factory} from "@/utils/factory";
+import { Factory } from "@/utils/factory";
 
 @Options({
   props: {},
@@ -99,9 +99,9 @@ export default class SearchComponent extends Vue {
   isOpen = false;
 
   beforeMount(): void {
-    let model = Factory.createSearchModel(this.$route.query)
-    if(model) {
-      this.searchModel = model
+    let model = Factory.createSearchModel(this.$route.query);
+    if (model) {
+      this.searchModel = model;
     }
   }
 
@@ -110,9 +110,9 @@ export default class SearchComponent extends Vue {
   }
 
   search(): void {
-    console.log("es wird gesucht")
+    console.log("es wird gesucht");
     if (this.searchModel.query === "") {
-      console.log("rausgeflogen")
+      console.log("rausgeflogen");
       // TODO: Show an Error!
       return;
     }

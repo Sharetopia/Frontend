@@ -13,7 +13,7 @@
 import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
 import MyAdvertListItemView from "@/views/MyAdvertListItemView.vue";
-import {dummyBike, ProductModel} from "@/model/ProductModel";
+import { dummyBike, ProductModel } from "@/model/ProductModel";
 
 @Options({
   components: {
@@ -24,8 +24,6 @@ import {dummyBike, ProductModel} from "@/model/ProductModel";
   props: {},
 })
 export default class MyAdvertsComponent extends Vue {
-  productModels: ProductModel[] = [
-    dummyBike
-  ];
+  productModels: ProductModel[] = [dummyBike];
 }
 </script>

@@ -13,7 +13,7 @@
             </div>
             <div class="h-36 w-full">
               <LeafletMap
-                :coordinates=" [47.7377921, 16.339096]"
+                :coordinates="[47.7377921, 16.339096]"
                 :name="productModel.title"
               />
             </div>
@@ -45,7 +45,7 @@ import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
-import {dummyBike, ProductModel} from "../model/ProductModel";
+import { dummyBike, ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
@@ -71,6 +71,6 @@ export default class ProductDetailComponent extends Vue {
     end: Date,
   };
 
-  productModel: ProductModel = dummyBike
+  productModel: ProductModel = dummyBike;
 }
 </script>

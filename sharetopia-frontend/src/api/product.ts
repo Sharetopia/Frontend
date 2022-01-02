@@ -1,6 +1,6 @@
 import { Auth } from "aws-amplify";
-import {ProductModel, dummyBike} from "@/model/ProductModel";
-import {SearchModel} from "@/model/SearchModel";
+import { ProductModel, dummyBike } from "@/model/ProductModel";
+import { SearchModel } from "@/model/SearchModel";
 
 class ProductApi {
   public static async findById(id: string): Promise<ProductModel> {
@@ -18,7 +18,9 @@ class ProductApi {
     return res.json();
   }
 
-  public static async searchFor(searchModel: SearchModel): Promise<ProductModel[]> {
+  public static async searchFor(
+    searchModel: SearchModel
+  ): Promise<ProductModel[]> {
     return [dummyBike, dummyBike];
 
     const token = (await Auth.currentSession()).getAccessToken();

@@ -1,21 +1,25 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import { Authenticator, } from "@aws-amplify/ui-vue";
+import { Authenticator } from "@aws-amplify/ui-vue";
 import "@aws-amplify/ui-vue/styles.css";
 import { I18n } from "aws-amplify";
 import { translations } from "@/assets/translations.ts";
 import { Auth } from "aws-amplify";
-import { formDataSingUp, formDataSingIn, formDataSingUpConfirmation } from "@/model/amplifyFormData";
+import {
+  formDataSingUp,
+  formDataSingIn,
+  formDataSingUpConfirmation,
+} from "@/model/amplifyFormData";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import {Routes} from "@/router/routes";
-import  ProfileEditPopUpComponent from "@/components/ProfileEditPopUpComponent.vue"
+import { Routes } from "@/router/routes";
+import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 
 I18n.setLanguage("de");
 I18n.putVocabularies(translations);
 
 @Options({
-  components: { PrimaryButton, Authenticator, ProfileEditPopUpComponent },
+  components: { PrimaryButton, Authenticator, ProfileEditComponent },
   props: {},
 })
 export default class LoginComponent extends Vue {
@@ -35,22 +39,18 @@ export default class LoginComponent extends Vue {
         username = username.toLowerCase();
         attributes.email = attributes.email.toLowerCase();
 
-        let result = await Auth.signUp({
+        return Auth.signUp({
           username,
           password,
           attributes,
         });
-
-        return result;
       },
       async handleConfirmSignUp(formData: formDataSingUpConfirmation) {
         let { username, code } = formData;
-        return Auth.confirmSignUp(username, code)
-          .then((result) => {
+        return Auth.confirmSignUp(username, code).then((result) => {
           console.log(result);
           return result;
         });
-
       },
       async handleSignIn(formData: formDataSingIn) {
         let { username, password } = formData;
@@ -61,7 +61,7 @@ export default class LoginComponent extends Vue {
           username,
           password,
         }).then((result) => {
-          Routes.pushHomeRoute(router)
+          Routes.pushHomeRoute(router);
           return result;
         });
       },
@@ -73,9 +73,9 @@ export default class LoginComponent extends Vue {
 <template>
   <div>
     <authenticator :services="services">
-      <template v-slot="{  }">
-        <div class="h-1.5">
-          <ProfileEditPopUpComponent />
+      <template v-slot="{}">
+        <div class="">
+          <ProfileEditComponent />
         </div>
       </template>
     </authenticator>
