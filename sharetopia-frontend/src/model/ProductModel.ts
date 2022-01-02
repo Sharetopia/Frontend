@@ -6,7 +6,7 @@ export type ProductModel = {
   description: string;
   tags: string[];
   address: AddressModel;
-  location: number[][];
+  location: number[];
 };
 
 export type AddressModel = {
@@ -27,8 +27,20 @@ export const dummyBike: ProductModel = {
     city: "Auenwald",
     zip: "71549",
   },
-  location: [
-    [0, 47.7377921],
-    [1, 16.339096],
-  ],
+  location: [47.7377921, 16.339096],
+};
+
+export const dummyCar: ProductModel = {
+  id: "463744223",
+  userId: "132412412",
+  price: 12.23,
+  title: "Auto",
+  description: "Ich bin hässlich",
+  tags: ["cool", "grün"],
+  address: {
+    street: "Hintere Wiesen 13",
+    city: "Auenwald",
+    zip: "71549",
+  },
+  location: [47.7377921, 15.339096],
 };
