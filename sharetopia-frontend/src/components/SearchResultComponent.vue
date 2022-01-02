@@ -15,6 +15,7 @@
 import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
 import { ProductModel } from "../model/ProductModel";
+import { Factory } from "@/utils/factory";
 
 @Options({
   components: {
@@ -42,5 +43,12 @@ export default class SearchResultComponent extends Vue {
       coordinates: [21.546, 24.98],
     },
   ];
+
+  beforeMount(): void {
+    let searchModel = Factory.createSearchModel(this.$route.query);
+    if (!searchModel) {
+      this;
+    }
+  }
 }
 </script>

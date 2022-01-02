@@ -47,7 +47,11 @@
                 "
               >
                 <!-- Write here the content of the modal -->
-                <Searchbar @close="search()" v-model="searchModel" />
+                <Searchbar
+                  @close="closeModal"
+                  @search="search"
+                  v-model="searchModel"
+                />
               </div>
             </TransitionChild>
           </div>
@@ -68,6 +72,7 @@ import {
 import SearchbarView from "../views/SearchbarView.vue";
 import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
+import { Routes } from "../router/routes";
 
 @Options({
   props: {},
@@ -115,16 +120,11 @@ export default class SearchComponent extends Vue {
   }
 
   search(): void {
-    this.$router.push({
-      path: "search",
-      query: {
-        query: this.searchModel.query,
-        radius: this.searchModel.radius,
-        postalCode: this.searchModel.postalCode,
-        start: this.searchModel.timeRange.start?.toDateString(),
-        end: this.searchModel.timeRange.end?.toDateString(),
-      },
-    });
+    if (this.searchModel.query === "") {
+      // TODO: Show an Error!
+      return;
+    }
+    Routes.pushSearchRoute(this.$router, this.searchModel);
 
     this.closeModal();
   }

@@ -3,9 +3,9 @@
     <div class="flex justify-center">
       <div>
         <img
-            src="../assets/share-banner-with-bottom.png"
-            alt="share-banner"
-            class="h-36 md:h-52"
+          src="../assets/share-banner-with-bottom.png"
+          alt="share-banner"
+          class="h-36 md:h-52"
         />
       </div>
     </div>

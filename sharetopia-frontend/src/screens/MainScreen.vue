@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Header :show-menu-button="true" :show-searchbar="true" class="flex-none" />
+    <Header :show-menu-button="true" :show-searchbar="true" :home-link-active="true" class="flex-none" />
     <div class="flex-1 grow">
       <router-view></router-view>
     </div>
@@ -16,6 +16,8 @@ import MenuBurgerButton from "../archiv/MenuBurgerButton.vue";
 import SearchComponent from "../components/SearchComponent.vue";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
+import {Auth} from "aws-amplify";
+import {Routes} from "@/router/routes";
 
 @Options({
   components: {
@@ -25,5 +27,17 @@ import Footer from "@/uiElements/Footer.vue";
     Search: SearchComponent,
   },
 })
-export default class MainScreen extends Vue {}
+export default class MainScreen extends Vue {
+  beforeMount(): void {
+    this.checkUserLoggedIn()
+  }
+
+  async checkUserLoggedIn(): Promise<void> {
+    try {
+      await Auth.currentAuthenticatedUser()
+    } catch {
+      Routes.pushLoginRoute(this.$router)
+    }
+  }
+}
 </script>

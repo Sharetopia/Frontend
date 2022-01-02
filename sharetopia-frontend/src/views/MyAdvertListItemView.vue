@@ -1,7 +1,10 @@
 <template>
   <div class="flex w-max">
-    <ResultListItemView :productModel="productModel"/>
-    <SecondaryButton title="Beschreibung bearbeiten" image-name="burgerMenu.svg" />
+    <ResultListItemView :productModel="productModel" />
+    <SecondaryButton
+      title="Beschreibung bearbeiten"
+      image-name="burgerMenu.svg"
+    />
   </div>
 </template>
 
