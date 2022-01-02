@@ -10,11 +10,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@aws-amplify/ui": "^3.0.5",
     "@aws-amplify/ui-components": "^1.9.6",
+    "@aws-amplify/ui-vue": "^2.0.5",
     "@headlessui/vue": "^1.4.2",
     "@tailwindcss/postcss7-compat": "^2.2.17",
+    "amplify-ui": "^0.23.0",
     "autoprefixer": "^9",
-    "aws-amplify": "^4.3.10",
+    "aws-amplify": "^4.3.11",
     "core-js": "^3.6.5",
     "leaflet": "^1.7.1",
     "postcss": "^7",
