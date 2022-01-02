@@ -1,21 +1,5 @@
 import { Auth } from "aws-amplify";
-import {ProductModel} from "@/model/ProductModel";
-
-const dummyBike: ProductModel = {
-  id: "4637453",
-  title: "Fahrrad",
-  description: "Ich bin schön",
-  tags: ["cool", "grün"],
-  address: {
-    street: "Hintere Wiesen 13",
-    city: "Auenwald",
-    zip: "71549",
-  },
-  location: [
-    [0, 47.7377921],
-    [1, 16.339096],
-  ],
-};
+import {ProductModel, dummyBike} from "@/model/ProductModel";
 
 class ProductApi {
   public static async findById(id: string): Promise<ProductModel> {

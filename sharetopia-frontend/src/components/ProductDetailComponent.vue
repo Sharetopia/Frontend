@@ -45,7 +45,7 @@ import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
-import { ProductModel } from "../model/ProductModel";
+import {dummyBike, ProductModel} from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
@@ -71,15 +71,6 @@ export default class ProductDetailComponent extends Vue {
     end: Date,
   };
 
-  productModel: ProductModel = {
-    id: "224132454315243523",
-    userId: "Dein Mutter",
-    title: "Canyon Grail 6",
-    price: 10.99,
-    description:
-      "Ich biete hier mein Gravel Bike zum Verleih an, da ich zur Zeit einen Bruch habe und es daher nicht nutzen kann. Ich biete hier mein Gravel Bike zum Verleih an, da ich zur Zeit einen Bruch habe und es daher nicht nutzen kann.",
-    tags: ["BIKE", "GRAVEL", "OUTDOOR"],
-    coordinates: [48.9471455, 9.4341813],
-  };
+  productModel: ProductModel = dummyBike
 }
 </script>
