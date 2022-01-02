@@ -13,7 +13,16 @@
       <div
         v-for="tag in productModel.tags"
         :key="tag"
-        class="inline-block smallText px-2 py-0 rounded-md my-4 text-white bg-gray-500"
+        class="
+          inline-block
+          smallText
+          px-2
+          py-0
+          rounded-md
+          my-4
+          text-white
+          bg-gray-500
+        "
         :class="getBackgroundColor()"
       >
         {{ tag }}
@@ -36,20 +45,30 @@ export default class ProductTextDetailView extends Vue {
   productModel!: ProductModel;
 
   getBackgroundColor(): string {
-    let value = Math.random() * 10
+    let value = Math.random() * 10;
 
-    console.log("hier")
-    switch(value) {
-      case 1: return "bg-red-600"
-      case 2: return "bg-lime-600"
-      case 4: return "bg-green-600"
-      case 5: return "bg-emerald-600"
-      case 3: return "bg-cyan-600"
-      case 6: return "bg-sky-600"
-      case 7: return "bg-violet600"
-      case 8: return "bg-rose-600"
-      case 9: return "bg-indigo-600"
-      default: return "bg-stone-600"
+    console.log("hier");
+    switch (value) {
+      case 1:
+        return "bg-red-600";
+      case 2:
+        return "bg-lime-600";
+      case 4:
+        return "bg-green-600";
+      case 5:
+        return "bg-emerald-600";
+      case 3:
+        return "bg-cyan-600";
+      case 6:
+        return "bg-sky-600";
+      case 7:
+        return "bg-violet600";
+      case 8:
+        return "bg-rose-600";
+      case 9:
+        return "bg-indigo-600";
+      default:
+        return "bg-stone-600";
     }
   }
 }

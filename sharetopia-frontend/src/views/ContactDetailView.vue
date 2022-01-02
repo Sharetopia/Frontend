@@ -8,9 +8,7 @@
       />
     </div>
     <div class="pr-4">
-      <p class="caption">
-        {{ userModel.forename }} {{ userModel.surname }}
-      </p>
+      <p class="caption">{{ userModel.forename }} {{ userModel.surname }}</p>
       <StarRating :rate="userModel.rating" class="mb-4 mt-2" />
       <p>{{ userModel.address }}</p>
       <p>{{ userModel.postalCode }} {{ userModel.city }}</p>

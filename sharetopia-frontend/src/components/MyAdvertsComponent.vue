@@ -1,8 +1,10 @@
 <template>
   <div class="">
-    <MyAdvertListItemView :key="productModel.id"
-                          v-for="productModel in productModels"
-                          :productModel="productModel"/>
+    <MyAdvertListItemView
+      :key="productModel.id"
+      v-for="productModel in productModels"
+      :productModel="productModel"
+    />
     Hier kommen meine Inserate ding rein
   </div>
 </template>
