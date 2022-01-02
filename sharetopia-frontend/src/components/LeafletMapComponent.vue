@@ -22,7 +22,7 @@ export default class LeafletMapComponent extends Vue {
 
   // mounted lifecycle hook, creates the map
   mounted(): void {
-    this.mymap = leaflet.map("mapid").setView([48.9471455, 9.4341813], 15);
+    this.mymap = leaflet.map("mapid").setView([this.coordinates[0], this.coordinates[1]], 15);
     leaflet
       .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:

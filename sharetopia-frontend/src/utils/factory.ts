@@ -4,7 +4,7 @@ import { LocationQuery, LocationQueryValue } from "vue-router";
 class Factory {
   public static createSearchModel(
     locationQuery: LocationQuery
-  ): SearchModel | null {
+  ): SearchModel | undefined {
     const query = locationQuery["query"];
     const postalCode = locationQuery["postalCode"];
     const radius = locationQuery["radius"];
@@ -18,7 +18,7 @@ class Factory {
       typeof start !== "string" ||
       typeof end !== "string"
     ) {
-      return null;
+      return undefined;
     }
 
     return {

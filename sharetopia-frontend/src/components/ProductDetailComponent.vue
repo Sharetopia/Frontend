@@ -13,7 +13,7 @@
             </div>
             <div class="h-36 w-full">
               <LeafletMap
-                :coordinates="productModel.coordinates"
+                :coordinates=" [47.7377921, 16.339096]"
                 :name="productModel.title"
               />
             </div>

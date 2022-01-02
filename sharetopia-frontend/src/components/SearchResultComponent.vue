@@ -2,9 +2,10 @@
   <div class="flex-1 flex">
     <div class="w-1/2">
       <ProductListItemView
-        :key="productModel.id"
-        v-for="productModel in productModels"
-        :productModel="productModel"
+        :key="searchResult.id"
+        v-for="searchResult in searchResults"
+        :productModel="searchResult"
+        @click="showProductDetail(searchResult.id)"
       />
     </div>
     <div class="w-1/2"></div>
@@ -14,10 +15,11 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
-import { ProductModel } from "@/model/ProductModel";
+import {dummyBike, ProductModel} from "@/model/ProductModel";
 import { Factory } from "@/utils/factory";
 import {Routes} from "@/router/routes";
 import {ProductApi} from "@/api/product";
+import {SearchModel} from "@/model/SearchModel";
 
 @Options({
   components: {
@@ -29,10 +31,20 @@ export default class SearchResultComponent extends Vue {
 
   beforeMount(): void {
     let searchModel = Factory.createSearchModel(this.$route.query);
-    console.log("Wir bekommen ein model", searchModel)
-    if (!searchModel) {
+    if(searchModel) {
+      this.loadSearchResultsFor(searchModel)
+    } else {
       Routes.pushHomeRoute(this.$router)
     }
+  }
+
+  async loadSearchResultsFor(searchModel: SearchModel): Promise<void> {
+    this.searchResults = await ProductApi.searchFor(searchModel)
+  }
+
+  showProductDetail(id: string): void {
+    console.log("hie", id)
+    Routes.pushProductDetail(this.$router, id)
   }
 }
 </script>

@@ -25,6 +25,18 @@ class Routes {
     });
   }
 
+  public static pushProductDetail(
+      router: Router,
+      id: string
+  ): void {
+    router.push({
+      path: "/productDetail",
+      query: {
+        id: id,
+      },
+    });
+  }
+
   public static pushMyAdvertsRoute(router: Router): void {
     router.push({
       path: "/my/adverts",
