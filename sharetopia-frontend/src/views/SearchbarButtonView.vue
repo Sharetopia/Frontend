@@ -30,7 +30,7 @@
     <div v-if="!queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
       <p class="mr-8">Suche nach Produkten</p>
     </div>
-    <div class="flex-none flex flex-col">
+    <div class="flex-none flex flex-col justify-center">
       <a>
         <img src="../assets/redButtonWithArrow.svg" />
       </a>

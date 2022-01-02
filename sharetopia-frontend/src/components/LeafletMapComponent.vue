@@ -22,20 +22,21 @@ export default class LeafletMapComponent extends Vue {
 
   // mounted lifecycle hook, creates the map
   mounted(): void {
-    this.mymap = leaflet.map("mapid").setView([this.coordinates[0], this.coordinates[1]], 15);
-    leaflet
-      .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      })
-      .addTo(this.mymap);
+    if(this.coordinates) {
+      this.mymap = leaflet.map("mapid").setView([this.coordinates[0], this.coordinates[1]], 15);
+      leaflet
+          .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          })
+          .addTo(this.mymap);
 
-    leaflet
-      .marker([this.coordinates[0], this.coordinates[1]])
-      .addTo(this.mymap)
-      .bindPopup(this.name)
-      .openPopup();
-
+      leaflet
+          .marker([this.coordinates[0], this.coordinates[1]])
+          .addTo(this.mymap)
+          .bindPopup(this.name)
+          .openPopup();
+    }
     // this.mymap.on("click", (e: any) => {
     //   leaflet
     //     .popup()

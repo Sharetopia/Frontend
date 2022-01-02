@@ -19,7 +19,7 @@ class ProductApi {
   }
 
   public static async searchFor(searchModel: SearchModel): Promise<ProductModel[]> {
-    return [dummyBike, dummyBike];
+    return [dummyBike, dummyBike, dummyBike,dummyBike,dummyBike,dummyBike,dummyBike,dummyBike];
 
     const token = (await Auth.currentSession()).getAccessToken();
     const res = await fetch(`http://localhost:8080/api/v1/search/test`, {

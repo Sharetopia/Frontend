@@ -42,7 +42,7 @@
         class="
           origin-top-right
           absolute
-          right-0
+          right-8
           mt-2
           w-56
           card
@@ -50,6 +50,7 @@
           ring-1 ring-black ring-opacity-5
           focus:outline-none
           divide-y divide-gray-250
+          z-10
         "
       >
         <div class="py-1">
