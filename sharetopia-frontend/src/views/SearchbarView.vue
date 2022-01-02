@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-transparent w-full h-screen overflow-hidden">
+  <div class="bg-transparent w-full h-72 overflow-hidden">
     <div class="flex center-items p-2 pl-6 bg-white rounded-full">
-      <div class="flex flex-col flex-1">
+      <div class="flex flex-col flex-1 justify-center">
         <input type="text" placeholder="Suche" v-model="modelValue.query" />
       </div>
       <div class="flex flex-col flex-1">
@@ -49,8 +49,8 @@
           </PopoverPanel>
         </Popover>
       </div>
-      <div class="flex flex-col">
-        <a @click="$emit('close')">
+      <div class="flex flex-col justify-center">
+        <a @click="$emit('search')">
           <img src="../assets/redButtonWithArrow.svg" />
         </a>
       </div>
@@ -69,7 +69,7 @@ import { SearchModel } from "../model/SearchModel";
   props: {
     modelValue: Object,
   },
-  emits: ["close", "update:modelValue"],
+  emits: ["close", "search", "update:modelValue"],
   components: {
     Popover,
     PopoverButton,

@@ -14,7 +14,10 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
-import { ProductModel } from "../model/ProductModel";
+import { ProductModel } from "@/model/ProductModel";
+import { Factory } from "@/utils/factory";
+import {Routes} from "@/router/routes";
+import {ProductApi} from "@/api/product";
 
 @Options({
   components: {
@@ -22,25 +25,14 @@ import { ProductModel } from "../model/ProductModel";
   },
 })
 export default class SearchResultComponent extends Vue {
-  productModels: ProductModel[] = [
-    {
-      id: "1243",
-      userId: "1231",
-      title: "Janniks Motorrad",
-      price: 12.99,
-      description: "Ich liebe mein Motorrad!",
-      tags: ["Cool", "Gelb"],
-      coordinates: [21.546, 24.98],
-    },
-    {
-      id: "42343432",
-      userId: "1223432432431",
-      title: "Niklas stinkendes Motorrad",
-      price: 122.99,
-      description: "Ich hasse mein Motorrad!",
-      tags: ["Shit", "braun"],
-      coordinates: [21.546, 24.98],
-    },
-  ];
+  searchResults: ProductModel[] = []
+
+  beforeMount(): void {
+    let searchModel = Factory.createSearchModel(this.$route.query);
+    console.log("Wir bekommen ein model", searchModel)
+    if (!searchModel) {
+      Routes.pushHomeRoute(this.$router)
+    }
+  }
 }
 </script>

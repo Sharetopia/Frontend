@@ -54,54 +54,55 @@
       >
         <div class="py-1">
           <MenuItem v-slot="{ active }">
-            <a
-              href="#"
-              :class="[
-                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                'block px-4 py-2 text-sm',
-              ]"
-              >Meine Inserate</a
-            >
-          </MenuItem>
-        </div>
-        <div class="py-1">
-          <MenuItem v-slot="{ active }">
-            <a
-              href="#"
-              :class="[
-                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                'block px-4 py-2 text-sm',
-              ]"
-              >Meine Buchungen</a
-            >
-          </MenuItem>
-        </div>
-        <div class="py-1">
-          <MenuItem v-slot="{ active }">
-            <a
-              href="#"
-              :class="[
-                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                'block px-4 py-2 text-sm',
-              ]"
-              >Mein Profil</a
-            >
-          </MenuItem>
-        </div>
-        <div class="py-1">
-          <form method="POST" action="#">
-            <MenuItem v-slot="{ active }">
-              <button
-                type="submit"
+            <button
+                @click="pushMyAdverts"
                 :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block w-full text-left px-4 py-2 text-sm',
-                ]"
-              >
-                Ausloggen
-              </button>
-            </MenuItem>
-          </form>
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'block w-full text-left px-4 py-2 text-sm',
+              ]"
+            >
+              Meine Inserate
+            </button>
+          </MenuItem>
+        </div>
+        <div class="py-1">
+          <MenuItem v-slot="{ active }">
+            <button
+                @click="pushMyBookings"
+                :class="[
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'block w-full text-left px-4 py-2 text-sm',
+              ]"
+            >
+              Meine Buchungen
+            </button>
+          </MenuItem>
+        </div>
+        <div class="py-1">
+          <MenuItem v-slot="{ active }">
+            <button
+              @click="showMyProfile"
+              :class="[
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'block w-full text-left px-4 py-2 text-sm',
+              ]"
+            >
+              Mein Profil
+            </button>
+          </MenuItem>
+        </div>
+        <div class="py-1">
+          <MenuItem v-slot="{ active }">
+            <button
+              @click="logout"
+              :class="[
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'block w-full text-left px-4 py-2 text-sm',
+              ]"
+            >
+              Ausloggen
+            </button>
+          </MenuItem>
         </div>
       </MenuItems>
     </transition>
@@ -111,6 +112,8 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { Auth } from "aws-amplify";
+import { Routes } from "@/router/routes";
 
 @Options({
   props: {},
@@ -121,5 +124,31 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
     MenuItems,
   },
 })
-export default class MenuComponent extends Vue {}
+export default class MenuComponent extends Vue {
+  async logout(): Promise<void> {
+    console.log("wir sind hier")
+    await Auth.signOut().then(
+      (success) => {
+        Routes.pushLoginRoute(this.$router);
+      },
+      (failure) => {
+        Routes.pushLoginRoute(this.$router);
+
+        //TODO: What do we do then?
+      }
+    );
+  }
+
+  pushMyBookings(): void {
+    Routes.pushMyBookingsRoute(this.$router)
+  }
+
+  pushMyAdverts(): void {
+    Routes.pushMyAdvertsRoute(this.$router)
+  }
+
+  showMyProfile(): void {
+    console.log("show my profile popUp");
+  }
+}
 </script>
