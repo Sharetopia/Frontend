@@ -36,6 +36,12 @@
       />
       <input
         type="text"
+        class="border py-2 px-4"
+        placeholder="Stadt"
+        v-model="profileModelValue.city"
+      />
+      <input
+        type="text"
         class="rounded-b-xl border py-2 px-4"
         placeholder="Postleitzahl"
         v-model="profileModelValue.postalCode"
@@ -52,18 +58,20 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import { profileModel } from "@/model/profileModel";
+import { UserModel } from "@/model/UserModel";
 
 @Options({
   components: { PrimaryButton },
   props: {},
 })
 export default class ProfileEditComponent extends Vue {
-  profileModelValue: profileModel = {
+  profileModelValue: UserModel = {
+    id: "",
     forename: "",
     surname: "",
     address: "",
     city: "",
+    rating: 4,
     postalCode: undefined,
   };
   submit = (): void => {
