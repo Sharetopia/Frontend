@@ -27,6 +27,9 @@
               v-model="range"
               title-position="left"
               :columns="2"
+              :min-date="getStartDate()"
+              :max-date="getEndDate()"
+              :disabled-dates="getBookedDates()"
               is-range
               range
             />
@@ -54,6 +57,7 @@ import Footer from "@/uiElements/Footer.vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import {LocationPinModel} from "@/model/LocationPinModel";
 import {ProductApi} from "@/api/product";
+import {DateRange} from "@/model/SearchModel";
 
 @Options({
   components: {
@@ -109,6 +113,21 @@ export default class ProductDetailComponent extends Vue {
   getLocation(): number[] | undefined {
     if (this.productModel)
       return this.productModel.location
+  }
+
+  getStartDate(): Date | undefined {
+    if (this.productModel)
+      return this.productModel.bookingDates?.available.start
+  }
+
+  getEndDate(): Date | undefined {
+    if (this.productModel)
+      return this.productModel.bookingDates?.available.end
+  }
+
+  getBookedDates(): DateRange[] | undefined {
+    if (this.productModel)
+      return this.productModel.bookingDates?.unavailable
   }
 }
 </script>
