@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="flex items-center">
-      <h1 class="flex-none">
+      <h1 class="flex-none truncate">
         {{ productModel.title }}
       </h1>
       <div class="flex-grow"></div>

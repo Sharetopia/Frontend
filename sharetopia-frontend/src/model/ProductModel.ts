@@ -20,7 +20,7 @@ export const dummyBike: ProductModel = {
   userId: "132412412",
   price: 123.23,
   title: "Fahrrad",
-  description: "Ich bin schön",
+  description: "Ich bin schön und sowas von",
   tags: ["cool", "grün"],
   address: {
     street: "Hintere Wiesen 13",
