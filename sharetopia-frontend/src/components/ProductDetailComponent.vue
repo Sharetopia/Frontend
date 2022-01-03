@@ -50,14 +50,14 @@ import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
-import {dummyBike, dummyCar, ProductModel} from "../model/ProductModel";
+import { dummyBike, dummyCar, ProductModel } from "../model/ProductModel";
 import { Calendar, DatePicker } from "v-calendar";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import {LocationPinModel} from "@/model/LocationPinModel";
-import {ProductApi} from "@/api/product";
-import {DateRange} from "@/model/SearchModel";
+import { LocationPinModel } from "@/model/LocationPinModel";
+import { ProductApi } from "@/api/product";
+import { DateRange } from "@/model/SearchModel";
 
 @Options({
   components: {
@@ -78,56 +78,50 @@ export default class ProductDetailComponent extends Vue {
     start: Date,
     end: Date,
   };
-  productModel: ProductModel | undefined = dummyCar
+  productModel: ProductModel | undefined = dummyCar;
 
   beforeMount(): void {
-    let productId = this.$route.query["id"]
-    if(typeof productId == "string")
-    this.loadProductModelBy(productId)
+    let productId = this.$route.query["id"];
+    if (typeof productId == "string") this.loadProductModelBy(productId);
   }
 
   async loadProductModelBy(id: string): Promise<void> {
-    console.log("das geht")
+    console.log("das geht");
     ProductApi.findById(id).then((model) => {
-      console.log(model)
-      this.productModel = model
-    })
-    console.log("das nicht")
-
+      console.log(model);
+      this.productModel = model;
+    });
+    console.log("das nicht");
   }
 
   getLocationPin(): LocationPinModel | undefined {
-    if(this.productModel)
-    return {
-      name: this.productModel.title,
-      coordinates: this.productModel.location,
-      productId: this.productModel.id
-    }
+    if (this.productModel)
+      return {
+        name: this.productModel.title,
+        coordinates: this.productModel.location,
+        productId: this.productModel.id,
+      };
   }
 
   getUserId(): string | undefined {
-    if (this.productModel)
-      return this.productModel.userId
+    if (this.productModel) return this.productModel.userId;
   }
 
   getLocation(): number[] | undefined {
-    if (this.productModel)
-      return this.productModel.location
+    if (this.productModel) return this.productModel.location;
   }
 
   getStartDate(): Date | undefined {
     if (this.productModel)
-      return this.productModel.bookingDates?.available.start
+      return this.productModel.bookingDates?.available.start;
   }
 
   getEndDate(): Date | undefined {
-    if (this.productModel)
-      return this.productModel.bookingDates?.available.end
+    if (this.productModel) return this.productModel.bookingDates?.available.end;
   }
 
   getBookedDates(): DateRange[] | undefined {
-    if (this.productModel)
-      return this.productModel.bookingDates?.unavailable
+    if (this.productModel) return this.productModel.bookingDates?.unavailable;
   }
 }
 </script>

@@ -5,7 +5,7 @@
         <SearchbarButton :searchModel="searchModel" />
       </button>
     </div>
-    <TransitionRoot appear :show="isOpen" as="template">
+    <!--    <TransitionRoot appear :show="isOpen" as="template">
       <Dialog as="div" @close="closeModal">
         <div class="fixed inset-0 z-10 overflow-hidden">
           <div class="min-h-screen px-4 text-center">
@@ -46,7 +46,7 @@
                   mt-16
                 "
               >
-                <!-- Write here the content of the modal -->
+                &lt;!&ndash; Write here the content of the modal &ndash;&gt;
                 <Searchbar
                   @close="closeModal"
                   @search="search"
@@ -57,7 +57,14 @@
           </div>
         </div>
       </Dialog>
-    </TransitionRoot>
+    </TransitionRoot>-->
+    <PopUp :is-open="isOpen" @close="closeModal">
+      <Searchbar
+        @close="closeModal"
+        @search="search"
+        v-model="searchModel"
+      ></Searchbar>
+    </PopUp>
   </div>
 </template>
 
@@ -74,10 +81,12 @@ import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
 import { Routes } from "../router/routes";
 import { Factory } from "@/utils/factory";
+import PopUp from "@/uiElements/PopUp.vue";
 
 @Options({
   props: {},
   components: {
+    PopUp,
     TransitionRoot,
     TransitionChild,
     Dialog,

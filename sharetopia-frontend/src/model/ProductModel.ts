@@ -1,4 +1,4 @@
-import {DateRange} from "@/model/SearchModel";
+import { DateRange } from "@/model/SearchModel";
 
 export type ProductModel = {
   id: string;
@@ -9,13 +9,13 @@ export type ProductModel = {
   tags: string[];
   address: AddressModel;
   location: number[];
-  bookingDates?: BookingDatesModel
+  bookingDates?: BookingDatesModel;
 };
 
 export type BookingDatesModel = {
   available: DateRange;
   unavailable: DateRange[];
-}
+};
 
 export type AddressModel = {
   street: string;
@@ -39,19 +39,19 @@ export const dummyBike: ProductModel = {
   bookingDates: {
     available: {
       start: new Date("2021-12-01"),
-      end: new Date("2022-02-01")
+      end: new Date("2022-02-01"),
     },
     unavailable: [
       {
         start: new Date("2021-12-05"),
-        end: new Date("2021-12-15")
+        end: new Date("2021-12-15"),
       },
       {
         start: new Date("2022-01-05"),
-        end: new Date("2022-01-10")
+        end: new Date("2022-01-10"),
       },
-    ]
-  }
+    ],
+  },
 };
 
 export const dummyCar: ProductModel = {
@@ -70,17 +70,17 @@ export const dummyCar: ProductModel = {
   bookingDates: {
     available: {
       start: new Date("2021-12-01"),
-      end: new Date("2022-02-01")
+      end: new Date("2022-02-01"),
     },
     unavailable: [
       {
         start: new Date("2021-12-05"),
-        end: new Date("2021-12-15")
+        end: new Date("2021-12-15"),
       },
       {
         start: new Date("2022-01-05"),
-        end: new Date("2022-01-10")
+        end: new Date("2022-01-10"),
       },
-    ]
-  }
+    ],
+  },
 };
