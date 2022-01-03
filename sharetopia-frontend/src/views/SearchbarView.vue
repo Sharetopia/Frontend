@@ -50,7 +50,7 @@
         </Popover>
       </div>
       <div class="flex flex-col justify-center">
-        <a @click="$emit('search')">
+        <a @click="$emit('search')" class="cursor-pointer">
           <img src="../assets/redButtonWithArrow.svg" />
         </a>
       </div>

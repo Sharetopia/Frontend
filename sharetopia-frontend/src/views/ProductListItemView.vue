@@ -1,5 +1,5 @@
 <template>
-  <div class="flex card">
+  <div class="flex card cursor-pointer hover:bg-gray-100">
     <div class="w-1/3">
       <img
         src="@/assets/TestImage1.png"
