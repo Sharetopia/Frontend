@@ -110,9 +110,9 @@
       </transition>
     </Menu>
 
-    <Widget :is-open="showProfile" @close="hideMyProfile">
+    <PopUp :is-open="showProfile" @close="hideMyProfile">
       <ProfileEditComponent />
-    </Widget>
+    </PopUp>
   </div>
 </template>
 
@@ -121,14 +121,14 @@ import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Auth } from "aws-amplify";
 import { Routes } from "@/router/routes";
-import Widget from "@/uiElements/Widget.vue";
+import PopUp from "@/uiElements/PopUp.vue";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 
 @Options({
   props: {},
   components: {
+    PopUp,
     ProfileEditComponent,
-    Widget,
     Menu,
     MenuButton,
     MenuItem,
