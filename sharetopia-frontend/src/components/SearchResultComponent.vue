@@ -11,11 +11,11 @@
     </div>
     <div class="w-1/2 pl-4">
       <LeafletMapComponent
-          class="top-8 right-0 mb-4 sticky"
-          style="height: calc(100vh - 4rem)"
-          :center="[47.7377921, 16.339096]"
-          :pins="getLocationPins()"
-          :zoom="10"
+        class="top-8 right-0 mb-4 sticky"
+        style="height: calc(100vh - 4rem)"
+        :center="[47.7377921, 16.339096]"
+        :pins="getLocationPins()"
+        :zoom="10"
       />
     </div>
   </div>
@@ -30,7 +30,7 @@ import { Routes } from "@/router/routes";
 import { ProductApi } from "@/api/product";
 import { SearchModel } from "@/model/SearchModel";
 import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
-import {LocationPinModel} from "@/model/LocationPinModel";
+import { LocationPinModel } from "@/model/LocationPinModel";
 
 @Options({
   components: {
@@ -55,20 +55,20 @@ export default class SearchResultComponent extends Vue {
   }
 
   showProductDetail(id: string): void {
-    Routes.pushProductDetail(this.$router, id)
+    Routes.pushProductDetail(this.$router, id);
   }
 
   getLocationPins(): LocationPinModel[] {
-    if(!this.searchResults) {
-      return []
+    if (!this.searchResults) {
+      return [];
     }
-    return this.searchResults.map((value => {
+    return this.searchResults.map((value) => {
       return {
         name: value.title,
         coordinates: value.location,
-        productId: value.id
-      }
-    }))
+        productId: value.id,
+      };
+    });
   }
 }
 </script>
