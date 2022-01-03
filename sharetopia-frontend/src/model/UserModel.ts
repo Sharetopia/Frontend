@@ -4,6 +4,6 @@ export type UserModel = {
   surname: string;
   address: string;
   city: string;
-  postalCode: number;
+  postalCode?: number;
   rating: number;
 };

@@ -9,7 +9,5 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   props: {},
 })
-export default class HomeComponent extends Vue {
-
-}
+export default class HomeComponent extends Vue {}
 </script>

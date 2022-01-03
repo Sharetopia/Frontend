@@ -12,7 +12,7 @@ class Routes {
     router: Router,
     searchModel: SearchModel
   ): void {
-    console.log("wir pushen search", searchModel)
+    console.log("wir pushen search", searchModel);
     router.push({
       path: "/search",
       query: {
@@ -25,10 +25,7 @@ class Routes {
     });
   }
 
-  public static pushProductDetail(
-      router: Router,
-      id: string
-  ): void {
+  public static pushProductDetail(router: Router, id: string): void {
     router.push({
       path: "/productDetail",
       query: {

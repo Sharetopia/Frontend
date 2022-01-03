@@ -11,5 +11,5 @@ export type formDataSingIn = {
 
 export type formDataSingUpConfirmation = {
   username: string;
-  code: string
+  code: string;
 };

@@ -39,19 +39,19 @@ import {LocationPinModel} from "@/model/LocationPinModel";
   },
 })
 export default class SearchResultComponent extends Vue {
-  searchResults: ProductModel[] = []
+  searchResults: ProductModel[] = [];
 
   beforeMount(): void {
     let searchModel = Factory.createSearchModel(this.$route.query);
-    if(searchModel) {
-      this.loadSearchResultsFor(searchModel)
+    if (searchModel) {
+      this.loadSearchResultsFor(searchModel);
     } else {
-      Routes.pushHomeRoute(this.$router)
+      Routes.pushHomeRoute(this.$router);
     }
   }
 
   async loadSearchResultsFor(searchModel: SearchModel): Promise<void> {
-    this.searchResults = await ProductApi.searchFor(searchModel)
+    this.searchResults = await ProductApi.searchFor(searchModel);
   }
 
   showProductDetail(id: string): void {
