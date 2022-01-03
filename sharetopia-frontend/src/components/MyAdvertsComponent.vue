@@ -16,6 +16,16 @@
       title="Mietzeitraum angeben"
       image-name="burgerMenu.svg"
     />
+
+    <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
+      <RentRequestsComponent></RentRequestsComponent>
+    </PopUp>
+
+    <SecondaryButton
+      @click="openRentRequests"
+      title="Mietanfragen"
+      image-name="burgerMenu.svg"
+    />
   </div>
 </template>
 
@@ -27,9 +37,11 @@ import { dummyBike, ProductModel } from "@/model/ProductModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import PopUp from "@/uiElements/PopUp.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
+import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 
 @Options({
   components: {
+    RentRequestsComponent,
     AvailableRentDatePickerComponent,
     PopUp,
     SecondaryButton,
@@ -42,6 +54,7 @@ import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePick
 export default class MyAdvertsComponent extends Vue {
   productModels: ProductModel[] = [dummyBike];
   isDatePickerOpen = false;
+  isRentRequestsOpen = false;
 
   openDatePicker(): void {
     this.isDatePickerOpen = true;
@@ -49,6 +62,14 @@ export default class MyAdvertsComponent extends Vue {
 
   closeDatePicker(): void {
     this.isDatePickerOpen = false;
+  }
+
+  openRentRequests(): void {
+    this.isRentRequestsOpen = true;
+  }
+
+  closeRentRequests(): void {
+    this.isRentRequestsOpen = false;
   }
 }
 </script>

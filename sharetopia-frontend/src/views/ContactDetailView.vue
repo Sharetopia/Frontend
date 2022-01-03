@@ -10,8 +10,8 @@
     <div class="pr-4">
       <p class="caption">{{ userModel.forename }} {{ userModel.surname }}</p>
       <StarRating :rate="userModel.rating" class="mb-4 mt-2" />
-      <p>{{ userModel.address }}</p>
-      <p>{{ userModel.postalCode }} {{ userModel.city }}</p>
+      <p v-if="!hideAddress">{{ userModel.address }}</p>
+      <p v-if="!hideAddress">{{ userModel.postalCode }} {{ userModel.city }}</p>
     </div>
   </div>
 </template>
@@ -27,10 +27,12 @@ import StarRatingView from "./StarRatingView.vue";
   },
   props: {
     userId: String,
+    hideAddress: Boolean,
   },
 })
 export default class ContactDetailView extends Vue {
   userId!: string;
+  hideAddress!: boolean;
   userModel: UserModel = {
     id: "Dein Mutter",
     forename: "Jannik",
