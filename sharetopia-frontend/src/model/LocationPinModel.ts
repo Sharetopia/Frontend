@@ -1,5 +1,5 @@
 export type LocationPinModel = {
-    productId: string
-    name: string,
-    coordinates: number[]
-}
+  productId: string;
+  name: string;
+  coordinates: number[];
+};
