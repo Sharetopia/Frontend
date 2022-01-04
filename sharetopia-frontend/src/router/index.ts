@@ -4,7 +4,6 @@ import ProductDetailComponent from "../components/ProductDetailComponent.vue";
 import AuthenticationScreen from "../screens/AuthenticationScreen.vue";
 import SearchResultComponent from "../components/SearchResultComponent.vue";
 import LoginComponent from "@/components/LoginComponent.vue";
-import RegistrationComponent from "@/components/RegistrationComponent.vue";
 import HomeComponent from "@/components/HomeComponent.vue";
 import MyBookingsComponent from "@/components/MyBookingsComponent.vue";
 import MyAdvertsComponent from "@/components/MyAdvertsComponent.vue";
@@ -66,17 +65,6 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         component: LoginComponent,
-      },
-    ],
-  },
-  {
-    path: "/registration",
-    name: "AuthenticationScreen",
-    component: AuthenticationScreen,
-    children: [
-      {
-        path: "",
-        component: RegistrationComponent,
       },
     ],
   },

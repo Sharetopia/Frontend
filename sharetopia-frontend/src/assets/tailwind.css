@@ -50,6 +50,6 @@ h1 {
 }
 
 .card {
-    @apply rounded-3xl shadow-md
+    @apply rounded-3xl shadow-md bg-white
 }
 

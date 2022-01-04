@@ -44,6 +44,30 @@ class ProductApi {
     return res.json();
   }
 
+  public static async newestProducts(): Promise<ProductModel[]> {
+    return [
+      dummyBike,
+      dummyCar,
+      dummyBike,
+      dummyCar,
+      dummyBike,
+      dummyBike,
+      dummyBike,
+      dummyBike,
+    ];
+
+    const token = (await Auth.currentSession()).getAccessToken();
+    const res = await fetch(`http://localhost:8080/api/v1/search/test`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token.getJwtToken()}`,
+      },
+    });
+    return res.json();
+  }
+
   // AB HIER RATEN
 }
 
