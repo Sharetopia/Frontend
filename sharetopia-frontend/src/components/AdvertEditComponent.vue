@@ -8,7 +8,7 @@
           type="text"
           placeholder="Name"
           class="border rounded-t-2xl w-2/3 p-3"
-          v-model="productModel.title"
+          v-model="$props.productModel.title"
         />
       </div>
       <div class="flex">
@@ -17,7 +17,7 @@
           type="text"
           placeholder="Schlagwörter mit Komma trennen"
           class="border w-2/3 p-3"
-          v-model="productModel.tags"
+          v-model="$props.productModel.tags"
         />
       </div>
       <div class="flex">
@@ -26,7 +26,7 @@
           type="text"
           placeholder="€/Tag"
           class="border w-2/3 p-3"
-          v-model="productModel.price"
+          v-model="$props.productModel.price"
         />
       </div>
       <div class="flex">
@@ -35,7 +35,7 @@
           type="text"
           placeholder="Straße, Hausnummer"
           class="border w-2/3 p-3"
-          v-model="productModel.address.street"
+          v-model="$props.productModel.address.street"
         />
       </div>
       <div class="flex">
@@ -44,7 +44,7 @@
           type="text"
           placeholder="Stadt"
           class="border w-2/3 p-3"
-          v-model="productModel.address.city"
+          v-model="$props.productModel.address.city"
         />
       </div>
       <div class="flex">
@@ -53,7 +53,7 @@
           type="text"
           placeholder="PLZ"
           class="border w-2/3 p-3"
-          v-model="productModel.address.zip"
+          v-model="$props.productModel.address.zip"
         />
       </div>
       <div class="flex">
@@ -62,24 +62,58 @@
           type="text"
           placeholder="Freitext"
           class="border rounded-b-2xl w-2/3 p-3"
-          v-model="productModel.description"
+          v-model="$props.productModel.description"
         />
       </div>
     </div>
+
+    <input ref="fileInput" type="file" @input="pickFile" />
+    <img v-if="previewImage" :src="previewImage" alt="" />
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// import { Options, Vue } from "vue-class-component";
 import { ProductModel } from "@/model/ProductModel";
+import { defineComponent, PropType } from "vue";
 
-@Options({
-  components: {},
+export default defineComponent({
   props: {
-    productModel: Object,
+    productModel: {
+      type: Object as PropType<ProductModel>,
+      required: true,
+    },
   },
-})
-export default class AdvertEditComponent extends Vue {
-  productModel!: ProductModel;
-}
+  data() {
+    let previewImage: any = null;
+    return {
+      test: true,
+      previewImage: previewImage,
+    };
+  },
+  methods: {
+    pickFile(): void {
+      let input: any = this.$refs.fileInput;
+      let file = input.files;
+      if (file && file[0]) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = (e) => {
+          this.test = false;
+          this.previewImage = e.target!.result;
+          this.test = true;
+        };
+      }
+    },
+  },
+});
 </script>
+
+// @Options({ // components: {}, // props: { // productModel: Object, // }, //
+}) // export default class AdvertEditComponent extends Vue { // productModel!:
+ProductModel; // previewImage: any | undefined; // test = false; // //
+pickFile(): void { // let input: any = this.$refs.fileInput; // let file =
+input.files; // if (file && file[0]) { // let reader = new FileReader(); //
+reader.readAsDataURL(file[0]); // reader.onload = (e) => { // this.test = false;
+// this.previewImage = e.target!.result; // this.test = true; // }; // } // } //
+}
