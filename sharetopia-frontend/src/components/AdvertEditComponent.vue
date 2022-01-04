@@ -65,10 +65,26 @@
           v-model="$props.productModel.description"
         />
       </div>
+      <div class="flex mt-10">
+        <h2 class="w-1/3 p-3 font-bold">Bilder</h2>
+        <div>
+          <div class="mb-4">
+            <img
+              v-if="previewImage"
+              :src="previewImage"
+              alt="previewimage"
+              class="w-24 h-24 rounded-xl"
+            />
+          </div>
+          <input ref="fileInput" type="file" @input="pickFile" />
+        </div>
+      </div>
     </div>
-
-    <input ref="fileInput" type="file" @input="pickFile" />
-    <img v-if="previewImage" :src="previewImage" alt="" />
+    <div class="flex justify-center">
+      <div class="w-2/3 flex">
+        <PrimaryButton title="Speichern" class="flex-1" @click="submit()" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,8 +92,12 @@
 // import { Options, Vue } from "vue-class-component";
 import { ProductModel } from "@/model/ProductModel";
 import { defineComponent, PropType } from "vue";
+import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 
 export default defineComponent({
+  components: {
+    PrimaryButton,
+  },
   props: {
     productModel: {
       type: Object as PropType<ProductModel>,
@@ -99,9 +119,7 @@ export default defineComponent({
         let reader = new FileReader();
         reader.readAsDataURL(file[0]);
         reader.onload = (e) => {
-          this.test = false;
-          this.previewImage = e.target!.result;
-          this.test = true;
+          this.previewImage = e.target?.result;
         };
       }
     },

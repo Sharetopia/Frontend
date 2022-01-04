@@ -2,17 +2,28 @@
   <div class="card p-8 w-96 flex flex-col">
     <h1>Mein Profil</h1>
     <div class="flex justify-center">
-      <div class="w-1/3 flex relative mt-4">
+      <div class="flex relative mt-4">
         <img
-          src="../assets/profile_blank.png"
+          :src="previewImage"
           alt="profile picture"
-          class="rounded-full"
+          class="rounded-full h-32 w-32"
         />
-        <img
-          src="../assets/editIcon.svg"
-          alt="profile picture"
-          class="z-10 absolute bottom-0 right-0"
-        />
+        <div>
+          <label for="profilepic">
+            <img
+              src="../assets/editIcon.svg"
+              alt="profile picture"
+              class="z-10 absolute bottom-0 right-0"
+            />
+          </label>
+          <input
+            id="profilepic"
+            ref="fileInput"
+            type="file"
+            @input="pickFile"
+            class="hidden"
+          />
+        </div>
       </div>
     </div>
     <div class="flex flex-col my-6">
@@ -59,6 +70,8 @@
 import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { UserModel } from "@/model/UserModel";
+import { ref } from "vue";
+import { ProductModel } from "@/model/ProductModel";
 
 @Options({
   components: { PrimaryButton },
@@ -74,8 +87,21 @@ export default class ProfileEditComponent extends Vue {
     rating: 4,
     postalCode: undefined,
   };
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  previewImage = ref<any>(require("@/assets/profile_blank.png"));
   submit = (): void => {
     console.log(this.profileModelValue);
   };
+  pickFile(): void {
+    let input: any = this.$refs.fileInput;
+    let file = input.files;
+    if (file && file[0]) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file[0]);
+      reader.onload = (e) => {
+        this.previewImage = e.target?.result;
+      };
+    }
+  }
 }
 </script>
