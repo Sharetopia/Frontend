@@ -7,25 +7,6 @@
     />
     Hier kommen meine Inserate ding rein
 
-    <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-      <AvailableRentDatePickerComponent></AvailableRentDatePickerComponent>
-    </PopUp>
-
-    <SecondaryButton
-      @click="openDatePicker"
-      title="Mietzeitraum angeben"
-      image-name="burgerMenu.svg"
-    />
-
-    <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
-      <RentRequestsComponent></RentRequestsComponent>
-    </PopUp>
-
-    <SecondaryButton
-      @click="openRentRequests"
-      title="Mietanfragen"
-      image-name="burgerMenu.svg"
-    />
   </div>
 </template>
 
@@ -53,23 +34,5 @@ import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 })
 export default class MyAdvertsComponent extends Vue {
   productModels: ProductModel[] = [dummyBike];
-  isDatePickerOpen = false;
-  isRentRequestsOpen = false;
-
-  openDatePicker(): void {
-    this.isDatePickerOpen = true;
-  }
-
-  closeDatePicker(): void {
-    this.isDatePickerOpen = false;
-  }
-
-  openRentRequests(): void {
-    this.isRentRequestsOpen = true;
-  }
-
-  closeRentRequests(): void {
-    this.isRentRequestsOpen = false;
-  }
 }
 </script>
