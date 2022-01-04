@@ -1,12 +1,12 @@
 <template>
-  <div v-if="productModel !== undefined" class="flex">
+  <div v-if="productModel.value" class="flex">
     <div class="w-1/2 px-16">
       <PhotoGallery />
     </div>
     <div class="w-1/2 px-16">
       <div class="divide-y divide-black divide-opacity-25">
         <div class="m-4 mb-8">
-          <ProductTextDetail :productModel="productModel" />
+          <ProductTextDetail :productModel="productModel.value" />
           <div class="flex mt-8">
             <div class="w-max mr-6">
               <ContactDetail :userId="getUserId()" />
@@ -57,6 +57,7 @@ import Footer from "@/uiElements/Footer.vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { LocationPinModel } from "@/model/LocationPinModel";
 import { ProductApi } from "@/api/product";
+import { ref } from "vue";
 import { DateRange } from "@/model/SearchModel";
 
 @Options({
@@ -78,7 +79,7 @@ export default class ProductDetailComponent extends Vue {
     start: Date,
     end: Date,
   };
-  productModel: ProductModel | undefined = dummyCar;
+  productModel = ref<ProductModel | undefined>(Object(undefined));
 
   beforeMount(): void {
     let productId = this.$route.query["id"];
@@ -88,40 +89,42 @@ export default class ProductDetailComponent extends Vue {
   async loadProductModelBy(id: string): Promise<void> {
     console.log("das geht");
     ProductApi.findById(id).then((model) => {
-      console.log(model);
-      this.productModel = model;
+      //console.log(model);
+      this.productModel.value = model;
+      console.log(this.productModel.value);
     });
     console.log("das nicht");
   }
 
   getLocationPin(): LocationPinModel | undefined {
-    if (this.productModel)
+    if (this.productModel.value)
       return {
-        name: this.productModel.title,
-        coordinates: this.productModel.location,
-        productId: this.productModel.id,
+        name: this.productModel.value.title,
+        coordinates: this.productModel.value.location,
+        productId: this.productModel.value.id,
       };
   }
 
   getUserId(): string | undefined {
-    if (this.productModel) return this.productModel.userId;
+    console.log(this.productModel.value);
+    if (this.productModel.value) return this.productModel.value.userId;
   }
 
   getLocation(): number[] | undefined {
-    if (this.productModel) return this.productModel.location;
+    if (this.productModel.value) return this.productModel.value.location;
   }
 
   getStartDate(): Date | undefined {
-    if (this.productModel)
-      return this.productModel.bookingDates?.available.start;
+    if (this.productModel.value)
+      return this.productModel.value.bookingDates?.available.start;
   }
 
   getEndDate(): Date | undefined {
-    if (this.productModel) return this.productModel.bookingDates?.available.end;
+    if (this.productModel.value) return this.productModel.value.bookingDates?.available.end;
   }
 
   getBookedDates(): DateRange[] | undefined {
-    if (this.productModel) return this.productModel.bookingDates?.unavailable;
+    if (this.productModel.value) return this.productModel.value.bookingDates?.unavailable;
   }
 }
 </script>
