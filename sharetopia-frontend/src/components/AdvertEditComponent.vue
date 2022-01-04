@@ -108,12 +108,3 @@ export default defineComponent({
   },
 });
 </script>
-
-// @Options({ // components: {}, // props: { // productModel: Object, // }, //
-}) // export default class AdvertEditComponent extends Vue { // productModel!:
-ProductModel; // previewImage: any | undefined; // test = false; // //
-pickFile(): void { // let input: any = this.$refs.fileInput; // let file =
-input.files; // if (file && file[0]) { // let reader = new FileReader(); //
-reader.readAsDataURL(file[0]); // reader.onload = (e) => { // this.test = false;
-// this.previewImage = e.target!.result; // this.test = true; // }; // } // } //
-}

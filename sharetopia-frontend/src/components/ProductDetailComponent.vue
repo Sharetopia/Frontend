@@ -116,15 +116,17 @@ export default class ProductDetailComponent extends Vue {
 
   getStartDate(): Date | undefined {
     if (this.productModel.value)
-      return this.productModel.value.bookingDates?.available.start;
+      return this.productModel.value.bookingDates?.available.start as Date;
   }
 
   getEndDate(): Date | undefined {
-    if (this.productModel.value) return this.productModel.value.bookingDates?.available.end;
+    if (this.productModel.value)
+      return this.productModel.value.bookingDates?.available.end as Date;
   }
 
   getBookedDates(): DateRange[] | undefined {
-    if (this.productModel.value) return this.productModel.value.bookingDates?.unavailable;
+    if (this.productModel.value)
+      return this.productModel.value.bookingDates?.unavailable as DateRange[];
   }
 }
 </script>
