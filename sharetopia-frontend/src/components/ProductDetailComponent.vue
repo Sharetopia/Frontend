@@ -1,21 +1,23 @@
 <template>
-  <div v-if="productModel.value" class="flex">
+  <div v-if="product.valueOf()" class="flex">
     <div class="w-1/2 px-16">
       <PhotoGallery />
     </div>
     <div class="w-1/2 px-16">
       <div class="divide-y divide-black divide-opacity-25">
         <div class="m-4 mb-8">
-          <ProductTextDetail :productModel="productModel.value" />
+          <ProductTextDetail :productModel="product.valueOf()" />
           <div class="flex mt-8">
             <div class="w-max mr-6">
-              <ContactDetail :userId="getUserId()" />
+              <ContactDetail :userId="product.valueOf().userId" />
             </div>
-            <div class="h-36 w-full">
+            <div
+              class="h-36 w-full"
+              v-if="locationPins.length > 0 && centerPin.valueOf()"
+            >
               <LeafletMap
-                :pins="[getLocationPin()]"
-                :center="getLocation()"
-                :coordinates="getLocation()"
+                :pins="locationPins"
+                :center="centerPin.valueOf()"
                 :zoom="15"
               />
             </div>
@@ -23,16 +25,9 @@
         </div>
         <div>
           <div class="mt-8 flex justify-center">
-            <DatePicker
-              v-model="range"
-              title-position="left"
-              :columns="2"
-              :min-date="getStartDate()"
-              :max-date="getEndDate()"
-              :disabled-dates="getBookedDates()"
-              is-range
-              range
-            />
+            <DatePickerComponent v-if="datePickerModel"
+              :date-picker-model="datePickerModel"
+            ></DatePickerComponent>
           </div>
           <div class="mt-4 flex justify-center">
             <PrimaryButton title="Anfrage stellen" />
@@ -44,89 +39,50 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
 import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is an alias to /src
 import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
-import MenuComponent from "@/components/MenuComponent.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
-import { dummyBike, dummyCar, ProductModel } from "../model/ProductModel";
-import { Calendar, DatePicker } from "v-calendar";
-import Header from "@/uiElements/Header.vue";
-import Footer from "@/uiElements/Footer.vue";
+import { ProductModel } from "../model/ProductModel";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import { LocationPinModel } from "@/model/LocationPinModel";
-import { ProductApi } from "@/api/product";
-import { ref } from "vue";
-import { DateRange } from "@/model/SearchModel";
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+import DatePickerComponent from "@/components/DatePickerComponent.vue";
+import {useRouteQueries} from "@/composables/useRouteQueries";
+import {useLocationPins} from "@/composables/useLocationPins";
+import {useDatePicker} from "@/composables/useDatePicker";
+import {useProduct} from "@/composables/useProduct";
 
-@Options({
+export default {
   components: {
+    DatePickerComponent,
     PrimaryButton,
-    FooterComponent: Footer,
-    HeaderComponent: Header,
     ProductTextDetail: ProductTextDetailView,
     LeafletMap: LeafletMapComponent,
     ContactDetail,
-    Calendar,
-    DatePicker,
-    HeaderSearch: MenuComponent,
     PhotoGallery: PhotoGalleryView,
   },
-})
-export default class ProductDetailComponent extends Vue {
-  range = {
-    start: Date,
-    end: Date,
-  };
-  productModel = ref<ProductModel | undefined>(Object(undefined));
+  setup() {
+    const route = useRoute();
+    const { productId } = useRouteQueries(route.query);
+    const { product } = useProduct(productId);
+    const { locationPins, centerPin, createLocationPins } = useLocationPins();
+    const { datePickerModel, createDatePickerModel } = useDatePicker()
 
-  beforeMount(): void {
-    let productId = this.$route.query["id"];
-    if (typeof productId == "string") this.loadProductModelBy(productId);
-  }
-
-  async loadProductModelBy(id: string): Promise<void> {
-    console.log("das geht");
-    ProductApi.findById(id).then((model) => {
-      //console.log(model);
-      this.productModel.value = model;
-      console.log(this.productModel.value);
+    watch(product, (newValue) => {
+      if (newValue) {
+        createLocationPins([newValue as ProductModel]);
+        createDatePickerModel(newValue as ProductModel)
+      }
     });
-    console.log("das nicht");
-  }
+    
+    return {
+      product,
+      locationPins,
+      centerPin,
+      datePickerModel
+    };
+  },
+};
 
-  getLocationPin(): LocationPinModel | undefined {
-    if (this.productModel.value)
-      return {
-        name: this.productModel.value.title,
-        coordinates: this.productModel.value.location,
-        productId: this.productModel.value.id,
-      };
-  }
-
-  getUserId(): string | undefined {
-    console.log(this.productModel.value);
-    if (this.productModel.value) return this.productModel.value.userId;
-  }
-
-  getLocation(): number[] | undefined {
-    if (this.productModel.value) return this.productModel.value.location;
-  }
-
-  getStartDate(): Date | undefined {
-    if (this.productModel.value)
-      return this.productModel.value.bookingDates?.available.start as Date;
-  }
-
-  getEndDate(): Date | undefined {
-    if (this.productModel.value)
-      return this.productModel.value.bookingDates?.available.end as Date;
-  }
-
-  getBookedDates(): DateRange[] | undefined {
-    if (this.productModel.value)
-      return this.productModel.value.bookingDates?.unavailable as DateRange[];
-  }
-}
 </script>

@@ -12,16 +12,14 @@ import { LocationPinModel } from "@/model/LocationPinModel";
 
 @Options({
   props: {
-    center: Array,
+    center: Object,
     zoom: Number,
     pins: Array,
-    name: String,
   },
 })
 export default class LeafletMapComponent extends Vue {
-  center!: number[];
+  center!: LocationPinModel;
   zoom!: number;
-  name!: string;
   pins!: LocationPinModel[];
   mymap?: leaflet.Map;
 
@@ -29,17 +27,9 @@ export default class LeafletMapComponent extends Vue {
   mounted(): void {
     this.setupMap();
     this.addPinsToMap();
-    // this.mymap.on("click", (e: any) => {
-    //   leaflet
-    //     .popup()
-    //     .setLatLng(e.latlng)
-    //     .setContent("You clicked the map at " + e.latlng.toString())
-    //     .openOn(this.mymap!);
-    // });
   }
 
   updated(): void {
-    console.log("Update things");
     this.addPinsToMap();
   }
 
@@ -65,7 +55,10 @@ export default class LeafletMapComponent extends Vue {
     if (this.center && this.zoom) {
       this.mymap = leaflet
         .map("mapid")
-        .setView([this.center[0], this.center[1]], this.zoom);
+        .setView(
+          [this.center.coordinates[0], this.center.coordinates[1]],
+          this.zoom
+        );
       leaflet
         .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution:
