@@ -120,9 +120,11 @@
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Auth } from "aws-amplify";
-import { Routes } from "@/router/routes";
 import PopUp from "@/uiElements/PopUp.vue";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
+import {useRoutes} from "@/composables/useRoutes";
+
+
 
 @Options({
   props: {},
@@ -136,15 +138,18 @@ import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
   },
 })
 export default class MenuComponent extends Vue {
-  showProfile = false;
+
+showProfile = false;
   async logout(): Promise<void> {
     console.log("wir sind hier");
+    const { pushLoginRoute } = useRoutes(this.$router);
+
     await Auth.signOut().then(
       (success) => {
-        Routes.pushLoginRoute(this.$router);
+        pushLoginRoute();
       },
       (failure) => {
-        Routes.pushLoginRoute(this.$router);
+        pushLoginRoute();
 
         //TODO: What do we do then?
       }
@@ -152,11 +157,11 @@ export default class MenuComponent extends Vue {
   }
 
   pushMyBookings(): void {
-    Routes.pushMyBookingsRoute(this.$router);
+    useRoutes(this.$router).pushMyBookingsRoute();
   }
 
   pushMyAdverts(): void {
-    Routes.pushMyAdvertsRoute(this.$router);
+    useRoutes(this.$router).pushMyAdvertsRoute();
   }
 
   showMyProfile(): void {

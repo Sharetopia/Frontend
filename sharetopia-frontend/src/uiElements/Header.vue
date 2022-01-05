@@ -15,7 +15,7 @@
 import { Options, Vue } from "vue-class-component";
 import MenuComponent from "@/components/MenuComponent.vue";
 import SearchComponent from "@/components/SearchComponent.vue";
-import { Routes } from "@/router/routes";
+import {useRoutes} from "@/composables/useRoutes";
 
 @Options({
   components: { SearchComponent, MenuComponent },
@@ -31,7 +31,7 @@ export default class Header extends Vue {
   homeLinkActive!: boolean;
 
   pushHome(): void {
-    Routes.pushHomeRoute(this.$router);
+    useRoutes(this.$router).pushHomeRoute();
   }
 }
 </script>

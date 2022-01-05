@@ -12,8 +12,8 @@ import {
   formDataSingUpConfirmation,
 } from "@/model/amplifyFormData";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import { Routes } from "@/router/routes";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
+import {useRoutes} from "@/composables/useRoutes";
 
 I18n.setLanguage("de");
 I18n.putVocabularies(translations);
@@ -61,7 +61,7 @@ export default class LoginComponent extends Vue {
           username,
           password,
         }).then((result) => {
-          Routes.pushHomeRoute(router);
+          useRoutes(router).pushHomeRoute()
           return result;
         });
       },
