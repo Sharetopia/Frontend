@@ -2,9 +2,9 @@
   <div class="flex flex-wrap gap-8">
     <ProductListItemView
       :key="product.id"
-      v-for="product in newestProducts"
+      v-for="product in products"
       :productModel="product"
-      @click="showProductDetail(product.id)"
+      @click="pushProductDetail(product.id)"
       class=""
       style="width: calc(33.333333% - 1.35rem)"
     />
@@ -12,29 +12,28 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { ProductModel } from "@/model/ProductModel";
-import { Routes } from "@/router/routes";
-import { ProductApi } from "@/api/product";
+
 import ProductListItemView from "@/views/ProductListItemView.vue";
+import {useProducts} from "@/composables/useProduct";
+import {useRouter} from "vue-router";
+import {useRoutes} from "@/composables/useRoutes";
 
-@Options({
-  components: { ProductListItemView },
-  props: {},
-})
-export default class HomeComponent extends Vue {
-  newestProducts: ProductModel[] = [];
 
-  beforeMount(): void {
-    this.loadNewestProducts();
-  }
 
-  async loadNewestProducts(): Promise<void> {
-    this.newestProducts = await ProductApi.newestProducts();
-  }
+export default {
+  components: {
+    ProductListItemView
+  },
+  setup() {
+    const router = useRouter()
+    const { products } = useProducts()
+    const { pushProductDetail } = useRoutes(router)
 
-  showProductDetail(id: string): void {
-    Routes.pushProductDetail(this.$router, id);
+    return {
+      products,
+      pushProductDetail
+    }
   }
 }
+
 </script>

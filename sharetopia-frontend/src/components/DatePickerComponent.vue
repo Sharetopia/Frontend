@@ -1,11 +1,11 @@
 <template>
   <div>
     <DatePicker
-      v-model="datePickerModel.pickedRange"
+      v-model="$props.datePickerModel.pickedRange"
       title-position="left"
       :columns="2"
-      :min-date="datePickerModel.availableDateRange.start"
-      :max-date="datePickerModel.availableDateRange.end"
+      :min-date="datePickerModel.availableDateRange?.start"
+      :max-date="datePickerModel.availableDateRange?.end"
       :disabled-dates="datePickerModel.unAvailableDateRanges"
       is-range
       range
@@ -14,20 +14,21 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
 import { DatePickerModel } from "@/model/DatePickerModel";
 import { DatePicker } from "v-calendar";
-import { Ref } from "vue";
+import {PropType } from "vue";
 
-@Options({
-  props: {
-    datePickerModel: Object,
-  },
+export default {
   components: {
-    DatePicker,
+  DatePicker
   },
-})
-export default class LeafletMapComponent extends Vue {
-  datePickerModel!: DatePickerModel;
+  props: {
+    datePickerModel: {
+      type: Object as PropType<DatePickerModel>,
+      required: true,
+    },
+  },
+
 }
+
 </script>

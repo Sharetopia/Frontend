@@ -25,7 +25,7 @@
         </div>
         <div>
           <div class="mt-8 flex justify-center">
-            <DatePickerComponent v-if="datePickerModel"
+            <DatePickerComponent
               :date-picker-model="datePickerModel"
             ></DatePickerComponent>
           </div>
@@ -67,12 +67,12 @@ export default {
     const { productId } = useRouteQueries(route.query);
     const { product } = useProduct(productId);
     const { locationPins, centerPin, createLocationPins } = useLocationPins();
-    const { datePickerModel, createDatePickerModel } = useDatePicker()
+    const { datePickerModel, updateDatePickerModel } = useDatePicker()
 
     watch(product, (newValue) => {
       if (newValue) {
         createLocationPins([newValue as ProductModel]);
-        createDatePickerModel(newValue as ProductModel)
+        updateDatePickerModel(newValue as ProductModel)
       }
     });
     

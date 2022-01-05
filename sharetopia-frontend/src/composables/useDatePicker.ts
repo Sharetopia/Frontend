@@ -1,11 +1,21 @@
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {DatePickerModel} from "@/model/DatePickerModel";
 import {ProductModel} from "@/model/ProductModel";
 import {DateRange} from "@/model/SearchModel";
 
 export function useDatePicker() {
-    const datePickerModel = ref<DatePickerModel | undefined>(undefined);
-    const createDatePickerModel = (product: ProductModel) => {
+    const datePickerModel = ref<DatePickerModel>({
+        unAvailableDateRanges: [],
+        availableDateRange: undefined,
+        pickedRange: {
+            start: undefined,
+            end: undefined,
+        }
+    });
+    const selectedRange = computed(() => {
+        return datePickerModel.value.pickedRange
+    })
+    const updateDatePickerModel = (product: ProductModel) => {
         datePickerModel.value = {
             pickedRange: {
                 start: undefined,
@@ -36,6 +46,7 @@ export function useDatePicker() {
     };
     return {
         datePickerModel,
-        createDatePickerModel,
+        selectedRange,
+        updateDatePickerModel,
     };
 }
