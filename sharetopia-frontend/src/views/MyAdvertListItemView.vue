@@ -2,34 +2,34 @@
   <div class="flex w-max">
     <ResultListItemView :productModel="productModel" />
     <div class="flex flex-col">
-    <SecondaryButton
-      title="Beschreibung bearbeiten"
-      image-name="burgerMenu.svg"
-      @click="openModal"
-    />
-    <PopUp :is-open="isOpen" @close="closeModal">
-      <AdvertEditComponent :productModel="productModel" />
-    </PopUp>
+      <SecondaryButton
+        title="Beschreibung bearbeiten"
+        image-name="burgerMenu.svg"
+        @click="openModal"
+      />
+      <PopUp :is-open="isOpen" @close="closeModal">
+        <AdvertEditComponent :productModel="productModel" />
+      </PopUp>
 
-    <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-      <AvailableRentDatePickerComponent></AvailableRentDatePickerComponent>
-    </PopUp>
+      <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
+        <AvailableRentDatePickerComponent></AvailableRentDatePickerComponent>
+      </PopUp>
 
-    <SecondaryButton
+      <SecondaryButton
         @click="openDatePicker"
         title="Mietzeitraum angeben"
         image-name="burgerMenu.svg"
-    />
+      />
 
-    <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
-      <RentRequestsComponent></RentRequestsComponent>
-    </PopUp>
+      <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
+        <RentRequestsComponent></RentRequestsComponent>
+      </PopUp>
 
-    <SecondaryButton
+      <SecondaryButton
         @click="openRentRequests"
         title="Mietanfragen"
         image-name="burgerMenu.svg"
-    />
+      />
     </div>
   </div>
 </template>
