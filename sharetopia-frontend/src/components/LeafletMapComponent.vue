@@ -69,10 +69,9 @@ export default class LeafletMapComponent extends Vue {
   }
 }
 
-
 import component from "*.vue";
-import {onMounted, PropType} from "vue";
-import {DatePickerModel} from "@/model/DatePickerModel";
+import { onMounted, PropType } from "vue";
+import { DatePickerModel } from "@/model/DatePickerModel";
 
 // export default {
 //   props: {
@@ -128,7 +127,4 @@ import {DatePickerModel} from "@/model/DatePickerModel";
 //   }
 //   }
 // }
-
 </script>
-
-

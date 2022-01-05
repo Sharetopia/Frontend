@@ -16,11 +16,11 @@
 <script lang="ts">
 import { DatePickerModel } from "@/model/DatePickerModel";
 import { DatePicker } from "v-calendar";
-import {PropType } from "vue";
+import { PropType } from "vue";
 
 export default {
   components: {
-  DatePicker
+    DatePicker,
   },
   props: {
     datePickerModel: {
@@ -28,7 +28,5 @@ export default {
       required: true,
     },
   },
-
-}
-
+};
 </script>

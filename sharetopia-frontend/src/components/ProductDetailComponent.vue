@@ -43,15 +43,15 @@ import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is a
 import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import ContactDetail from "@/views/ContactDetailView.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
-import { ProductModel } from "../model/ProductModel";
+import { ProductModel } from "@/model/ProductModel";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { watch } from "vue";
 import { useRoute } from "vue-router";
 import DatePickerComponent from "@/components/DatePickerComponent.vue";
-import {useRouteQueries} from "@/composables/useRouteQueries";
-import {useLocationPins} from "@/composables/useLocationPins";
-import {useDatePicker} from "@/composables/useDatePicker";
-import {useProduct} from "@/composables/useProduct";
+import { useRouteQueries } from "@/composables/useRouteQueries";
+import { useLocationPins } from "@/composables/useLocationPins";
+import { useDatePicker } from "@/composables/useDatePicker";
+import { useProduct } from "@/composables/useProduct";
 
 export default {
   components: {
@@ -67,22 +67,21 @@ export default {
     const { productId } = useRouteQueries(route.query);
     const { product } = useProduct(productId);
     const { locationPins, centerPin, createLocationPins } = useLocationPins();
-    const { datePickerModel, updateDatePickerModel } = useDatePicker()
+    const { datePickerModel, updateDatePickerModel } = useDatePicker();
 
     watch(product, (newValue) => {
       if (newValue) {
         createLocationPins([newValue as ProductModel]);
-        updateDatePickerModel(newValue as ProductModel)
+        updateDatePickerModel(newValue as ProductModel);
       }
     });
-    
+
     return {
       product,
       locationPins,
       centerPin,
-      datePickerModel
+      datePickerModel,
     };
   },
 };
-
 </script>

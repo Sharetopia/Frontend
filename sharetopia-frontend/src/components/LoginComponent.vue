@@ -13,7 +13,7 @@ import {
 } from "@/model/amplifyFormData";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
-import {useRoutes} from "@/composables/useRoutes";
+import { useRoutes } from "@/composables/useRoutes";
 
 I18n.setLanguage("de");
 I18n.putVocabularies(translations);
@@ -61,7 +61,7 @@ export default class LoginComponent extends Vue {
           username,
           password,
         }).then((result) => {
-          useRoutes(router).pushHomeRoute()
+          useRoutes(router).pushHomeRoute();
           return result;
         });
       },

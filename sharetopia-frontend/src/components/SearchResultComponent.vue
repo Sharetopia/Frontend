@@ -9,7 +9,10 @@
         class="mb-6"
       />
     </div>
-    <div class="w-1/2 pl-4" v-if="locationPins.length > 0 && centerPin.valueOf()">
+    <div
+      class="w-1/2 pl-4"
+      v-if="locationPins.length > 0 && centerPin.valueOf()"
+    >
       <LeafletMapComponent
         class="top-8 right-0 mb-4 sticky"
         style="height: calc(100vh - 4rem)"
@@ -26,44 +29,44 @@ import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
 import { dummyBike, ProductModel } from "@/model/ProductModel";
 import { Factory } from "@/utils/factory";
-import { ProductApi } from "@/api/product";
+// import { ProductApi } from "@/api/product";
 import { SearchModel } from "@/model/SearchModel";
 import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 import { LocationPinModel } from "@/model/LocationPinModel";
-import {useRouteQueries} from "@/composables/useRouteQueries";
-import {useRoutes} from "@/composables/useRoutes";
-import {useRoute, useRouter} from "vue-router";
-import {useProductSearch} from "@/composables/useProduct";
-import {useLocationPins} from "@/composables/useLocationPins";
-import {watch} from "vue";
+import { useRouteQueries } from "@/composables/useRouteQueries";
+import { useRoutes } from "@/composables/useRoutes";
+import { useRoute, useRouter } from "vue-router";
+import { useProductSearch } from "@/composables/useProduct";
+import { useLocationPins } from "@/composables/useLocationPins";
+import { watch } from "vue";
 
 export default {
   components: {
     LeafletMapComponent,
-    ProductListItemView
+    ProductListItemView,
   },
   setup() {
-    const route = useRoute()
-    const router = useRouter()
-    const { searchModel } = useRouteQueries(route.query)
-    const { products, loadProducts} = useProductSearch(searchModel)
-    const { pushProductDetail } = useRoutes(router)
+    const route = useRoute();
+    const router = useRouter();
+    const { searchModel } = useRouteQueries(route.query);
+    const { products, loadProducts } = useProductSearch(searchModel);
+    const { pushProductDetail } = useRoutes(router);
 
-    const { locationPins, centerPin, createLocationPins } = useLocationPins()
+    const { locationPins, centerPin, createLocationPins } = useLocationPins();
 
     watch(products, (newValue) => {
-      const products = newValue as ProductModel[]
-      createLocationPins(products)
-    })
+      const products = newValue as ProductModel[];
+      createLocationPins(products);
+    });
 
     return {
       searchResults: products,
       locationPins,
       centerPin,
-      showProductDetail: pushProductDetail
-    }
-  }
-}
+      showProductDetail: pushProductDetail,
+    };
+  },
+};
 
 // @Options({
 //   components: {

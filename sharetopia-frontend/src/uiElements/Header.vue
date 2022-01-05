@@ -15,7 +15,7 @@
 import { Options, Vue } from "vue-class-component";
 import MenuComponent from "@/components/MenuComponent.vue";
 import SearchComponent from "@/components/SearchComponent.vue";
-import {useRoutes} from "@/composables/useRoutes";
+import { useRoutes } from "@/composables/useRoutes";
 
 @Options({
   components: { SearchComponent, MenuComponent },

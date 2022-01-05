@@ -12,28 +12,24 @@
 </template>
 
 <script lang="ts">
-
 import ProductListItemView from "@/views/ProductListItemView.vue";
-import {useProducts} from "@/composables/useProduct";
-import {useRouter} from "vue-router";
-import {useRoutes} from "@/composables/useRoutes";
-
-
+import { useProducts } from "@/composables/useProduct";
+import { useRouter } from "vue-router";
+import { useRoutes } from "@/composables/useRoutes";
 
 export default {
   components: {
-    ProductListItemView
+    ProductListItemView,
   },
   setup() {
-    const router = useRouter()
-    const { products } = useProducts()
-    const { pushProductDetail } = useRoutes(router)
+    const router = useRouter();
+    const { products } = useProducts();
+    const { pushProductDetail } = useRoutes(router);
 
     return {
       products,
-      pushProductDetail
-    }
-  }
-}
-
+      pushProductDetail,
+    };
+  },
+};
 </script>

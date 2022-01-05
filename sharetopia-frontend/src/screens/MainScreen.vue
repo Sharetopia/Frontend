@@ -22,7 +22,7 @@ import SearchComponent from "../components/SearchComponent.vue";
 import Header from "@/uiElements/Header.vue";
 import Footer from "@/uiElements/Footer.vue";
 import { Auth } from "aws-amplify";
-import {useRoutes} from "@/composables/useRoutes";
+import { useRoutes } from "@/composables/useRoutes";
 
 @Options({
   components: {
@@ -41,7 +41,7 @@ export default class MainScreen extends Vue {
     try {
       await Auth.currentAuthenticatedUser();
     } catch {
-      useRoutes(this.$router).pushLoginRoute()
+      useRoutes(this.$router).pushLoginRoute();
     }
   }
 }

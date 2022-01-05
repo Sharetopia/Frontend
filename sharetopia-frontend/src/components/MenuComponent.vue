@@ -122,9 +122,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Auth } from "aws-amplify";
 import PopUp from "@/uiElements/PopUp.vue";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
-import {useRoutes} from "@/composables/useRoutes";
-
-
+import { useRoutes } from "@/composables/useRoutes";
 
 @Options({
   props: {},
@@ -138,8 +136,7 @@ import {useRoutes} from "@/composables/useRoutes";
   },
 })
 export default class MenuComponent extends Vue {
-
-showProfile = false;
+  showProfile = false;
   async logout(): Promise<void> {
     console.log("wir sind hier");
     const { pushLoginRoute } = useRoutes(this.$router);

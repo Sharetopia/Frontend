@@ -81,7 +81,7 @@ import SearchbarButtonView from "../views/SearchbarButtonView.vue";
 import { SearchModel } from "../model/SearchModel";
 import { Factory } from "@/utils/factory";
 import PopUp from "@/uiElements/PopUp.vue";
-import {useRoutes} from "@/composables/useRoutes";
+import { useRoutes } from "@/composables/useRoutes";
 
 @Options({
   props: {},
@@ -125,7 +125,7 @@ export default class SearchComponent extends Vue {
       // TODO: Show an Error!
       return;
     }
-    useRoutes(this.$router).pushSearchRoute(this.searchModel)
+    useRoutes(this.$router).pushSearchRoute(this.searchModel);
 
     this.closeModal();
   }
