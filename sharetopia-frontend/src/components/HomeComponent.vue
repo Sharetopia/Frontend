@@ -23,7 +23,7 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const { products } = useProducts();
+    const { products } = useProducts("GET");
     const { pushProductDetail } = useRoutes(router);
 
     return {
