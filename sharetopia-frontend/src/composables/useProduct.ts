@@ -4,6 +4,7 @@ import { useNetwork } from "@/composables/useNetwork";
 import { SearchModel } from "@/model/SearchModel";
 import { ApiSearchModel } from "@/model/ApiSearchModel";
 import { ApiRentRequest } from "@/model/ApiRentRequest";
+import { API } from "aws-amplify";
 
 export function useProduct(id: string | undefined, type: string) {
   const product = ref<ProductModel | undefined>(Object(undefined));
@@ -27,19 +28,30 @@ export function useProduct(id: string | undefined, type: string) {
   };
 }
 
-export function useProducts(type: string) {
+export function useProducts(type: string, product?: ProductModel | undefined) {
   const products = ref<ProductModel[]>(Object([]));
   const { apiCall } = useNetwork();
   const loadProducts = async () => {
     products.value = [dummyBike, dummyBike, dummyBike, dummyCar];
-    if (type === ("GET" || "POST")) {
-      const result: ProductModel[] = await apiCall<ProductModel[]>(
-        `http://localhost:8080/api/v1/products`,
-        type
-      );
-      products.value = result;
-    } else {
-      console.log("type not wrong or not implemented yet");
+    let result: ProductModel[];
+    switch (type) {
+      case "GET":
+        result = await apiCall<ProductModel[]>(
+          `http://localhost:8080/api/v1/products`,
+          type
+        );
+        products.value = result;
+        break;
+      case "POST":
+        await apiCall<void>(
+          `http://localhost:8080/api/v1/products`,
+          type,
+          product
+        );
+        break;
+      default:
+        console.log("http request type wrong or not implemented yet");
+        break;
     }
   };
   onMounted(() => {
@@ -54,6 +66,7 @@ export function useProducts(type: string) {
 export function useProductSearch(searchModel: SearchModel | undefined) {
   const products = ref<ProductModel[]>(Object([]));
   const { apiCall } = useNetwork();
+  //todo change searchmodel or keep workaround
   const search: ApiSearchModel = {
     term: searchModel!.query,
     distance: searchModel!.radius,
@@ -84,7 +97,6 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
 
 export function useRentRequest(rentRequest: ApiRentRequest) {
   const { apiCall } = useNetwork();
-
   const createRentRequest = async (rentRequest: ApiRentRequest) => {
     await apiCall<void>(
       "http://localhost:8080/api/v1/rentRequest",
@@ -104,7 +116,6 @@ export function useRentRequest(rentRequest: ApiRentRequest) {
 
 export function useRentRequestDelete(id: string | undefined) {
   const { apiCall } = useNetwork();
-
   const deleteRentRequest = async (id: string) => {
     await apiCall<void>(
       `http://localhost:8080/api/v1/rentRequest/${id}`,
@@ -118,5 +129,31 @@ export function useRentRequestDelete(id: string | undefined) {
   });
   return {
     deleteRentRequest,
+  };
+}
+
+export function useRentAccept(
+  id: string | undefined,
+  rentRequestId: string | undefined,
+  isAccepted: boolean | undefined
+) {
+  const { apiCall } = useNetwork();
+  const updateRentRequest = async (
+    id: string,
+    rentRequestId: string,
+    isAccepted: boolean
+  ) => {
+    await apiCall<void>(
+      `http://localhost:8080/api/v1/products/${id}/rent/${rentRequestId}?isAccepted=${isAccepted}`,
+      "POST"
+    );
+  };
+  onMounted(() => {
+    if (id && rentRequestId && isAccepted !== undefined) {
+      updateRentRequest(id, rentRequestId, isAccepted);
+    }
+  });
+  return {
+    updateRentRequest,
   };
 }
