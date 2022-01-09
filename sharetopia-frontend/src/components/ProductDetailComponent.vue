@@ -6,7 +6,7 @@
     <div class="w-1/2 px-16">
       <div class="divide-y divide-black divide-opacity-25">
         <div class="m-4 mb-8">
-          <ProductTextDetailView :productModel="product.valueOf()" />
+          <ProductTextDetailView :product="product.valueOf()" />
           <div class="flex mt-8">
             <div class="w-max mr-6">
               <ContactDetail :userId="product.valueOf().userId" />
@@ -30,7 +30,7 @@
             ></DatePickerComponent>
           </div>
           <div class="mt-4 flex justify-center">
-            <PrimaryButton title="Anfrage stellen" />
+            <PrimaryButton title="Anfrage stellen" @click="requestRent" />
           </div>
         </div>
       </div>
@@ -52,12 +52,17 @@ import { useRouteQueries } from "@/composables/useRouteQueries";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { useDatePicker } from "@/composables/useDatePicker";
 import { useProduct } from "@/composables/useProduct";
+import { useRentRequest } from "@/composables/useRents";
+import { ApiRentRequest } from "@/model/ApiRentRequest";
+import { Auth } from "aws-amplify";
+import { Factory } from "@/utils/factory";
 
 const route = useRoute();
 const { productId } = useRouteQueries(route.query);
 const { product } = useProduct(productId, "GET");
 const { locationPins, centerPin, createLocationPins } = useLocationPins();
 const { datePickerModel, updateDatePickerModel } = useDatePicker();
+const { createRentRequest } = useRentRequest();
 
 watch(product, (newValue) => {
   if (newValue) {
@@ -65,4 +70,20 @@ watch(product, (newValue) => {
     updateDatePickerModel(newValue as ProductModel);
   }
 });
+
+async function requestRent() {
+  const userInfo = await Auth.currentUserInfo();
+  const startDate = datePickerModel.value.pickedRange.start as Date;
+  const endDate = datePickerModel.value.pickedRange.end as Date;
+  if (product.value && startDate && endDate) {
+    let requestModel: ApiRentRequest = {
+      fromDate: Factory.createDateForApi(startDate),
+      toDate: Factory.createDateForApi(endDate),
+      requesterUserId: userInfo.id,
+      rentRequestReceiverUserId: product.value.userId,
+      requestedProductId: product.value.id,
+    };
+    createRentRequest(requestModel);
+  }
+}
 </script>

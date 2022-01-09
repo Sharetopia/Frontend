@@ -1,5 +1,7 @@
-import { SearchModel } from "@/model/SearchModel";
-import { LocationQuery, LocationQueryValue } from "vue-router";
+import { DateRange, SearchModel } from "@/model/SearchModel";
+import { LocationQuery } from "vue-router";
+import { ApiDateRange, ApiProductModel } from "@/model/ApiProductModel";
+import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
 
 class Factory {
   public static createSearchModel(
@@ -30,6 +32,43 @@ class Factory {
         end: new Date(end),
       },
     };
+  }
+
+  public static createProductModelFromServer(
+    apiModel: ApiProductModel
+  ): ProductModel {
+    let bookingDates: BookingDatesModel | undefined;
+    if (apiModel.rentableDateRange && apiModel.rents) {
+      bookingDates = {
+        available: Factory.createDateRangeFrom(apiModel.rentableDateRange),
+        unavailable: apiModel.rents.map((rent) => {
+          return Factory.createDateRangeFrom(rent.rentDuration);
+        }),
+      };
+    }
+
+    return {
+      address: apiModel.address,
+      bookingDates: bookingDates,
+      description: apiModel.description,
+      id: apiModel.id,
+      location: apiModel.location,
+      price: 12.99,
+      tags: apiModel.tags,
+      title: apiModel.title,
+      userId: apiModel.ownerOfProductUserId,
+    };
+  }
+
+  public static createDateRangeFrom(apiDateRange: ApiDateRange): DateRange {
+    return {
+      start: new Date(apiDateRange.fromDate),
+      end: new Date(apiDateRange.toDate),
+    };
+  }
+
+  public static createDateForApi(date: Date): string {
+    return date.toISOString().split("T", 1)[0];
   }
 }
 

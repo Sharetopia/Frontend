@@ -8,7 +8,7 @@
       />
     </div>
     <div class="w-2/3 p-5">
-      <ProductTextDetail :productModel="productModel" />
+      <ProductTextDetail :product="productModel" />
     </div>
   </div>
 </template>

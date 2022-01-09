@@ -1,6 +1,6 @@
 export type ApiRentRequest = {
-  fromDate: Date;
-  toDate: Date;
+  fromDate: string;
+  toDate: string;
   requesterUserId: string;
   rentRequestReceiverUserId: string;
   requestedProductId: string;

@@ -5,7 +5,6 @@
       v-for="productModel in productModels"
       :productModel="productModel"
     />
-    Hier kommen meine Inserate ding rein
   </div>
 </template>
 
