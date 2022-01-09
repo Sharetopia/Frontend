@@ -2,20 +2,16 @@ import { ApiRentRequest } from "@/model/ApiRentRequest";
 import { useNetwork } from "@/composables/useNetwork";
 import { onMounted } from "vue";
 
-export function useRentRequest(rentRequest: ApiRentRequest) {
+export function useRentRequest() {
   const { apiCall } = useNetwork();
   const createRentRequest = async (rentRequest: ApiRentRequest) => {
+    console.log(rentRequest);
     await apiCall<void>(
       "http://localhost:8080/api/v1/rentRequest",
       "POST",
       rentRequest
     );
   };
-  onMounted(() => {
-    if (rentRequest) {
-      createRentRequest(rentRequest);
-    }
-  });
   return {
     createRentRequest,
   };

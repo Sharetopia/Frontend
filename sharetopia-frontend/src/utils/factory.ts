@@ -66,6 +66,10 @@ class Factory {
       end: new Date(apiDateRange.toDate),
     };
   }
+
+  public static createDateForApi(date: Date): string {
+    return date.toISOString().split("T", 1)[0];
+  }
 }
 
 export { Factory };

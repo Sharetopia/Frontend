@@ -11,7 +11,7 @@
     </div>
     <div class="space-x-4">
       <div
-        v-for="tag in productModel.tags"
+        v-for="tag in product.tags"
         :key="tag"
         class="
           inline-block
@@ -38,7 +38,7 @@ import { ProductModel } from "@/model/ProductModel";
 
 @Options({
   props: {
-    productModel: Object,
+    product: Object,
   },
 })
 export default class ProductTextDetailView extends Vue {
