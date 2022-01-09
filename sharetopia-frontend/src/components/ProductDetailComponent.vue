@@ -51,7 +51,7 @@ import { useRoute } from "vue-router";
 import { useRouteQueries } from "@/composables/useRouteQueries";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { useDatePicker } from "@/composables/useDatePicker";
-import { useProduct, useRentRequestDelete } from "@/composables/useProduct";
+import { useProduct } from "@/composables/useProduct";
 
 const route = useRoute();
 const { productId } = useRouteQueries(route.query);

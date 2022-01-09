@@ -2,11 +2,11 @@
   <div class="">
     <div class="flex items-center">
       <h1 class="flex-none truncate">
-        {{ productModel.title }}
+        {{ product.title }}
       </h1>
       <div class="flex-grow"></div>
       <div class="flex-none text-2xl">
-        {{ productModel.price }}€ <span class="text-lg">/day</span>
+        {{ product.price }}€ <span class="text-lg">/day</span>
       </div>
     </div>
     <div class="space-x-4">
@@ -28,13 +28,13 @@
         {{ tag }}
       </div>
     </div>
-    <p>{{ productModel.description }}</p>
+    <p>{{ product.description }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { ProductModel } from "../model/ProductModel";
+import { ProductModel } from "@/model/ProductModel";
 
 @Options({
   props: {
@@ -42,12 +42,11 @@ import { ProductModel } from "../model/ProductModel";
   },
 })
 export default class ProductTextDetailView extends Vue {
-  productModel!: ProductModel;
+  product!: ProductModel;
 
   getBackgroundColor(): string {
     let value = Math.random() * 10;
 
-    console.log("hier");
     switch (value) {
       case 1:
         return "bg-red-600";
