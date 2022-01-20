@@ -93,6 +93,7 @@
 import { ProductModel } from "@/model/ProductModel";
 import { defineComponent, PropType } from "vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
+import { Storage, Auth } from "aws-amplify";
 
 export default defineComponent({
   components: {
@@ -112,7 +113,7 @@ export default defineComponent({
     };
   },
   methods: {
-    pickFile(): void {
+    async pickFile(): Promise<void> {
       let input: any = this.$refs.fileInput;
       let file = input.files;
       if (file && file[0]) {
@@ -121,6 +122,18 @@ export default defineComponent({
         reader.onload = (e) => {
           this.previewImage = e.target?.result;
         };
+        const result = await Storage.put(
+          `${
+            (
+              await Auth.currentAuthenticatedUser()
+            ).username
+          }/profile-image.jpg`,
+          file[0],
+          {
+            contentType: "image/jpeg",
+          }
+        );
+        console.log(result);
       }
     },
   },

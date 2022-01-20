@@ -1,0 +1,14 @@
+{
+  "resourceName": "sharetopiaimages",
+  "policyUUID": "306faaf1",
+  "bucketName": "sharetopiaimages",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
