@@ -1,6 +1,6 @@
 <template>
-  <button class="flex rounded-lg hover:bg-gray-300 p-4 items-center">
-    <img :src="getImageUrl(imageName)" class="mr-6" />
+  <button class="flex rounded-lg hover:bg-gray-300 p-4 items-center h-12">
+    <img :src="getImageUrl(imageName)" class="mr-6 h-6" />
     <p class="">{{ title }}</p>
   </button>
 </template>

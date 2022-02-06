@@ -29,9 +29,9 @@
       </div>
     </div>
     <img
-      src="../assets/TestImage5.png"
+      src="../assets/TestImage6.jpeg"
       alt="Bild1"
-      class="h-1/3 w-full object-cover rounded-b-3xl"
+      class="h-1/4 w-full object-cover rounded-b-3xl"
     />
   </div>
 </template>

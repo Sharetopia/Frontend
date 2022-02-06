@@ -9,7 +9,7 @@ export function useLocationPins() {
     locationPins.value = products.map((product) => {
       return {
         name: product.title,
-        coordinates: product.location,
+        coordinates: [48.923069, 9.43038],
         productId: product.id,
       };
     });

@@ -2,7 +2,7 @@
   <div class="flex card cursor-pointer hover:bg-gray-100">
     <div class="w-1/3">
       <img
-        src="@/assets/TestImage1.png"
+        :src="getImage()"
         alt="Vorschaubild"
         class="h-full object-cover rounded-tl-3xl rounded-bl-3xl"
       />
@@ -28,5 +28,16 @@ import ProductTextDetailView from "./ProductTextDetailView.vue";
 })
 export default class ProductListItemView extends Vue {
   productModel!: ProductModel;
+
+  getImage() {
+    if (this.productModel) {
+      if (this.productModel.title == "Auto") {
+        var images = require.context("../assets/", false);
+        return images("./" + "auto.jpeg");
+      }
+    }
+    var images2 = require.context("../assets/", false);
+    return images2("./" + "TestImage1.png");
+  }
 }
 </script>
