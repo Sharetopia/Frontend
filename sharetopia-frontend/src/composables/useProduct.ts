@@ -48,7 +48,7 @@ export function useProducts() {
     const productModels = result.map((apiModel) =>
       Factory.createProductModelFromServer(apiModel)
     );
-    console.log(productModels)
+    console.log(productModels);
     products.value = productModels;
   };
 
@@ -82,16 +82,21 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
       startDate: search.timeRange.start,
       endDate: search.timeRange.end,
     };
-    products.value = [{
-      address: {street: 'Ludwigsburger Straße 11', city: 'Backnang', zip: '71522'},
-      description: "Mein tolles neues Fahrrad hat Bremse, Hupe und Licht.",
-      id: "61dacfe64a3a9f5a282de76b",
-      location: [48.923069, 9.43038],
-      price: 12.99,
-      tags: ['Fahrrad', 'Mobilität'],
-      title: "Fahrrad",
-      userId: ""
-    }
+    products.value = [
+      {
+        address: {
+          street: "Ludwigsburger Straße 11",
+          city: "Backnang",
+          zip: "71522",
+        },
+        description: "Mein tolles neues Fahrrad hat Bremse, Hupe und Licht.",
+        id: "61dacfe64a3a9f5a282de76b",
+        location: [48.923069, 9.43038],
+        price: 12.99,
+        tags: ["Fahrrad", "Mobilität"],
+        title: "Fahrrad",
+        userId: "",
+      },
     ];
     if (dummyData) {
       products.value = [dummyBike, dummyBike, dummyBike, dummyCar];

@@ -47,7 +47,7 @@ import DatePickerComponent from "@/components/DatePickerComponent.vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { ProductModel } from "@/model/ProductModel";
 import { watch } from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useRouteQueries } from "@/composables/useRouteQueries";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { useDatePicker } from "@/composables/useDatePicker";
@@ -56,16 +56,16 @@ import { useRentRequest } from "@/composables/useRents";
 import { ApiRentRequest } from "@/model/ApiRentRequest";
 import { Auth } from "aws-amplify";
 import { Factory } from "@/utils/factory";
-import {useRoutes} from "@/composables/useRoutes";
+import { useRoutes } from "@/composables/useRoutes";
 
 const route = useRoute();
-const router = useRouter()
+const router = useRouter();
 const { productId } = useRouteQueries(route.query);
 const { product } = useProduct(productId, "GET");
 const { locationPins, centerPin, createLocationPins } = useLocationPins();
 const { datePickerModel, updateDatePickerModel } = useDatePicker();
 const { createRentRequest } = useRentRequest();
-const { pushMyBookingsRoute } = useRoutes(router)
+const { pushMyBookingsRoute } = useRoutes(router);
 
 watch(product, (newValue) => {
   if (newValue) {
@@ -87,7 +87,7 @@ async function requestRent() {
       requestedProductId: product.value.id,
     };
     createRentRequest(requestModel);
-    pushMyBookingsRoute()
+    pushMyBookingsRoute();
   }
 }
 </script>

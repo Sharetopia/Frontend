@@ -2,12 +2,14 @@
   <div class="flex w-max">
     <ResultListItemView :productModel="productModel" class="" />
     <div class="flex flex-col">
-      <p class="text-amber-600 ml-6 mt-4" style="color: rgb(217 119 6);">Deine Anfrage wurde noch nicht bestätigt.</p>
+      <p class="text-amber-600 ml-6 mt-4" style="color: rgb(217 119 6)">
+        Deine Anfrage wurde noch nicht bestätigt.
+      </p>
       <SecondaryButton
-          title="Email schreiben"
-          image-name="Mail.png"
-          @click="openModal"
-          class="ml-2 mt-4"
+        title="Email schreiben"
+        image-name="Mail.png"
+        @click="openModal"
+        class="ml-2 mt-4"
       />
     </div>
   </div>
