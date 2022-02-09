@@ -3,14 +3,12 @@ import { dummyBike, dummyCar, ProductModel } from "@/model/ProductModel";
 import { useNetwork } from "@/composables/useNetwork";
 import { SearchModel } from "@/model/SearchModel";
 import { ApiSearchModel, ApiSearchResultModel } from "@/model/ApiSearchModel";
-import { ApiRentRequest } from "@/model/ApiRentRequest";
-import { API } from "aws-amplify";
 import { ApiProductModel } from "@/model/ApiProductModel";
 import { Factory } from "@/utils/factory";
 
 const dummyData = false;
 
-export function useProduct(id: string | undefined, type: string) {
+export function useProduct(id: string | undefined) {
   const product = ref<ProductModel | undefined>(Object(undefined));
   const { apiCall } = useNetwork();
   const loadProductById = async (id: string) => {
@@ -19,18 +17,50 @@ export function useProduct(id: string | undefined, type: string) {
     }
     const result: ApiProductModel = await apiCall<ApiProductModel>(
       `http://localhost:8080/api/v1/products/${id}`,
-      type
+      "GET"
     );
     product.value = Factory.createProductModelFromServer(result);
   };
+
+  const uploadProduct = async (productModel: ProductModel) => {
+    console.log("Model", productModel)
+    const result = await apiCall<void>(
+        `http://localhost:8080/api/v1/products`,
+        "POST",
+        productModel
+    );
+    console.log(result)
+  };
+
+  const createEmptyProductModel = ():ProductModel => {
+    return {
+      id: "",
+      price: 0,
+      userId: "",
+      title: "",
+      description: "",
+      tags: [],
+      address: {
+        street: "",
+        city: "",
+        zip: "",
+      },
+      location: [],
+      bookingDates: undefined,
+    }
+  }
+
   onMounted(() => {
     if (id) {
       loadProductById(id);
     }
   });
+
   return {
     product,
     loadProductById,
+    uploadProduct,
+    createEmptyProductModel,
   };
 }
 
@@ -52,21 +82,12 @@ export function useProducts() {
     products.value = productModels;
   };
 
-  const uploadProduct = async (productModel: ProductModel) => {
-    await apiCall<void>(
-      `http://localhost:8080/api/v1/products`,
-      "POST",
-      productModel
-    );
-  };
-
   onMounted(() => {
     loadProducts();
   });
   return {
     products,
     loadProducts,
-    uploadProduct,
   };
 }
 

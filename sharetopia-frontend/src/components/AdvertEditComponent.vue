@@ -1,6 +1,6 @@
 <template>
   <div class="card p-8 max-w-2xl flex flex-col bg-white">
-    <h1>Inserat bearbeiten</h1>
+    <h1>{{ $props.title }}</h1>
     <div class="flex flex-col my-8">
       <div class="flex">
         <h2 class="w-1/3 p-3 font-bold">Titel</h2>
@@ -82,7 +82,7 @@
     </div>
     <div class="flex justify-center">
       <div class="w-2/3 flex">
-        <PrimaryButton title="Speichern" class="flex-1" @click="submit()" />
+        <PrimaryButton title="Speichern" class="flex-1" @click="$emit('save')" />
       </div>
     </div>
   </div>
@@ -103,6 +103,7 @@ export default defineComponent({
       type: Object as PropType<ProductModel>,
       required: true,
     },
+    title: String
   },
   data() {
     let previewImage: any = null;
@@ -111,6 +112,7 @@ export default defineComponent({
       previewImage: previewImage,
     };
   },
+  emits: ["save"],
   methods: {
     pickFile(): void {
       let input: any = this.$refs.fileInput;

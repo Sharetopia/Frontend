@@ -44,7 +44,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ContactDetailView from "@/views/ContactDetailView.vue";
-import { RentRequestModel } from "@/model/RentRequestModel";
+import { RentModel } from "@/model/RentModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 
 @Options({
@@ -52,31 +52,7 @@ import SecondaryButton from "@/uiElements/SecondaryButton.vue";
   props: {},
 })
 export default class RentRequestsComponent extends Vue {
-  requests: RentRequestModel[] = [
-    {
-      renterId: "234352435",
-      timeRange: {
-        start: new Date("2022-01-03"),
-        end: new Date("2022-01-09"),
-      },
-    },
-    {
-      renterId: "234241",
-      timeRange: {
-        start: new Date("2022-02-03"),
-        end: new Date("2022-02-09"),
-      },
-      accepted: true,
-    },
-    {
-      renterId: "234241",
-      timeRange: {
-        start: new Date("2022-01-03"),
-        end: new Date("2022-02-09"),
-      },
-      accepted: false,
-    },
-  ];
+  requests: RentModel[] = []
 
   acceptRequestWith(id: string): void {
     console.log("Todo");

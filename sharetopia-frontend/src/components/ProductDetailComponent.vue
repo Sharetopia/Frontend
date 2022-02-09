@@ -58,6 +58,7 @@ import { Auth } from "aws-amplify";
 import { Factory } from "@/utils/factory";
 import { useRoutes } from "@/composables/useRoutes";
 
+
 const route = useRoute();
 const router = useRouter();
 const { productId } = useRouteQueries(route.query);

@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-max">
-    <ResultListItemView :productModel="productModel" />
+    <ResultListItemView :productModel="myAdvertModel.prdouctModel" />
     <div class="flex flex-col">
       <SecondaryButton
         title="Beschreibung bearbeiten"
@@ -8,7 +8,7 @@
         @click="openModal"
       />
       <PopUp :is-open="isOpen" @close="closeModal">
-        <AdvertEditComponent :productModel="productModel" />
+        <AdvertEditComponent :title="'Inserat bearbeiten'" :productModel="myAdvertModel.productModel" />
       </PopUp>
 
       <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
@@ -37,7 +37,6 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ProductListItemView from "@/views/ProductListItemView.vue";
-import { ProductModel } from "@/model/ProductModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import {
   Dialog,
@@ -49,6 +48,7 @@ import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
 import PopUp from "@/uiElements/PopUp.vue";
 import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
+import {MyAdvertModel} from "@/model/MyAdvertModel";
 
 @Options({
   components: {
@@ -64,11 +64,11 @@ import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePick
     PopUp,
   },
   props: {
-    productModel: Object,
+    myAdvertModel: Object,
   },
 })
 export default class ContactDetailView extends Vue {
-  productModel!: ProductModel;
+  myAdvertModel!: MyAdvertModel;
   isOpen = false;
   isDatePickerOpen = false;
   isRentRequestsOpen = false;
