@@ -22,9 +22,11 @@ export function useNetwork() {
     }
 
     console.log(`Bearer ${token.getJwtToken()}`)
+    console.log(options)
 
     return fetch(url, options).then((response) => {
       if (!response.ok) {
+        console.log(response.json())
         throw new Error(response.statusText);
       }
       return response.json();

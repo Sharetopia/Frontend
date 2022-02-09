@@ -27,7 +27,7 @@ export function useProduct(id: string | undefined) {
     const apiModel = {
       title: productModel.title,
       description: productModel.description,
-      tags: productModel.tags,
+      tags: [productModel.tags],
       price: productModel.price,
       address: productModel.address,
       rentableDateRange: {

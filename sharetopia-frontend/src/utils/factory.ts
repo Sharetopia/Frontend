@@ -3,8 +3,6 @@ import { LocationQuery } from "vue-router";
 import { ApiDateRange, ApiProductModel } from "@/model/ApiProductModel";
 import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
 import {
-  ApiMyAdvertModel,
-  ApiRentModel,
   MyAdvertModel,
 } from "@/model/MyAdvertModel";
 

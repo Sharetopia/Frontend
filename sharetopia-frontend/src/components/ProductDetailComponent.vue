@@ -62,7 +62,7 @@ import { useRoutes } from "@/composables/useRoutes";
 const route = useRoute();
 const router = useRouter();
 const { productId } = useRouteQueries(route.query);
-const { product } = useProduct(productId, "GET");
+const { product } = useProduct(productId);
 const { locationPins, centerPin, createLocationPins } = useLocationPins();
 const { datePickerModel, updateDatePickerModel } = useDatePicker();
 const { createRentRequest } = useRentRequest();
