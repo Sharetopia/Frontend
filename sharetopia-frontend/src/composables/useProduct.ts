@@ -41,6 +41,7 @@ export function useProduct(id: string | undefined) {
         "POST",
         apiModel
     );
+
     console.log(result)
   };
 

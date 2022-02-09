@@ -2,9 +2,9 @@
   <PrimaryButton title="Inserat erstellen" @click="openCreateAdvertPopUp"></PrimaryButton>
   <div class="">
     <MyAdvertListItemView
-      :key="productModel.id"
-      v-for="productModel in myAdverts"
-      :productModel="productModel"
+      :key="myAdvert.productModel.id"
+      v-for="myAdvert in myAdverts"
+      :my-advert-model="myAdvert"
     />
   </div>
 

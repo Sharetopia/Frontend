@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-max">
-    <ResultListItemView :productModel="myAdvertModel.prdouctModel" />
+    <ResultListItemView :productModel="myAdvertModel.productModel" />
     <div class="flex flex-col">
       <SecondaryButton
         title="Beschreibung bearbeiten"
