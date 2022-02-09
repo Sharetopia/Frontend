@@ -21,6 +21,8 @@ export function useNetwork() {
       options.body = JSON.stringify(params);
     }
 
+    console.log(`Bearer ${token.getJwtToken()}`)
+
     return fetch(url, options).then((response) => {
       if (!response.ok) {
         throw new Error(response.statusText);

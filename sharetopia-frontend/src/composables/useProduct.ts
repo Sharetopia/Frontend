@@ -24,10 +24,22 @@ export function useProduct(id: string | undefined) {
 
   const uploadProduct = async (productModel: ProductModel) => {
     console.log("Model", productModel)
+    const apiModel = {
+      title: productModel.title,
+      description: productModel.description,
+      tags: productModel.tags,
+      price: productModel.price,
+      address: productModel.address,
+      rentableDateRange: {
+        fromDate: "2022-02-09",
+        toDate: "2022-02-09"
+      },
+      rents:[]
+    }
     const result = await apiCall<void>(
         `http://localhost:8080/api/v1/products`,
         "POST",
-        productModel
+        apiModel
     );
     console.log(result)
   };
