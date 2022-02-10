@@ -32,8 +32,8 @@ const props = defineProps({
 const { datePickerModel, selectedRange } = useDatePicker();
 const {updateRentableDates} = useMyAdverts()
 const submit = (): void => {
-  if(props.productId && props.rentableDateRange && props.rentableDateRange.start && props.rentableDateRange.end)
-  updateRentableDates(props.productId, props.rentableDateRange.start, props.rentableDateRange.end)
+  if(props.productId && selectedRange.value.start && selectedRange.value.end)
+  updateRentableDates(props.productId, selectedRange.value.start as Date, selectedRange.value.end as Date)
 };
 
 
