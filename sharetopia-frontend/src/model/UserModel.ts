@@ -1,9 +1,10 @@
 export type UserModel = {
-  id: string;
+  id?: string;
   forename: string;
   surname: string;
   address: string;
   city: string;
   postalCode?: number;
   rating: number;
+  profilePictureURL?: string;
 };

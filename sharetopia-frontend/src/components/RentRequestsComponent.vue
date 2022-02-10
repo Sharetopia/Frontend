@@ -39,7 +39,7 @@ import ContactDetailView from "@/views/ContactDetailView.vue";
 import { RentRequestModel } from "@/model/RentModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import { useRentRequest } from "@/composables/useRents";
-import {defineEmits, defineProps} from "vue";
+import { defineEmits, defineProps } from "vue";
 import { useMyAdverts } from "@/composables/useMyAdverts";
 
 const emit = defineEmits(["reload"]);
@@ -57,7 +57,7 @@ function acceptRequestWith(
   requestId: string
 ): void {
   answerRentRequest(requestedProductId, requestId, true);
-  emit("reload")
+  emit("reload");
 }
 
 function rejectRequestWith(
@@ -65,6 +65,6 @@ function rejectRequestWith(
   requestId: string
 ): void {
   answerRentRequest(requestedProductId, requestId, false);
-  emit("reload")
+  emit("reload");
 }
 </script>

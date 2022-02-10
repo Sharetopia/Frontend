@@ -15,7 +15,10 @@
       </PopUp>
 
       <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-        <AvailableRentDatePickerComponent :product-model="myAdvertModel.productModel" :rentableDateRange="myAdvertModel.rentableDateRange"></AvailableRentDatePickerComponent>
+        <AvailableRentDatePickerComponent
+          :product-model="myAdvertModel.productModel"
+          :rentableDateRange="myAdvertModel.rentableDateRange"
+        ></AvailableRentDatePickerComponent>
       </PopUp>
 
       <SecondaryButton
@@ -47,7 +50,7 @@ import PopUp from "@/uiElements/PopUp.vue";
 import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
-import {defineEmits, defineProps, ref} from "vue";
+import { defineEmits, defineProps, ref } from "vue";
 import ProductListItemView from "@/views/ProductListItemView.vue";
 
 const emit = defineEmits(["reload"]);

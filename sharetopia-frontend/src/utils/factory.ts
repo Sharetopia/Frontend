@@ -4,6 +4,7 @@ import { ApiDateRange, ApiProductModel } from "@/model/ApiProductModel";
 import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
 import { ApiMyRentModel, MyRentModel } from "@/model/RentModel";
+import { ApiUserModel, UserModel } from "@/model/UserModel";
 
 class Factory {
   public static createSearchModel(

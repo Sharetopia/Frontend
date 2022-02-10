@@ -31,31 +31,31 @@
         type="text"
         class="rounded-t-xl border py-2 px-4"
         placeholder="Vorname"
-        v-model="profileModelValue.forename"
+        v-model="currentUser.valueOf().forename"
       />
       <input
         type="text"
         class="border py-2 px-4"
         placeholder="Nachname"
-        v-model="profileModelValue.surname"
+        v-model="currentUser.valueOf().surname"
       />
       <input
         type="text"
         class="border py-2 px-4"
         placeholder="Straße und Hausnummer"
-        v-model="profileModelValue.address"
+        v-model="currentUser.valueOf().address"
       />
       <input
         type="text"
         class="border py-2 px-4"
         placeholder="Stadt"
-        v-model="profileModelValue.city"
+        v-model="currentUser.valueOf().city"
       />
       <input
         type="text"
         class="rounded-b-xl border py-2 px-4"
         placeholder="Postleitzahl"
-        v-model="profileModelValue.postalCode"
+        v-model="currentUser.valueOf().postalCode"
       />
     </div>
     <div class="flex justify-center">
@@ -66,42 +66,34 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { UserModel } from "@/model/UserModel";
-import { ref } from "vue";
+import { onMounted, ref, defineExpose } from "vue";
 import { ProductModel } from "@/model/ProductModel";
+import { useUser } from "@/composables/useUser";
 
-@Options({
-  components: { PrimaryButton },
-  props: {},
-})
-export default class ProfileEditComponent extends Vue {
-  profileModelValue: UserModel = {
-    id: "",
-    forename: "",
-    surname: "",
-    address: "",
-    city: "",
-    rating: 4,
-    postalCode: undefined,
-  };
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  previewImage = ref<any>(require("@/assets/profile_blank.png"));
-  submit = (): void => {
-    console.log(this.profileModelValue);
-  };
-  pickFile(): void {
-    let input: any = this.$refs.fileInput;
-    let file = input.files;
-    if (file && file[0]) {
-      let reader = new FileReader();
-      reader.readAsDataURL(file[0]);
-      reader.onload = (e) => {
-        this.previewImage = e.target?.result;
-      };
-    }
+const { currentUser, createUser } = useUser();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const previewImage = ref<any>(require("@/assets/profile_blank.png"));
+const submit = (): void => {
+  createUser(currentUser.value);
+};
+const fileInput: any = ref(null);
+defineExpose({ fileInput });
+const pickFile = (): void => {
+  let file = fileInput.value.files;
+  if (file && file[0]) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file[0]);
+    reader.onload = (e) => {
+      previewImage.value = e.target?.result;
+    };
   }
-}
+};
+
+onMounted(() => {
+  console.log(currentUser);
+});
 </script>
