@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-max">
-    <ResultListItemView :productModel="productModel" />
+    <ProductListItemView :productModel="myAdvertModel.productModel" />
     <div class="flex flex-col">
       <SecondaryButton
         title="Beschreibung bearbeiten"
@@ -8,11 +8,14 @@
         @click="openModal"
       />
       <PopUp :is-open="isOpen" @close="closeModal">
-        <AdvertEditComponent :productModel="productModel" />
+        <AdvertEditComponent
+          :title="'Inserat bearbeiten'"
+          :productModel="myAdvertModel.productModel"
+        />
       </PopUp>
 
       <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-        <AvailableRentDatePickerComponent></AvailableRentDatePickerComponent>
+        <AvailableRentDatePickerComponent :product-model="myAdvertModel.productModel" :rentableDateRange="myAdvertModel.rentableDateRange"></AvailableRentDatePickerComponent>
       </PopUp>
 
       <SecondaryButton
@@ -22,7 +25,10 @@
       />
 
       <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
-        <RentRequestsComponent></RentRequestsComponent>
+        <RentRequestsComponent
+          :rentRequestModels="myAdvertModel.rentRequests"
+          :reload="emit('reload')"
+        ></RentRequestsComponent>
       </PopUp>
 
       <SecondaryButton
@@ -34,66 +40,46 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import ProductListItemView from "@/views/ProductListItemView.vue";
-import { ProductModel } from "@/model/ProductModel";
+<script lang="ts" setup>
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
-import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
 import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
 import PopUp from "@/uiElements/PopUp.vue";
 import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
+import { MyAdvertModel } from "@/model/MyAdvertModel";
+import {defineEmits, defineProps, ref} from "vue";
+import ProductListItemView from "@/views/ProductListItemView.vue";
 
-@Options({
-  components: {
-    AvailableRentDatePickerComponent,
-    RentRequestsComponent,
-    SecondaryButton,
-    ResultListItemView: ProductListItemView,
-    TransitionRoot,
-    TransitionChild,
-    Dialog,
-    DialogOverlay,
-    AdvertEditComponent,
-    PopUp,
+const emit = defineEmits(["reload"]);
+const props = defineProps({
+  myAdvertModel: {
+    type: Object as () => MyAdvertModel,
   },
-  props: {
-    productModel: Object,
-  },
-})
-export default class ContactDetailView extends Vue {
-  productModel!: ProductModel;
-  isOpen = false;
-  isDatePickerOpen = false;
-  isRentRequestsOpen = false;
+});
+const isOpen = ref(false);
+const isDatePickerOpen = ref(false);
+const isRentRequestsOpen = ref(false);
 
-  openModal(): void {
-    this.isOpen = true;
-  }
-  closeModal(): void {
-    this.isOpen = false;
-  }
+function openModal(): void {
+  isOpen.value = true;
+}
+function closeModal(): void {
+  isOpen.value = false;
+}
 
-  openDatePicker(): void {
-    this.isDatePickerOpen = true;
-  }
+function openDatePicker(): void {
+  isDatePickerOpen.value = true;
+}
 
-  closeDatePicker(): void {
-    this.isDatePickerOpen = false;
-  }
+function closeDatePicker(): void {
+  isDatePickerOpen.value = false;
+}
 
-  openRentRequests(): void {
-    this.isRentRequestsOpen = true;
-  }
+function openRentRequests(): void {
+  isRentRequestsOpen.value = true;
+}
 
-  closeRentRequests(): void {
-    this.isRentRequestsOpen = false;
-  }
+function closeRentRequests(): void {
+  isRentRequestsOpen.value = false;
 }
 </script>

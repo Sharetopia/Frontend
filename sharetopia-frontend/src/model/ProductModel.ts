@@ -3,7 +3,7 @@ import { DateRange } from "@/model/SearchModel";
 export type ProductModel = {
   id: string;
   price: number;
-  userId: string;
+  ownerOfProductUserId: string;
   title: string;
   description: string;
   tags: string[];
@@ -25,7 +25,7 @@ export type AddressModel = {
 
 export const dummyBike: ProductModel = {
   id: "4637453",
-  userId: "132412412",
+  ownerOfProductUserId: "132412412",
   price: 123.23,
   title: "Fahrrad",
   description: "Ich bin schön und sowas von",
@@ -56,7 +56,7 @@ export const dummyBike: ProductModel = {
 
 export const dummyCar: ProductModel = {
   id: "463744223",
-  userId: "132412412",
+  ownerOfProductUserId: "132412412",
   price: 12.23,
   title: "Auto",
   description: "Ich bin hässlich",

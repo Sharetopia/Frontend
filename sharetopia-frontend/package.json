@@ -51,6 +51,7 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.1.2",
+    "chai-deep-match": "^1.2.1",
     "chromedriver": "96",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",

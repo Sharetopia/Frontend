@@ -17,12 +17,16 @@ export function useNetwork() {
     };
     if (params && "GET" === type) {
       url += "?" + new URLSearchParams(params).toString();
-    } else if (params && "POST" === type) {
+    } else if ((params && "POST" === type) || (params && "PATCH" === type)) {
       options.body = JSON.stringify(params);
     }
 
+    console.log(`Bearer ${token.getJwtToken()}`);
+    console.log(options);
+
     return fetch(url, options).then((response) => {
       if (!response.ok) {
+        console.log(response.json());
         throw new Error(response.statusText);
       }
       return response.json();
