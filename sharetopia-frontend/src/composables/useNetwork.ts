@@ -17,7 +17,7 @@ export function useNetwork() {
     };
     if (params && "GET" === type) {
       url += "?" + new URLSearchParams(params).toString();
-    } else if (params && "POST" === type) {
+    } else if ((params && "POST" === type) || (params && "PATCH" === type)) {
       options.body = JSON.stringify(params);
     }
 

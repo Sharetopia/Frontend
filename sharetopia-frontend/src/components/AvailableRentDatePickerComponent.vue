@@ -12,26 +12,30 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { DatePicker } from "v-calendar";
 import { useDatePicker } from "@/composables/useDatePicker";
 import DatePickerComponent from "@/components/DatePickerComponent.vue";
+import {defineEmits, defineProps} from "vue";
+import { useMyAdverts } from "@/composables/useMyAdverts";
+import {DateRange} from "@/model/SearchModel";
 
-export default {
-  components: {
-    DatePickerComponent,
-    PrimaryButton,
+const props = defineProps({
+  rentableDateRange: {
+    type: Object as () => DateRange,
   },
-  setup() {
-    const { datePickerModel, selectedRange } = useDatePicker();
+  productId: String
+});
 
-    const submit = (): void => {
-      console.log(selectedRange.value);
-    };
-
-    return { datePickerModel, submit };
-  },
+const { datePickerModel, selectedRange } = useDatePicker();
+const {updateRentableDates} = useMyAdverts()
+const submit = (): void => {
+  if(props.productId && props.rentableDateRange && props.rentableDateRange.start && props.rentableDateRange.end)
+  updateRentableDates(props.productId, props.rentableDateRange.start, props.rentableDateRange.end)
 };
+
+
+
 </script>
