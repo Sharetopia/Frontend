@@ -4,6 +4,7 @@ import { ApiDateRange, ApiProductModel } from "@/model/ApiProductModel";
 import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
 import { ApiMyRentModel, MyRentModel } from "@/model/RentModel";
+import { ApiUserModel, UserModel } from "@/model/UserModel";
 
 class Factory {
   public static createSearchModel(
@@ -148,6 +149,20 @@ class Factory {
 
   public static createDateForApi(date: Date): string {
     return date.toISOString().split("T", 1)[0];
+  }
+
+  public static createUserModelFrom(apiUserModel: ApiUserModel): UserModel {
+    const userName = apiUserModel.name.split(" ");
+    return {
+      id: apiUserModel.id!,
+      forename: userName[0],
+      surname: userName[1],
+      address: "",
+      city: "",
+      postalCode: parseInt(apiUserModel.postalCode),
+      rating: 0,
+      profilePictureURL: apiUserModel.profilePictureURL,
+    };
   }
 }
 

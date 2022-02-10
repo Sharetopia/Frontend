@@ -18,22 +18,25 @@ export function useMyAdverts() {
     myAdverts.value = myAdvertsModel;
   };
 
-  const updateRentableDates = async (productId: string, startDate: Date, endDate: Date) => {
+  const updateRentableDates = async (
+    productId: string,
+    startDate: Date,
+    endDate: Date
+  ) => {
     const apiRentableDateRange = {
       rentableDateRange: {
         fromDate: Factory.createDateForApi(startDate),
-        toDate: Factory.createDateForApi(endDate)
-      }
-    }
-    console.log(apiRentableDateRange)
+        toDate: Factory.createDateForApi(endDate),
+      },
+    };
+    console.log(apiRentableDateRange);
     const result = await apiCall<void>(
-        `http://localhost:8080/api/v1/products/${productId}`,
-        "PATCH",
-        apiRentableDateRange
+      `http://localhost:8080/api/v1/products/${productId}`,
+      "PATCH",
+      apiRentableDateRange
     );
     console.log(result);
-
-  }
+  };
 
   onMounted(() => {
     loadMyAdverts();
