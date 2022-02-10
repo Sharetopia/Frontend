@@ -15,7 +15,7 @@
       </PopUp>
 
       <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-        <AvailableRentDatePickerComponent :productId="myAdvertModel.productModel.id" :rentableDateRange="myAdvertModel.rentableDateRange"></AvailableRentDatePickerComponent>
+        <AvailableRentDatePickerComponent :product-model="myAdvertModel.productModel" :rentableDateRange="myAdvertModel.rentableDateRange"></AvailableRentDatePickerComponent>
       </PopUp>
 
       <SecondaryButton

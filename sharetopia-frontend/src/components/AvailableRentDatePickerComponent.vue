@@ -18,23 +18,34 @@ import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { DatePicker } from "v-calendar";
 import { useDatePicker } from "@/composables/useDatePicker";
 import DatePickerComponent from "@/components/DatePickerComponent.vue";
-import {defineEmits, defineProps} from "vue";
+import {defineEmits, defineProps, onMounted} from "vue";
 import { useMyAdverts } from "@/composables/useMyAdverts";
 import {DateRange} from "@/model/SearchModel";
+import {ProductModel} from "@/model/ProductModel";
 
 const props = defineProps({
   rentableDateRange: {
     type: Object as () => DateRange,
   },
-  productId: String
+  productModel: {
+    type: Object as () => ProductModel
+  }
 });
 
-const { datePickerModel, selectedRange } = useDatePicker();
+const { datePickerModel, selectedRange, updateDatePickerModel } = useDatePicker();
 const {updateRentableDates} = useMyAdverts()
 const submit = (): void => {
-  if(props.productId && selectedRange.value.start && selectedRange.value.end)
-  updateRentableDates(props.productId, selectedRange.value.start as Date, selectedRange.value.end as Date)
+  if(props.productModel && selectedRange.value.start && selectedRange.value.end)
+  updateRentableDates(props.productModel.id, selectedRange.value.start as Date, selectedRange.value.end as Date)
 };
+
+onMounted(() => {
+  if(props.productModel)
+  {
+    updateDatePickerModel(props.productModel)
+    console.log("update Model")
+  }
+})
 
 
 
