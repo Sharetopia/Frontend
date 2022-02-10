@@ -23,7 +23,7 @@ export function useProduct(id: string | undefined) {
   };
 
   const uploadProduct = async (productModel: ProductModel) => {
-    console.log("Model", productModel)
+    console.log("Model", productModel);
     const apiModel = {
       title: productModel.title,
       description: productModel.description,
@@ -32,20 +32,20 @@ export function useProduct(id: string | undefined) {
       address: productModel.address,
       rentableDateRange: {
         fromDate: "2022-02-09",
-        toDate: "2022-02-09"
+        toDate: "2022-02-09",
       },
-      rents:[]
-    }
+      rents: [],
+    };
     const result = await apiCall<void>(
-        `http://localhost:8080/api/v1/products`,
-        "POST",
-        apiModel
+      `http://localhost:8080/api/v1/products`,
+      "POST",
+      apiModel
     );
 
-    console.log(result)
+    console.log(result);
   };
 
-  const createEmptyProductModel = ():ProductModel => {
+  const createEmptyProductModel = (): ProductModel => {
     return {
       id: "",
       price: 0,
@@ -60,8 +60,8 @@ export function useProduct(id: string | undefined) {
       },
       location: [],
       bookingDates: undefined,
-    }
-  }
+    };
+  };
 
   onMounted(() => {
     if (id) {

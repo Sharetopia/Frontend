@@ -1,7 +1,7 @@
 import { onMounted, ref } from "vue";
 import { useNetwork } from "@/composables/useNetwork";
 import { Factory } from "@/utils/factory";
-import {ApiMyAdvertModel, MyAdvertModel} from "@/model/MyAdvertModel";
+import { ApiMyAdvertModel, MyAdvertModel } from "@/model/MyAdvertModel";
 
 export function useMyAdverts() {
   const myAdverts = ref<MyAdvertModel[]>([]);
@@ -26,4 +26,3 @@ export function useMyAdverts() {
     loadMyAdverts,
   };
 }
-

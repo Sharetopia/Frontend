@@ -8,7 +8,6 @@
       <SecondaryButton
         title="Email schreiben"
         image-name="Mail.png"
-        @click="openModal"
         class="ml-2 mt-4"
       />
     </div>
@@ -30,7 +29,7 @@ import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
 import PopUp from "@/uiElements/PopUp.vue";
 import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
-import {RentRequestModel} from "@/model/RentModel";
+import { RentRequestModel } from "@/model/RentModel";
 
 @Options({
   components: {
@@ -52,32 +51,6 @@ import {RentRequestModel} from "@/model/RentModel";
 })
 export default class MyRentsListItemView extends Vue {
   productModel!: ProductModel;
-  rentRequestModel!: RentRequestModel
-  isOpen = false;
-  isDatePickerOpen = false;
-  isRentRequestsOpen = false;
-
-  openModal(): void {
-    this.isOpen = true;
-  }
-  closeModal(): void {
-    this.isOpen = false;
-  }
-
-  openDatePicker(): void {
-    this.isDatePickerOpen = true;
-  }
-
-  closeDatePicker(): void {
-    this.isDatePickerOpen = false;
-  }
-
-  openRentRequests(): void {
-    this.isRentRequestsOpen = true;
-  }
-
-  closeRentRequests(): void {
-    this.isRentRequestsOpen = false;
-  }
+  rentRequestModel!: RentRequestModel;
 }
 </script>

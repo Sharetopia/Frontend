@@ -1,5 +1,5 @@
 import { DateRange } from "@/model/SearchModel";
-import {ProductModel} from "@/model/ProductModel";
+import { ProductModel } from "@/model/ProductModel";
 
 export type RentModel = {
   rentUserId: string;
@@ -23,19 +23,19 @@ export type ApiCreateRentRequestModel = {
 };
 
 export type MyRentModel = {
-  rentRequest: RentRequestModel,
-  product: ProductModel,
-}
+  rentRequest: RentRequestModel;
+  product: ProductModel;
+};
 
 export type ApiMyRentModel = {
   rentRequest: {
-    id: string,
-    fromDate: string,
-    toDate: string,
-    requesterUserId: string,
-    rentRequestReceiverUserId: string,
-    requestedProductId: string,
-    status: string,
-  },
-  product: ProductModel
-}
+    id: string;
+    fromDate: string;
+    toDate: string;
+    requesterUserId: string;
+    rentRequestReceiverUserId: string;
+    requestedProductId: string;
+    status: string;
+  };
+  product: ProductModel;
+};

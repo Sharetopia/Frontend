@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import MyRentsListItemView from "@/views/MyRentsListItemView.vue";
-import {useMyRents} from "@/composables/useRents";
+import { useMyRents } from "@/composables/useRents";
 
-const {myRents, loadMyRents} = useMyRents()
+const { myRents, loadMyRents } = useMyRents();
 </script>

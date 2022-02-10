@@ -2,10 +2,8 @@ import { DateRange, SearchModel } from "@/model/SearchModel";
 import { LocationQuery } from "vue-router";
 import { ApiDateRange, ApiProductModel } from "@/model/ApiProductModel";
 import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
-import {
-  MyAdvertModel,
-} from "@/model/MyAdvertModel";
-import {ApiMyRentModel, MyRentModel} from "@/model/RentModel";
+import { MyAdvertModel } from "@/model/MyAdvertModel";
+import { ApiMyRentModel, MyRentModel } from "@/model/RentModel";
 
 class Factory {
   public static createSearchModel(
@@ -124,19 +122,21 @@ class Factory {
     };
   }
 
-  public static createMyRentModelFrom(apiMyRentModel: ApiMyRentModel): MyRentModel {
+  public static createMyRentModelFrom(
+    apiMyRentModel: ApiMyRentModel
+  ): MyRentModel {
     return {
       rentRequest: {
         id: apiMyRentModel.rentRequest.id,
         range: Factory.createDateRangeFrom(apiMyRentModel.rentRequest),
         requestUserId: apiMyRentModel.rentRequest.requesterUserId,
-        rentRequestReceiverUserId: apiMyRentModel.rentRequest.rentRequestReceiverUserId,
+        rentRequestReceiverUserId:
+          apiMyRentModel.rentRequest.rentRequestReceiverUserId,
         requestedProductId: apiMyRentModel.rentRequest.requestedProductId,
-        status: apiMyRentModel.rentRequest.status
+        status: apiMyRentModel.rentRequest.status,
       },
-      product: apiMyRentModel.product
-    }
-
+      product: apiMyRentModel.product,
+    };
   }
 
   public static createDateRangeFrom(apiDateRange: ApiDateRange): DateRange {

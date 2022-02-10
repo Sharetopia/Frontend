@@ -1,9 +1,13 @@
 import { expect } from "chai";
 import { Factory } from "@/utils/factory.ts";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
-import {ApiMyRentModel, MyRentModel, RentRequestModel} from "@/model/RentModel";
-import {AddressModel, BookingDatesModel} from "@/model/ProductModel";
-import {DateRange} from "@/model/SearchModel";
+import {
+  ApiMyRentModel,
+  MyRentModel,
+  RentRequestModel,
+} from "@/model/RentModel";
+import { AddressModel, BookingDatesModel } from "@/model/ProductModel";
+import { DateRange } from "@/model/SearchModel";
 
 describe("Factory.ts", () => {
   it("creates a Date string for api from JS Date object", () => {
@@ -18,14 +22,20 @@ describe("Factory.ts", () => {
     const apiModel = apiMyAdvertModel;
     const expectedOutput = expectedMyAdvertModel;
     const output = Factory.createMyAdvertModelFrom(apiModel);
-    expect(output).to.deep.equals(expectedOutput, "The my rent model is not correct");
+    expect(output).to.deep.equals(
+      expectedOutput,
+      "The my rent model is not correct"
+    );
   });
 
   it("creates MyRentModel from ApiMyRentModel object", () => {
-    const apiModel = apiMyRentModel
+    const apiModel = apiMyRentModel;
     const expectedOutput = expectedMyRentModel;
     const output = Factory.createMyRentModelFrom(apiModel);
-    expect(output).to.deep.equals(expectedOutput, "The my rent model is not correct");
+    expect(output).to.deep.equals(
+      expectedOutput,
+      "The my rent model is not correct"
+    );
   });
 });
 
@@ -40,12 +50,9 @@ const expectedMyRentModel: MyRentModel = {
     address: {
       street: "string",
       city: "string",
-      zip: "string"
+      zip: "string",
     },
-    location: [
-      9.43038,
-      48.923069
-    ],
+    location: [9.43038, 48.923069],
   },
   rentRequest: {
     id: "string",
@@ -57,39 +64,34 @@ const expectedMyRentModel: MyRentModel = {
     rentRequestReceiverUserId: "string",
     requestedProductId: "string",
     status: "string",
-  }
-}
+  },
+};
 
 const apiMyRentModel = {
-  "rentRequest": {
-    "id": "string",
-    "fromDate": "2022-02-09",
-    "toDate": "2022-02-09",
-    "requesterUserId": "string",
-    "rentRequestReceiverUserId": "string",
-    "requestedProductId": "string",
-    "status": "string"
+  rentRequest: {
+    id: "string",
+    fromDate: "2022-02-09",
+    toDate: "2022-02-09",
+    requesterUserId: "string",
+    rentRequestReceiverUserId: "string",
+    requestedProductId: "string",
+    status: "string",
   },
-  "product": {
-    "id": "string",
-    "ownerOfProductUserId": "string",
-    "title": "string",
-    "description": "string",
-    "tags": [
-      "string"
-    ],
-    "price": 0,
-    "address": {
-      "street": "string",
-      "city": "string",
-      "zip": "string"
+  product: {
+    id: "string",
+    ownerOfProductUserId: "string",
+    title: "string",
+    description: "string",
+    tags: ["string"],
+    price: 0,
+    address: {
+      street: "string",
+      city: "string",
+      zip: "string",
     },
-    "location": [
-      9.43038,
-      48.923069
-    ]
-  }
-}
+    location: [9.43038, 48.923069],
+  },
+};
 
 const apiMyAdvertModel = {
   id: "string",

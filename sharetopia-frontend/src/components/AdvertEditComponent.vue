@@ -82,7 +82,11 @@
     </div>
     <div class="flex justify-center">
       <div class="w-2/3 flex">
-        <PrimaryButton title="Speichern" class="flex-1" @click="$emit('save')" />
+        <PrimaryButton
+          title="Speichern"
+          class="flex-1"
+          @click="$emit('save')"
+        />
       </div>
     </div>
   </div>
@@ -103,7 +107,7 @@ export default defineComponent({
       type: Object as PropType<ProductModel>,
       required: true,
     },
-    title: String
+    title: String,
   },
   data() {
     let previewImage: any = null;

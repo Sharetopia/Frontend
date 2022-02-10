@@ -57,8 +57,7 @@ import { ApiRentRequest } from "@/model/ApiRentRequest";
 import { Auth } from "aws-amplify";
 import { Factory } from "@/utils/factory";
 import { useRoutes } from "@/composables/useRoutes";
-import {ApiCreateRentRequestModel} from "@/model/RentModel";
-
+import { ApiCreateRentRequestModel } from "@/model/RentModel";
 
 const route = useRoute();
 const router = useRouter();
