@@ -3,7 +3,7 @@
     <ResultListItemView :productModel="productModel" class="" />
     <div class="flex flex-col">
       <p class="text-amber-600 ml-6 mt-4" style="color: rgb(217 119 6)">
-        Deine Anfrage wurde noch nicht bestätigt.
+        {{ rentRequestModel.status }}
       </p>
       <SecondaryButton
         title="Email schreiben"
@@ -30,6 +30,7 @@ import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
 import PopUp from "@/uiElements/PopUp.vue";
 import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
 import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
+import {RentRequestModel} from "@/model/RentModel";
 
 @Options({
   components: {
@@ -46,10 +47,12 @@ import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePick
   },
   props: {
     productModel: Object,
+    rentRequestModel: Object,
   },
 })
-export default class ContactDetailView extends Vue {
+export default class MyRentsListItemView extends Vue {
   productModel!: ProductModel;
+  rentRequestModel!: RentRequestModel
   isOpen = false;
   isDatePickerOpen = false;
   isRentRequestsOpen = false;

@@ -9,7 +9,7 @@
           <ProductTextDetailView :product="product.valueOf()" />
           <div class="flex mt-8">
             <div class="w-max mr-6">
-              <ContactDetail :userId="product.valueOf().userId" />
+              <ContactDetail :userId="product.valueOf().ownerOfProductUserId" />
             </div>
             <div
               class="h-36 w-full"
@@ -57,6 +57,7 @@ import { ApiRentRequest } from "@/model/ApiRentRequest";
 import { Auth } from "aws-amplify";
 import { Factory } from "@/utils/factory";
 import { useRoutes } from "@/composables/useRoutes";
+import {ApiCreateRentRequestModel} from "@/model/RentModel";
 
 
 const route = useRoute();
@@ -76,18 +77,10 @@ watch(product, (newValue) => {
 });
 
 async function requestRent() {
-  const userInfo = await Auth.currentUserInfo();
   const startDate = datePickerModel.value.pickedRange.start as Date;
   const endDate = datePickerModel.value.pickedRange.end as Date;
   if (product.value && startDate && endDate) {
-    let requestModel: ApiRentRequest = {
-      fromDate: Factory.createDateForApi(startDate),
-      toDate: Factory.createDateForApi(endDate),
-      requesterUserId: userInfo.id,
-      rentRequestReceiverUserId: product.value.userId,
-      requestedProductId: product.value.id,
-    };
-    createRentRequest(requestModel);
+    createRentRequest(startDate, endDate, product.value.id);
     pushMyBookingsRoute();
   }
 }

@@ -1,6 +1,9 @@
 import { expect } from "chai";
 import { Factory } from "@/utils/factory.ts";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
+import {ApiMyRentModel, MyRentModel, RentRequestModel} from "@/model/RentModel";
+import {AddressModel, BookingDatesModel} from "@/model/ProductModel";
+import {DateRange} from "@/model/SearchModel";
 
 describe("Factory.ts", () => {
   it("creates a Date string for api from JS Date object", () => {
@@ -15,9 +18,78 @@ describe("Factory.ts", () => {
     const apiModel = apiMyAdvertModel;
     const expectedOutput = expectedMyAdvertModel;
     const output = Factory.createMyAdvertModelFrom(apiModel);
-    expect(output).to.deep.equals(expectedOutput, "test");
+    expect(output).to.deep.equals(expectedOutput, "The my rent model is not correct");
+  });
+
+  it("creates MyRentModel from ApiMyRentModel object", () => {
+    const apiModel = apiMyRentModel
+    const expectedOutput = expectedMyRentModel;
+    const output = Factory.createMyRentModelFrom(apiModel);
+    expect(output).to.deep.equals(expectedOutput, "The my rent model is not correct");
   });
 });
+
+const expectedMyRentModel: MyRentModel = {
+  product: {
+    id: "string",
+    price: 0,
+    ownerOfProductUserId: "string",
+    title: "string",
+    description: "string",
+    tags: ["string"],
+    address: {
+      street: "string",
+      city: "string",
+      zip: "string"
+    },
+    location: [
+      9.43038,
+      48.923069
+    ],
+  },
+  rentRequest: {
+    id: "string",
+    range: {
+      start: new Date(2022, 1, 9, 1, 0, 0, 0),
+      end: new Date(2022, 1, 9, 1, 0, 0, 0),
+    },
+    requestUserId: "string",
+    rentRequestReceiverUserId: "string",
+    requestedProductId: "string",
+    status: "string",
+  }
+}
+
+const apiMyRentModel = {
+  "rentRequest": {
+    "id": "string",
+    "fromDate": "2022-02-09",
+    "toDate": "2022-02-09",
+    "requesterUserId": "string",
+    "rentRequestReceiverUserId": "string",
+    "requestedProductId": "string",
+    "status": "string"
+  },
+  "product": {
+    "id": "string",
+    "ownerOfProductUserId": "string",
+    "title": "string",
+    "description": "string",
+    "tags": [
+      "string"
+    ],
+    "price": 0,
+    "address": {
+      "street": "string",
+      "city": "string",
+      "zip": "string"
+    },
+    "location": [
+      9.43038,
+      48.923069
+    ]
+  }
+}
 
 const apiMyAdvertModel = {
   id: "string",
@@ -65,7 +137,7 @@ const expectedMyAdvertModel: MyAdvertModel = {
     description: apiMyAdvertModel.description,
     id: apiMyAdvertModel.id,
     location: apiMyAdvertModel.location,
-    userId: apiMyAdvertModel.ownerOfProductUserId,
+    ownerOfProductUserId: apiMyAdvertModel.ownerOfProductUserId,
     price: apiMyAdvertModel.price,
     tags: apiMyAdvertModel.tags,
     title: apiMyAdvertModel.title,

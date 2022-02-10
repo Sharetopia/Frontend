@@ -5,6 +5,7 @@ import { BookingDatesModel, ProductModel } from "@/model/ProductModel";
 import {
   MyAdvertModel,
 } from "@/model/MyAdvertModel";
+import {ApiMyRentModel, MyRentModel} from "@/model/RentModel";
 
 class Factory {
   public static createSearchModel(
@@ -59,7 +60,7 @@ class Factory {
       price: 12.99,
       tags: apiModel.tags,
       title: apiModel.title,
-      userId: apiModel.ownerOfProductUserId,
+      ownerOfProductUserId: apiModel.ownerOfProductUserId,
     };
   }
 
@@ -71,6 +72,7 @@ class Factory {
     location: number[];
     id: string;
     title: string;
+    tags: string[];
     rents: {
       renterUserId: string;
       rentDuration: { fromDate: string; toDate: string };
@@ -86,12 +88,11 @@ class Factory {
       id: string;
       status: string;
     }[];
-    tags: string[];
   }): MyAdvertModel {
     return {
       productModel: {
         id: apiMyAdvertModel.id,
-        userId: apiMyAdvertModel.ownerOfProductUserId,
+        ownerOfProductUserId: apiMyAdvertModel.ownerOfProductUserId,
         title: apiMyAdvertModel.title,
         description: apiMyAdvertModel.description,
         tags: apiMyAdvertModel.tags,
@@ -121,6 +122,21 @@ class Factory {
         };
       }),
     };
+  }
+
+  public static createMyRentModelFrom(apiMyRentModel: ApiMyRentModel): MyRentModel {
+    return {
+      rentRequest: {
+        id: apiMyRentModel.rentRequest.id,
+        range: Factory.createDateRangeFrom(apiMyRentModel.rentRequest),
+        requestUserId: apiMyRentModel.rentRequest.requesterUserId,
+        rentRequestReceiverUserId: apiMyRentModel.rentRequest.rentRequestReceiverUserId,
+        requestedProductId: apiMyRentModel.rentRequest.requestedProductId,
+        status: apiMyRentModel.rentRequest.status
+      },
+      product: apiMyRentModel.product
+    }
+
   }
 
   public static createDateRangeFrom(apiDateRange: ApiDateRange): DateRange {

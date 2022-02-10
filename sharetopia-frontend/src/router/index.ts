@@ -5,7 +5,7 @@ import AuthenticationScreen from "../screens/AuthenticationScreen.vue";
 import SearchResultComponent from "../components/SearchResultComponent.vue";
 import LoginComponent from "@/components/LoginComponent.vue";
 import HomeComponent from "@/components/HomeComponent.vue";
-import MyBookingsComponent from "@/components/MyBookingsComponent.vue";
+import MyRentsComponent from "@/components/MyRentsComponent.vue";
 import MyAdvertsComponent from "@/components/MyAdvertsComponent.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: "bookings",
-        component: MyBookingsComponent,
+        component: MyRentsComponent,
       },
       {
         path: "adverts",

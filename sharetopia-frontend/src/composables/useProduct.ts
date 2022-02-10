@@ -49,7 +49,7 @@ export function useProduct(id: string | undefined) {
     return {
       id: "",
       price: 0,
-      userId: "",
+      ownerOfProductUserId: "",
       title: "",
       description: "",
       tags: [],
@@ -98,6 +98,7 @@ export function useProducts() {
   onMounted(() => {
     loadProducts();
   });
+
   return {
     products,
     loadProducts,
@@ -129,7 +130,7 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
         price: 12.99,
         tags: ["Fahrrad", "Mobilität"],
         title: "Fahrrad",
-        userId: "",
+        ownerOfProductUserId: "",
       },
     ];
     if (dummyData) {
