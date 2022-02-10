@@ -116,57 +116,47 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Auth } from "aws-amplify";
 import PopUp from "@/uiElements/PopUp.vue";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 import { useRoutes } from "@/composables/useRoutes";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-@Options({
-  props: {},
-  components: {
-    PopUp,
-    ProfileEditComponent,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-  },
-})
-export default class MenuComponent extends Vue {
-  showProfile = false;
-  async logout(): Promise<void> {
-    console.log("wir sind hier");
-    const { pushLoginRoute } = useRoutes(this.$router);
+const showProfile = ref(false);
+const router = useRouter();
+const logout = async (): Promise<void> => {
+  console.log("wir sind hier");
+  const { pushLoginRoute } = useRoutes(router);
 
-    await Auth.signOut().then(
-      (success) => {
-        pushLoginRoute();
-      },
-      (failure) => {
-        pushLoginRoute();
+  await Auth.signOut().then(
+    (success) => {
+      pushLoginRoute();
+    },
+    (failure) => {
+      pushLoginRoute();
 
-        //TODO: What do we do then?
-      }
-    );
-  }
+      //TODO: What do we do then?
+    }
+  );
+}
 
-  pushMyBookings(): void {
-    useRoutes(this.$router).pushMyBookingsRoute();
-  }
+const pushMyBookings = (): void => {
+  useRoutes(router).pushMyBookingsRoute();
+}
 
-  pushMyAdverts(): void {
-    useRoutes(this.$router).pushMyAdvertsRoute();
-  }
+const pushMyAdverts = (): void => {
+  useRoutes(router).pushMyAdvertsRoute();
+}
 
-  showMyProfile(): void {
-    this.showProfile = true;
-  }
+const showMyProfile = (): void => {
+  showProfile.value = true;
+}
 
-  hideMyProfile(): void {
-    this.showProfile = false;
-  }
+const hideMyProfile = (): void => {
+  showProfile.value = false;
 }
 </script>

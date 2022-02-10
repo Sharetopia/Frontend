@@ -47,7 +47,6 @@ const submit = (): void => {
       selectedRange.value.end as Date
     );
 };
-
 onMounted(() => {
   if (props.productModel) {
     updateDatePickerModel(props.productModel);

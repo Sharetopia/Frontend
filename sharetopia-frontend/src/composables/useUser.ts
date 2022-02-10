@@ -7,7 +7,7 @@ export function useUser() {
   const currentUser = ref<UserModel>(Object());
   const { apiCall } = useNetwork();
   const getCurrentUser = async () => {
-    const result: ApiUserModel = await apiCall<ApiUserModel>(
+    const result: UserModel = await apiCall<UserModel>(
       `http://localhost:8080/api/v1/user`,
       "GET"
     ).then(
@@ -16,29 +16,24 @@ export function useUser() {
       },
       (error) => {
         return {
-          profilePictureURL: "",
-          name: "",
+          forename: "",
+          surname: "",
+          address: "",
+          city: "",
           postalCode: "",
+          rating: "",
+          profilePictureURL: "",
         };
       }
     );
-    currentUser.value = Factory.createUserModelFrom(result);
+    currentUser.value = result;
   };
 
-  const createUser = async (
-    name: string,
-    profilePictureURL: string,
-    postalCode: string
-  ) => {
-    const ApiUserModel: ApiUserModel = {
-      profilePictureURL: profilePictureURL,
-      name: name,
-      postalCode: postalCode,
-    };
+  const createUser = async (model: UserModel) => {
     const result = await apiCall<void>(
       `http://localhost:8080/api/v1/user`,
       "POST",
-      ApiUserModel
+      model
     );
   };
 

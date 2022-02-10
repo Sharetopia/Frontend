@@ -1,5 +1,5 @@
 export type UserModel = {
-  id: string;
+  id?: string;
   forename: string;
   surname: string;
   address: string;
@@ -7,11 +7,4 @@ export type UserModel = {
   postalCode?: number;
   rating: number;
   profilePictureURL?: string;
-};
-
-export type ApiUserModel = {
-  id?: string;
-  profilePictureURL: string;
-  name: string;
-  postalCode: string;
 };
