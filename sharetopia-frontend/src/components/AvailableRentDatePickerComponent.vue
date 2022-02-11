@@ -13,12 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import { DatePicker } from "v-calendar";
 import { useDatePicker } from "@/composables/useDatePicker";
 import DatePickerComponent from "@/components/DatePickerComponent.vue";
-import { defineEmits, defineProps, onMounted } from "vue";
+import { defineProps, onMounted } from "vue";
 import { useMyAdverts } from "@/composables/useMyAdverts";
 import { DateRange } from "@/model/SearchModel";
 import { ProductModel } from "@/model/ProductModel";

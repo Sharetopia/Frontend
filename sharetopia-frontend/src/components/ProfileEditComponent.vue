@@ -67,11 +67,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Options, Vue } from "vue-class-component";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
-import { UserModel } from "@/model/UserModel";
-import { onMounted, ref, defineExpose } from "vue";
-import { ProductModel } from "@/model/ProductModel";
+import { ref, defineExpose } from "vue";
 import { useUser } from "@/composables/useUser";
 
 const { currentUser, createUser } = useUser();
@@ -93,7 +90,4 @@ const pickFile = (): void => {
   }
 };
 
-onMounted(() => {
-  console.log(currentUser);
-});
 </script>

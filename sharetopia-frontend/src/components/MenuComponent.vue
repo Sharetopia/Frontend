@@ -117,7 +117,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Options, Vue } from "vue-class-component";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { Auth } from "aws-amplify";
 import PopUp from "@/uiElements/PopUp.vue";
@@ -129,17 +128,13 @@ import { useRouter } from "vue-router";
 const showProfile = ref(false);
 const router = useRouter();
 const logout = async (): Promise<void> => {
-  console.log("wir sind hier");
   const { pushLoginRoute } = useRoutes(router);
-
   await Auth.signOut().then(
     (success) => {
       pushLoginRoute();
     },
     (failure) => {
       pushLoginRoute();
-
-      //TODO: What do we do then?
     }
   );
 }
