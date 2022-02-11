@@ -1,9 +1,12 @@
 <template>
-  <div class="flex w-max">
-    <ResultListItemView :productModel="productModel" class="" />
-    <div class="flex flex-col">
-      <p class="text-amber-600 ml-6 mt-4" style="color: rgb(217 119 6)">
-        {{ rentRequestModel.status }}
+  <div class="flex w-full gap-y-10">
+    <ProductListItemView :productModel="productModel" class="w-9/12" />
+    <div class="flex flex-col gap-x-5 w-3/12 ml-2">
+      <p
+        class="text-amber-600 ml-6 mt-4"
+        :style="{ color: colorForStatus(rentRequestModel.status) }"
+      >
+        {{ textForStatus(rentRequestModel.status, rentRequestModel.range) }}
       </p>
       <SecondaryButton
         title="Email schreiben"
@@ -14,43 +17,53 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
+<script lang="ts" setup>
 import ProductListItemView from "@/views/ProductListItemView.vue";
 import { ProductModel } from "@/model/ProductModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
-import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
-import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
-import PopUp from "@/uiElements/PopUp.vue";
-import RentRequestsComponent from "@/components/RentRequestsComponent.vue";
-import AvailableRentDatePickerComponent from "@/components/AvailableRentDatePickerComponent.vue";
 import { RentRequestModel } from "@/model/RentModel";
+import { DateRange } from "@/model/SearchModel";
+import { defineProps } from "vue";
+import { Factory } from "@/utils/factory";
 
-@Options({
-  components: {
-    AvailableRentDatePickerComponent,
-    RentRequestsComponent,
-    SecondaryButton,
-    ResultListItemView: ProductListItemView,
-    TransitionRoot,
-    TransitionChild,
-    Dialog,
-    DialogOverlay,
-    AdvertEditComponent,
-    PopUp,
+const props = defineProps({
+  productModel: {
+    type: Object as () => ProductModel,
   },
-  props: {
-    productModel: Object,
-    rentRequestModel: Object,
+  rentRequestModel: {
+    type: Object as () => RentRequestModel,
   },
-})
-export default class MyRentsListItemView extends Vue {
-  productModel!: ProductModel;
-  rentRequestModel!: RentRequestModel;
+});
+
+function textForStatus(status: string, dateRange: DateRange): string {
+  let text =
+    "Deine Miete vom " +
+    Factory.createReadableDateStringFrom(dateRange.start as Date) +
+    " bis zum " +
+    Factory.createReadableDateStringFrom(dateRange.end as Date);
+  switch (status) {
+    case "accepted":
+      return text + " wurde bestätigt.";
+    case "open":
+      return text + " ist offen.";
+    case "rejected":
+      return text + " wurde abgelehnt.";
+    default:
+      return "";
+  }
+}
+
+function colorForStatus(status: string): string {
+  console.log("es wird aufgerufen");
+  switch (status) {
+    case "accepted":
+      return "rgb(4 120 87)";
+    case "open":
+      return "rgb(251 146 60)";
+    case "rejected":
+      return "rgb(190 24 93)";
+    default:
+      return "";
+  }
 }
 </script>

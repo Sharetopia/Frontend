@@ -137,21 +137,21 @@ const logout = async (): Promise<void> => {
       pushLoginRoute();
     }
   );
-}
+};
 
 const pushMyBookings = (): void => {
   useRoutes(router).pushMyBookingsRoute();
-}
+};
 
 const pushMyAdverts = (): void => {
   useRoutes(router).pushMyAdvertsRoute();
-}
+};
 
 const showMyProfile = (): void => {
   showProfile.value = true;
-}
+};
 
 const hideMyProfile = (): void => {
   showProfile.value = false;
-}
+};
 </script>

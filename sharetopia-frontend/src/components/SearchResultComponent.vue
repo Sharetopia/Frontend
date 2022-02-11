@@ -25,15 +25,13 @@
 </template>
 
 <script lang="ts" setup>
-
 import { useRouteQueries } from "@/composables/useRouteQueries";
 import { useRoutes } from "@/composables/useRoutes";
 import { useRoute, useRouter } from "vue-router";
 import { useProductSearch } from "@/composables/useProduct";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { watch } from "vue";
-import {ProductModel} from "@/model/ProductModel";
-
+import { ProductModel } from "@/model/ProductModel";
 
 const route = useRoute();
 const router = useRouter();
@@ -47,5 +45,4 @@ watch(products, (newValue) => {
   const products = newValue as ProductModel[];
   createLocationPins(products);
 });
-
 </script>

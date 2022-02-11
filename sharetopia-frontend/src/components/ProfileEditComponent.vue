@@ -89,5 +89,4 @@ const pickFile = (): void => {
     };
   }
 };
-
 </script>

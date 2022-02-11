@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import ProductTextDetailView from "@/views/ProductTextDetailView.vue"; // @ is an alias to /src
 import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
-import ContactDetail from "@/views/ContactDetailView.vue";
+import ContactDetail from "@/components/ContactDetailView.vue";
 import PhotoGalleryView from "@/views/PhotoGalleryView.vue";
 import DatePickerComponent from "@/components/DatePickerComponent.vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
@@ -53,11 +53,7 @@ import { useLocationPins } from "@/composables/useLocationPins";
 import { useDatePicker } from "@/composables/useDatePicker";
 import { useProduct } from "@/composables/useProduct";
 import { useRentRequest } from "@/composables/useRents";
-import { ApiRentRequest } from "@/model/ApiRentRequest";
-import { Auth } from "aws-amplify";
-import { Factory } from "@/utils/factory";
 import { useRoutes } from "@/composables/useRoutes";
-import { ApiCreateRentRequestModel } from "@/model/RentModel";
 
 const route = useRoute();
 const router = useRouter();
