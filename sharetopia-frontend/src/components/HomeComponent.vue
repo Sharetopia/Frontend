@@ -20,5 +20,4 @@ import { useRoutes } from "@/composables/useRoutes";
 const router = useRouter();
 const { products } = useProducts();
 const { pushProductDetail } = useRoutes(router);
-
 </script>

@@ -23,5 +23,4 @@ const props = defineProps({
     type: Object as () => DatePickerModel,
   },
 });
-
 </script>

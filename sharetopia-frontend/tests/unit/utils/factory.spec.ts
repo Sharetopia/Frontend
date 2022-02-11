@@ -3,7 +3,6 @@ import { Factory } from "@/utils/factory.ts";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
 import { MyRentModel } from "@/model/RentModel";
 
-
 describe("Factory.ts", () => {
   it("should create a Date string for api from JS Date object", () => {
     // The month is created by index so 0 is january and 10 is november.

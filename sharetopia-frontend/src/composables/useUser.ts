@@ -54,27 +54,27 @@ export function useUserById() {
 
   const getUserById = async (id: string) => {
     const result: UserModel = await apiCall<UserModel>(
-        `http://localhost:8080/api/v1/user/id?=${id}`,
-        "GET"
+      `http://localhost:8080/api/v1/user/id?=${id}`,
+      "GET"
     ).then(
-        (result) => {
-          console.log(result)
-          return result;
-        },
-        (error) => {
-          return {
-            forename: "",
-            surname: "",
-            address: "",
-            city: "",
-            postalCode: "",
-            rating: "",
-            profilePictureURL: "",
-          };
-        }
+      (result) => {
+        console.log(result);
+        return result;
+      },
+      (error) => {
+        return {
+          forename: "",
+          surname: "",
+          address: "",
+          city: "",
+          postalCode: "",
+          rating: "",
+          profilePictureURL: "",
+        };
+      }
     );
     user.value = result;
-  }
+  };
 
   return {
     user,

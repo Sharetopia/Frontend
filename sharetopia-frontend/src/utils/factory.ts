@@ -126,10 +126,11 @@ class Factory {
   public static createMyRentModelFrom(
     apiMyRentModel: ApiMyRentModel
   ): MyRentModel {
+    const dateRange = Factory.createDateRangeFrom(apiMyRentModel.rentRequest);
     return {
       rentRequest: {
         id: apiMyRentModel.rentRequest.id,
-        range: Factory.createDateRangeFrom(apiMyRentModel.rentRequest),
+        range: dateRange,
         requestUserId: apiMyRentModel.rentRequest.requesterUserId,
         rentRequestReceiverUserId:
           apiMyRentModel.rentRequest.rentRequestReceiverUserId,
@@ -145,6 +146,10 @@ class Factory {
       start: new Date(apiDateRange.fromDate),
       end: new Date(apiDateRange.toDate),
     };
+  }
+
+  public static createReadableDateStringFrom(date: Date): string {
+    return (date.getDay() + 1) + "." + (date.getMonth() + 1) + "." + date.getFullYear()
   }
 
   public static createDateForApi(date: Date): string {

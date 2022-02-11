@@ -18,23 +18,25 @@
 
 <script lang="ts" setup>
 import StarRating from "../views/StarRatingView.vue";
-import {defineProps, onMounted, watch} from "vue";
-import {useUserById} from "@/composables/useUser";
+import { defineProps, onMounted, watch } from "vue";
+import { useUserById } from "@/composables/useUser";
 
 const props = defineProps({
   userId: String,
   hideAddress: Boolean,
-})
+});
 
-const { user, getUserById} = useUserById()
+const { user, getUserById } = useUserById();
 
-watch(() => props.userId, () => {
-  console.log(props.userId)
-  if(props.userId) {
-    console.log((props.userId))
-    getUserById(props.userId)
-    console.log(user)
+watch(
+  () => props.userId,
+  () => {
+    console.log(props.userId);
+    if (props.userId) {
+      console.log(props.userId);
+      getUserById(props.userId);
+      console.log(user);
+    }
   }
-})
-
+);
 </script>

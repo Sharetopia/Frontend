@@ -122,7 +122,7 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
       "GET",
       apiSearchModel
     );
-    console.log("searched with model", apiSearchModel)
+    console.log("searched with model", apiSearchModel);
 
     searchIsEmpty = result.empty;
     if (!searchIsEmpty) {
@@ -135,7 +135,7 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
   onMounted(() => {
     if (searchModel) {
       loadProducts(searchModel);
-      console.log("search")
+      console.log("search");
     }
   });
   return {

@@ -55,7 +55,6 @@ import { useProduct } from "@/composables/useProduct";
 import { useRentRequest } from "@/composables/useRents";
 import { useRoutes } from "@/composables/useRoutes";
 
-
 const route = useRoute();
 const router = useRouter();
 const { productId } = useRouteQueries(route.query);
