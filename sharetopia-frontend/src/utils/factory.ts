@@ -149,7 +149,9 @@ class Factory {
   }
 
   public static createReadableDateStringFrom(date: Date): string {
-    return (date.getDay() + 1) + "." + (date.getMonth() + 1) + "." + date.getFullYear()
+    return (
+      date.getDay() + 1 + "." + (date.getMonth() + 1) + "." + date.getFullYear()
+    );
   }
 
   public static createDateForApi(date: Date): string {

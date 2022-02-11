@@ -2,8 +2,11 @@
   <div class="flex w-full gap-y-10">
     <ProductListItemView :productModel="productModel" class="w-9/12" />
     <div class="flex flex-col gap-x-5 w-3/12 ml-2">
-      <p class="text-amber-600 ml-6 mt-4" :style="{'color': colorForStatus(rentRequestModel.status)}">
-        {{ textForStatus(rentRequestModel.status, rentRequestModel.range )}}
+      <p
+        class="text-amber-600 ml-6 mt-4"
+        :style="{ color: colorForStatus(rentRequestModel.status) }"
+      >
+        {{ textForStatus(rentRequestModel.status, rentRequestModel.range) }}
       </p>
       <SecondaryButton
         title="Email schreiben"
@@ -21,7 +24,7 @@ import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import { RentRequestModel } from "@/model/RentModel";
 import { DateRange } from "@/model/SearchModel";
 import { defineProps } from "vue";
-import {Factory} from "@/utils/factory";
+import { Factory } from "@/utils/factory";
 
 const props = defineProps({
   productModel: {
@@ -33,10 +36,11 @@ const props = defineProps({
 });
 
 function textForStatus(status: string, dateRange: DateRange): string {
-  let text = "Deine Miete vom " +
+  let text =
+    "Deine Miete vom " +
     Factory.createReadableDateStringFrom(dateRange.start as Date) +
     " bis zum " +
-      Factory.createReadableDateStringFrom(dateRange.end as Date);
+    Factory.createReadableDateStringFrom(dateRange.end as Date);
   switch (status) {
     case "accepted":
       return text + " wurde bestätigt.";
@@ -50,7 +54,7 @@ function textForStatus(status: string, dateRange: DateRange): string {
 }
 
 function colorForStatus(status: string): string {
-  console.log("es wird aufgerufen")
+  console.log("es wird aufgerufen");
   switch (status) {
     case "accepted":
       return "rgb(4 120 87)";
