@@ -114,33 +114,17 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
       term: search.query,
       distance: search.radius,
       cityIdentifier: search.postalCode,
-      startDate: search.timeRange.start,
-      endDate: search.timeRange.end,
+      startDate: Factory.createDateForApi(search.timeRange.start as Date),
+      endDate: Factory.createDateForApi(search.timeRange.end as Date),
     };
-    products.value = [
-      {
-        address: {
-          street: "Ludwigsburger Straße 11",
-          city: "Backnang",
-          zip: "71522",
-        },
-        description: "Mein tolles neues Fahrrad hat Bremse, Hupe und Licht.",
-        id: "61dacfe64a3a9f5a282de76b",
-        location: [48.923069, 9.43038],
-        price: 12.99,
-        tags: ["Fahrrad", "Mobilität"],
-        title: "Fahrrad",
-        ownerOfProductUserId: "",
-      },
-    ];
-    if (dummyData) {
-      products.value = [dummyBike, dummyBike, dummyBike, dummyCar];
-    }
+
     const result: ApiSearchResultModel = await apiCall<ApiSearchResultModel>(
       `http://localhost:8080/api/v1/products/findNearCity`,
       "GET",
       apiSearchModel
     );
+    console.log("searched with model", apiSearchModel)
+
     searchIsEmpty = result.empty;
     if (!searchIsEmpty) {
       const productModels = result.content.map((apiModel) =>
@@ -152,6 +136,7 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
   onMounted(() => {
     if (searchModel) {
       loadProducts(searchModel);
+      console.log("search")
     }
   });
   return {

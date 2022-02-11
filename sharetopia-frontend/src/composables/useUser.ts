@@ -1,7 +1,7 @@
 import { onMounted, ref } from "vue";
 import { useNetwork } from "@/composables/useNetwork";
 import { Factory } from "@/utils/factory";
-import { ApiUserModel, UserModel } from "@/model/UserModel";
+import { UserModel } from "@/model/UserModel";
 
 export function useUser() {
   const currentUser = ref<UserModel>(Object());
