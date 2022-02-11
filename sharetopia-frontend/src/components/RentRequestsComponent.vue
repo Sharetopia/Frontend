@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import ContactDetailView from "@/views/ContactDetailView.vue";
+import ContactDetailView from "@/components/ContactDetailView.vue";
 import { RentRequestModel } from "@/model/RentModel";
 import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import { useRentRequest } from "@/composables/useRents";

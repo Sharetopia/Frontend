@@ -23,7 +23,6 @@ export function useProduct(id: string | undefined) {
   };
 
   const uploadProduct = async (productModel: ProductModel) => {
-    console.log("Model", productModel);
     const apiModel = {
       title: productModel.title,
       description: productModel.description,

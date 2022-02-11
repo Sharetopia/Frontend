@@ -47,3 +47,37 @@ export function useUser() {
     createUser,
   };
 }
+
+export function useUserById() {
+  const user = ref<UserModel>(Object());
+  const { apiCall } = useNetwork();
+
+  const getUserById = async (id: string) => {
+    const result: UserModel = await apiCall<UserModel>(
+        `http://localhost:8080/api/v1/user/id?=${id}`,
+        "GET"
+    ).then(
+        (result) => {
+          console.log(result)
+          return result;
+        },
+        (error) => {
+          return {
+            forename: "",
+            surname: "",
+            address: "",
+            city: "",
+            postalCode: "",
+            rating: "",
+            profilePictureURL: "",
+          };
+        }
+    );
+    user.value = result;
+  }
+
+  return {
+    user,
+    getUserById,
+  };
+}
