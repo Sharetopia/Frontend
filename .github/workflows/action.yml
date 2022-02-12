@@ -24,9 +24,9 @@ jobs:
     - name: Install all packages
       working-directory: ./sharetopia-frontend
       run: npm ci
-    - name: Run tests
+    - name: Run unit tests
       working-directory: ./sharetopia-frontend
-      run: npm run test
+      run: npm run test:unit
 
 
   build:
