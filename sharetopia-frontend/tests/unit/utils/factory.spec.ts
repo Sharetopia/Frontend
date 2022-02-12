@@ -51,8 +51,8 @@ const expectedMyRentModel: MyRentModel = {
   rentRequest: {
     id: "string",
     range: {
-      start: new Date(2022, 1, 9, 1, 0, 0, 0),
-      end: new Date(2022, 1, 9, 1, 0, 0, 0),
+      start: new Date(2022, 1, 9, 2, 0, 0, 0),
+      end: new Date(2022, 1, 9, 2, 0, 0, 0),
     },
     requestUserId: "string",
     rentRequestReceiverUserId: "string",
@@ -142,8 +142,8 @@ const expectedMyAdvertModel: MyAdvertModel = {
     {
       id: apiMyAdvertModel.rentRequests[0].id,
       range: {
-        start: new Date(2022, 1, 9, 1, 0, 0, 0),
-        end: new Date(2022, 1, 9, 1, 0, 0, 0),
+        start: new Date(2022, 1, 9, 2, 0, 0, 0),
+        end: new Date(2022, 1, 9, 2, 0, 0, 0),
       },
       requestUserId: apiMyAdvertModel.rentRequests[0].requesterUserId,
       rentRequestReceiverUserId:
@@ -153,15 +153,15 @@ const expectedMyAdvertModel: MyAdvertModel = {
     },
   ],
   rentableDateRange: {
-    start: new Date(2022, 1, 9, 1, 0, 0, 0),
-    end: new Date(2022, 1, 9, 1, 0, 0, 0),
+    start: new Date(2022, 1, 9, 2, 0, 0, 0),
+    end: new Date(2022, 1, 9, 2, 0, 0, 0),
   },
   rents: [
     {
       rentUserId: apiMyAdvertModel.rents[0].renterUserId,
       rentDuration: {
-        start: new Date(2022, 1, 9, 1, 0, 0, 0),
-        end: new Date(2022, 1, 9, 1, 0, 0, 0),
+        start: new Date(2022, 1, 9, 2, 0, 0, 0),
+        end: new Date(2022, 1, 9, 2, 0, 0, 0),
       },
       rentId: apiMyAdvertModel.rents[0].rentId,
     },
