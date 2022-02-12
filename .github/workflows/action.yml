@@ -21,9 +21,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd sharetopia-frontend
-    - run: npm ci
-    - run: npm run test
+    - name: Install all packages
+      working-directory: ./sharetopia-frontend
+      run: npm ci
+    - name: Run tests
+      working-directory: ./sharetopia-frontend
+      run: npm run test
 
 
   build:
@@ -34,4 +37,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: cd sharetopia-frontend && docker build . --file Dockerfile --tag sharetopia-frontend-container
+      working-directory: ./sharetopia-frontend
+      run: docker build . --file Dockerfile --tag sharetopia-frontend-container
