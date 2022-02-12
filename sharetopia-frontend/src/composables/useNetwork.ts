@@ -2,10 +2,11 @@ import { Auth } from "aws-amplify";
 
 export function useNetwork() {
   const apiCall = async <T extends unknown>(
-    url: string,
+    urlPath: string,
     type: string,
     params?: any
   ) => {
+    let url = process.env.VUE_APP_API_BASE_URL + urlPath
     const token = (await Auth.currentSession()).getAccessToken();
     const options: RequestInit = {
       method: type,

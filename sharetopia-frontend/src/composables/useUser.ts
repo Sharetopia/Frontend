@@ -8,7 +8,7 @@ export function useUser() {
   const { apiCall } = useNetwork();
   const getCurrentUser = async () => {
     const result: UserModel = await apiCall<UserModel>(
-      `http://localhost:8080/api/v1/user`,
+      `user`,
       "GET"
     ).then(
       (result) => {
@@ -31,7 +31,7 @@ export function useUser() {
 
   const createUser = async (model: UserModel) => {
     const result = await apiCall<void>(
-      `http://localhost:8080/api/v1/user`,
+      `user`,
       "POST",
       model
     );
@@ -54,7 +54,7 @@ export function useUserById() {
 
   const getUserById = async (id: string) => {
     const result: UserModel = await apiCall<UserModel>(
-      `http://localhost:8080/api/v1/user/id?=${id}`,
+      `user/id?=${id}`,
       "GET"
     ).then(
       (result) => {
