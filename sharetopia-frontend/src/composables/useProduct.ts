@@ -16,7 +16,7 @@ export function useProduct(id: string | undefined) {
       product.value = dummyBike;
     }
     const result: ApiProductModel = await apiCall<ApiProductModel>(
-      `http://localhost:8080/api/v1/products/${id}`,
+      `products/${id}`,
       "GET"
     );
     product.value = Factory.createProductModelFromServer(result);
@@ -36,7 +36,7 @@ export function useProduct(id: string | undefined) {
       rents: [],
     };
     const result = await apiCall<void>(
-      `http://localhost:8080/api/v1/products`,
+      `products`,
       "POST",
       apiModel
     );
@@ -84,7 +84,7 @@ export function useProducts() {
       products.value = [dummyBike, dummyCar, dummyBike];
     }
     const result: ApiProductModel[] = await apiCall<ApiProductModel[]>(
-      `http://localhost:8080/api/v1/products`,
+      `products`,
       "GET"
     );
     const productModels = result.map((apiModel) =>
@@ -118,7 +118,7 @@ export function useProductSearch(searchModel: SearchModel | undefined) {
     };
 
     const result: ApiSearchResultModel = await apiCall<ApiSearchResultModel>(
-      `http://localhost:8080/api/v1/products/findNearCity`,
+      `products/findNearCity`,
       "GET",
       apiSearchModel
     );

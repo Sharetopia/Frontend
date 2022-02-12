@@ -23,7 +23,7 @@ export function useRentRequest() {
     };
     console.log(requestModel);
     await apiCall<void>(
-      "http://localhost:8080/api/v1/rentRequest",
+      "rentRequest",
       "POST",
       requestModel
     );
@@ -35,14 +35,14 @@ export function useRentRequest() {
     isAccepted: boolean
   ) => {
     await apiCall<void>(
-      `http://localhost:8080/api/v1/products/${id}/rent/${rentRequestId}?isAccepted=${isAccepted}`,
+      `products/${id}/rent/${rentRequestId}?isAccepted=${isAccepted}`,
       "POST"
     );
   };
 
   const deleteRentRequest = async (id: string) => {
     await apiCall<void>(
-      `http://localhost:8080/api/v1/rentRequest/${id}`,
+      `rentRequest/${id}`,
       "DELETE"
     );
   };
@@ -59,7 +59,7 @@ export function useMyRents() {
   const { apiCall } = useNetwork();
   const loadMyRents = async () => {
     const result: ApiMyRentModel[] = await apiCall<ApiMyRentModel[]>(
-      `http://localhost:8080/api/v1/user/requestedProductsOverview`,
+      `user/requestedProductsOverview`,
       "GET"
     );
     const rentsModel = result.map((apiModel) =>

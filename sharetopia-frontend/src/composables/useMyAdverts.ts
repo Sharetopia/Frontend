@@ -8,7 +8,7 @@ export function useMyAdverts() {
   const { apiCall } = useNetwork();
   const loadMyAdverts = async () => {
     const result: ApiMyAdvertModel[] = await apiCall<ApiMyAdvertModel[]>(
-      `http://localhost:8080/api/v1/user/offeredProductsOverview`,
+      `user/offeredProductsOverview`,
       "GET"
     );
     const myAdvertsModel = result.map((apiModel) =>
@@ -31,7 +31,7 @@ export function useMyAdverts() {
     };
     console.log(apiRentableDateRange);
     const result = await apiCall<void>(
-      `http://localhost:8080/api/v1/products/${productId}`,
+      `products/${productId}`,
       "PATCH",
       apiRentableDateRange
     );
