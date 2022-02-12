@@ -6,7 +6,7 @@ export function useNetwork() {
     type: string,
     params?: any
   ) => {
-    let url = process.env.VUE_APP_API_BASE_URL + urlPath
+    let url = process.env.VUE_APP_API_BASE_URL + urlPath;
     const token = (await Auth.currentSession()).getAccessToken();
     const options: RequestInit = {
       method: type,

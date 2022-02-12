@@ -35,11 +35,7 @@ export function useProduct(id: string | undefined) {
       },
       rents: [],
     };
-    const result = await apiCall<void>(
-      `products`,
-      "POST",
-      apiModel
-    );
+    const result = await apiCall<void>(`products`, "POST", apiModel);
 
     console.log(result);
   };

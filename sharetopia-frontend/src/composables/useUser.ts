@@ -7,10 +7,7 @@ export function useUser() {
   const currentUser = ref<UserModel>(Object());
   const { apiCall } = useNetwork();
   const getCurrentUser = async () => {
-    const result: UserModel = await apiCall<UserModel>(
-      `user`,
-      "GET"
-    ).then(
+    const result: UserModel = await apiCall<UserModel>(`user`, "GET").then(
       (result) => {
         return result;
       },
@@ -30,11 +27,7 @@ export function useUser() {
   };
 
   const createUser = async (model: UserModel) => {
-    const result = await apiCall<void>(
-      `user`,
-      "POST",
-      model
-    );
+    const result = await apiCall<void>(`user`, "POST", model);
   };
 
   onMounted(() => {

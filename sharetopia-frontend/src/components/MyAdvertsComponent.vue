@@ -1,24 +1,26 @@
 <template>
-  <PrimaryButton
-    title="Inserat erstellen"
-    @click="openCreateAdvertPopUp"
-  ></PrimaryButton>
+  <div class="flex-col space-y-2">
+    <PopUp :is-open="showCreateAdvertPopUp" @close="closeCreateAdvertPopUp">
+      <AdvertEditComponent
+        :title="'Inserat erstellen'"
+        :productModel="newProduct"
+        @save="createNewProduct"
+      />
+    </PopUp>
 
-  <PopUp :is-open="showCreateAdvertPopUp" @close="closeCreateAdvertPopUp">
-    <AdvertEditComponent
-      :title="'Inserat erstellen'"
-      :productModel="newProduct"
-      @save="createNewProduct"
-    />
-  </PopUp>
+    <div class="space-y-2">
+      <MyAdvertListItemView
+        :key="myAdvert.productModel.id"
+        v-for="myAdvert in myAdverts"
+        :my-advert-model="myAdvert"
+        :reload="loadMyAdverts"
+      />
+    </div>
 
-  <div class="">
-    <MyAdvertListItemView
-      :key="myAdvert.productModel.id"
-      v-for="myAdvert in myAdverts"
-      :my-advert-model="myAdvert"
-      :reload="loadMyAdverts"
-    />
+    <PrimaryButton
+      title="Inserat erstellen"
+      @click="openCreateAdvertPopUp"
+    ></PrimaryButton>
   </div>
 </template>
 
@@ -38,16 +40,18 @@ let showCreateAdvertPopUp = ref(false);
 const newProduct = ref<ProductModel>(createEmptyProductModel());
 
 const openCreateAdvertPopUp = () => {
-  console.log("open popup");
   showCreateAdvertPopUp.value = true;
 };
 
 const closeCreateAdvertPopUp = () => {
   showCreateAdvertPopUp.value = false;
+  newProduct.value = createEmptyProductModel();
 };
 
-const createNewProduct = () => {
+const createNewProduct = async () => {
   const newProductValue: ProductModel = newProduct.value as ProductModel;
-  uploadProduct(newProductValue);
+  await uploadProduct(newProductValue);
+  await loadMyAdverts();
+  closeCreateAdvertPopUp();
 };
 </script>
