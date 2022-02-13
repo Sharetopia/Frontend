@@ -54,7 +54,7 @@ export function useUserById() {
 
   const getUserById = async (id: string) => {
     const result: UserModel = await apiCall<UserModel>(
-      `user/id?=${id}`,
+      `user/${id}`,
       "GET"
     ).then(
       (result) => {
