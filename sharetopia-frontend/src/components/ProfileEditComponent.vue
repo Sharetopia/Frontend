@@ -75,7 +75,7 @@ const { currentUser, createUser } = useUser();
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const previewImage = ref<any>(require("@/assets/profile_blank.png"));
 const submit = (): void => {
-  createUser(currentUser.value);
+  createUser(currentUser.value!);
 };
 const fileInput: any = ref(null);
 defineExpose({ fileInput });

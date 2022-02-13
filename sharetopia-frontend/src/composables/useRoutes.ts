@@ -49,6 +49,12 @@ export function useRoutes(router: Router) {
     });
   };
 
+  const pushProfileEditRoute = () => {
+    router.push({
+      path: "/profileEdit",
+    });
+  };
+
   return {
     pushHomeRoute,
     pushProductDetail,
@@ -56,5 +62,6 @@ export function useRoutes(router: Router) {
     pushLoginRoute,
     pushMyBookingsRoute,
     pushSearchRoute,
+    pushProfileEditRoute,
   };
 }

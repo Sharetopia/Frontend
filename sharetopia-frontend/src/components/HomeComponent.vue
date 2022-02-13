@@ -16,8 +16,17 @@ import ProductListItemView from "@/views/ProductListItemView.vue";
 import { useProducts } from "@/composables/useProduct";
 import { useRouter } from "vue-router";
 import { useRoutes } from "@/composables/useRoutes";
+import { useUser } from "@/composables/useUser";
+import { watch } from "vue";
 
 const router = useRouter();
 const { products } = useProducts();
 const { pushProductDetail } = useRoutes(router);
+const { currentUser } = useUser();
+
+watch(currentUser, (value) => {
+  if (!value.forename) {
+    useRoutes(router).pushProfileEditRoute();
+  }
+});
 </script>

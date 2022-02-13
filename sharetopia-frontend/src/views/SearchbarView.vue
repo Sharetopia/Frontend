@@ -1,18 +1,7 @@
 <template>
   <div class="bg-transparent w-full h-72 overflow-hidden">
     <div
-      class="
-        flex
-        center-items
-        p-2
-        pl-6
-        bg-white
-        rounded-full
-        shadow-2xl
-        mx-8
-        gap-8
-        border border-gray-300
-      "
+      class="flex center-items p-2 pl-6 bg-white rounded-full shadow-2xl mx-8 gap-8 border border-gray-300"
     >
       <div class="flex flex-col flex-1 justify-center">
         <input type="text" placeholder="Suche" v-model="modelValue.query" />
