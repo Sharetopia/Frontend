@@ -22,11 +22,7 @@ export function useRentRequest() {
       requestedProductId: productId,
     };
     console.log(requestModel);
-    await apiCall<void>(
-      "rentRequest",
-      "POST",
-      requestModel
-    );
+    await apiCall<void>("rentRequest", "POST", requestModel);
   };
 
   const answerRentRequest = async (
@@ -41,10 +37,7 @@ export function useRentRequest() {
   };
 
   const deleteRentRequest = async (id: string) => {
-    await apiCall<void>(
-      `rentRequest/${id}`,
-      "DELETE"
-    );
+    await apiCall<void>(`rentRequest/${id}`, "DELETE");
   };
 
   return {

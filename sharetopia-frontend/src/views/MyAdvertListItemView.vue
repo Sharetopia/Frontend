@@ -1,10 +1,13 @@
 <template>
-  <div class="flex w-max">
-    <ProductListItemView :productModel="myAdvertModel.productModel" />
-    <div class="flex flex-col">
+  <div class="flex w-full">
+    <ProductListItemView
+      class="w-2/3"
+      :productModel="myAdvertModel.productModel"
+    />
+    <div class="flex flex-col justify-center ml-2">
       <SecondaryButton
         title="Beschreibung bearbeiten"
-        image-name="burgerMenu.svg"
+        image-name="edit.svg"
         @click="openModal"
       />
       <PopUp :is-open="isOpen" @close="closeModal">
@@ -13,19 +16,6 @@
           :productModel="myAdvertModel.productModel"
         />
       </PopUp>
-
-      <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
-        <AvailableRentDatePickerComponent
-          :product-model="myAdvertModel.productModel"
-          :rentableDateRange="myAdvertModel.rentableDateRange"
-        ></AvailableRentDatePickerComponent>
-      </PopUp>
-
-      <SecondaryButton
-        @click="openDatePicker"
-        title="Mietzeitraum angeben"
-        image-name="burgerMenu.svg"
-      />
 
       <PopUp :is-open="isRentRequestsOpen" @close="closeRentRequests">
         <RentRequestsComponent
@@ -37,7 +27,26 @@
       <SecondaryButton
         @click="openRentRequests"
         title="Mietanfragen"
-        image-name="burgerMenu.svg"
+        image-name="message.svg"
+      />
+
+      <PopUp :is-open="isDatePickerOpen" @close="closeDatePicker">
+        <AvailableRentDatePickerComponent
+          :product-model="myAdvertModel.productModel"
+          :rentableDateRange="myAdvertModel.rentableDateRange"
+        ></AvailableRentDatePickerComponent>
+      </PopUp>
+
+      <SecondaryButton
+        @click="openDatePicker"
+        title="Mietzeitraum angeben"
+        image-name="clockArrow.svg"
+      />
+
+      <SecondaryButton
+        class="text-red-500"
+        title="Anzeige offline setzten"
+        image-name="stop.svg"
       />
     </div>
   </div>
