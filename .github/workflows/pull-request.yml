@@ -47,5 +47,4 @@ jobs:
           path: ./sharetopia-frontend/dist
       # deploy to surge
       - run: npm install -g surge
-      - uses: nelonoel/branch-name@v1
-      - run: surge ./sharetopia-frontend/dist ${BRANCH_NAME}${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+      - run: surge ./sharetopia-frontend/dist ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
