@@ -45,6 +45,13 @@ jobs:
         working-directory: ./sharetopia-frontend
         run: npm run build
         
-      - name: Deploy to netlify
-        working-directory: ./sharetopia-frontend/dist
-        run: npm i -g netlify-cli && netlify deploy --site ${{ secrets.DEV_NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod  
+      - uses: actions/checkout@master
+
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=dist --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
