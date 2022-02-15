@@ -49,6 +49,29 @@ jobs:
         with:
           name: save build to dist
           path: ./sharetopia-frontend/dist
+          
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=./sharetopia-frontend/dist --functions=functions
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          
+      - name: Publish 2
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=./sharetopia-frontend/dist --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}    
+          
+      - uses: jsmrcaga/action-netlify-deploy@v1.1.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          build_directory: ./sharetopia-frontend/dist
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
