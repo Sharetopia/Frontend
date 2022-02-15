@@ -46,11 +46,6 @@ jobs:
           name: save build to dist
           path: ./sharetopia-frontend/dist
       # deploy to surge
-      - uses: actions/checkout@v1
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
