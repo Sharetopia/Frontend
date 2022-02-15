@@ -48,12 +48,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: save build to dist
-          path: dist
+          path: ./sharetopia-frontend/dist
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './dist'
+          publish-dir: './sharetopia-frontend/dist'
           production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
