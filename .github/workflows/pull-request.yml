@@ -46,9 +46,6 @@ jobs:
           name: save build to dist
           path: ./sharetopia-frontend/dist
       # deploy to surge
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       - run: npm install -g surge
-      - run: surge ./sharetopia-frontend/dist ${{ steps.extract_branch.outputs.branch }}-${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+      - uses: nelonoel/branch-name@v1
+      - run: surge ./sharetopia-frontend/dist ${{ BRANCH_NAME }}${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
