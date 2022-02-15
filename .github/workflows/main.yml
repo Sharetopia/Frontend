@@ -1,9 +1,7 @@
 name: run production action
 
 on:
-  push:
-    branches: [ main ]
-
+    # deactivated
 jobs:
   test:
     # runs all tests
