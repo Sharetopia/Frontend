@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { useRouteQueries } from "@/composables/useRouteQueries";
 
 describe("useRouteQueries.ts", () => {
@@ -20,28 +19,21 @@ describe("useRouteQueries.ts", () => {
         end: new Date(2022, 1, 11),
       },
     };
-    expect(searchModel).to.deep.equals(
-      expectedSearchModel,
-      "The search model does not match."
-    );
+    expect(searchModel).toMatchObject(
+      expectedSearchModel);
   });
 
   it("should not create a searchModel from wrong locationQuery", () => {
     const locationQuery = { query: "Fahrrad", radius: "10" };
     const { searchModel } = useRouteQueries(locationQuery);
-    expect(searchModel).to.deep.equals(
-      undefined,
-      "The search is not undefined"
-    );
+    expect(searchModel).toBeUndefined();
   });
 
   it("should extract the productId from locationQuery", () => {
     const locationQuery = { id: "123456" };
     const { productId } = useRouteQueries(locationQuery);
     const expectedValue = "123456";
-    expect(productId).to.deep.equals(
-      expectedValue,
-      "The product id does not match."
-    );
+    expect(productId).toMatch(
+      expectedValue);
   });
 });
