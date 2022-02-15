@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full gap-y-10">
-    <ProductListItemView :productModel="productModel" class="w-9/12" />
-    <div class="flex flex-col gap-x-5 w-3/12 ml-2">
+    <ProductListItemView :productModel="productModel" class="w-2/3" />
+    <div class="flex flex-col gap-x-5 w-1/3 ml-2">
       <p
         class="text-amber-600 ml-6 mt-4"
         :style="{ color: colorForStatus(rentRequestModel.status) }"

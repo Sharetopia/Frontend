@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col space-y-2">
+  <div class="flex-col space-y-5">
     <PopUp :is-open="showCreateAdvertPopUp" @close="closeCreateAdvertPopUp">
       <AdvertEditComponent
         :title="'Inserat erstellen'"
@@ -8,7 +8,7 @@
       />
     </PopUp>
 
-    <div class="space-y-2">
+    <div class="space-y-5">
       <MyAdvertListItemView
         :key="myAdvert.productModel.id"
         v-for="myAdvert in myAdverts"

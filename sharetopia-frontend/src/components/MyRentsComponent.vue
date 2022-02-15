@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-y-10 flex-col w-full">
+  <div class="flex gap-y-5 flex-col w-full">
     <MyRentsListItemView
       :key="myRent.product.id"
       v-for="myRent in myRents"
