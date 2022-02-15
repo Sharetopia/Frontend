@@ -1,0 +1,38 @@
+name: Test and deploy productive version to firebase
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Install all packages
+        working-directory: ./sharetopia-frontend
+        run: npm ci
+      - name: Run unit tests
+        working-directory: ./sharetopia-frontend
+        run: npm run test:unit
+
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        working-directory: ./sharetopia-frontend
+        run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHARETOPIA_F2810 }}'
+          channelId: live
+          projectId: sharetopia-f2810

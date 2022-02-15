@@ -1,18 +1,34 @@
-name: Deploy Website
+name: Test and deploy staging version to surge
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Install all packages
+        working-directory: ./sharetopia-frontend
+        run: npm ci
+      - name: Run unit tests
+        working-directory: ./sharetopia-frontend
+        run: npm run test:unit
+
   build:
     runs-on: ubuntu-latest
-    name: Deploying to surge
+    name: Building for production
     steps:
       - uses: actions/checkout@v1
-      # Install NodeJS
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
@@ -20,7 +36,6 @@ jobs:
       - name: Install all packages
         working-directory: ./sharetopia-frontend
         run: npm ci
-  
       - name: Run build
         working-directory: ./sharetopia-frontend
         run: npm run build
@@ -29,6 +44,16 @@ jobs:
         with:
           name: save build to dist
           path: ./sharetopia-frontend/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
