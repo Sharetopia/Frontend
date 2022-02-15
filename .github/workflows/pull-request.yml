@@ -1,0 +1,33 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v1
+      # Install NodeJS
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - name: Install all packages
+        working-directory: ./sharetopia-frontend
+        run: npm ci
+  
+      - name: Run build
+        working-directory: ./sharetopia-frontend
+        run: npm run build
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: save build to dist
+          path: ./sharetopia-frontend/dist
+      - run: npm install -g surge
+      - run: surge ./ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
