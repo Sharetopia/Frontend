@@ -93,7 +93,6 @@
 </template>
 
 <script lang="ts">
-// import { Options, Vue } from "vue-class-component";
 import { ProductModel } from "@/model/ProductModel";
 import { defineComponent, PropType } from "vue";
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";

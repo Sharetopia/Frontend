@@ -1,0 +1,84 @@
+name: run production action
+
+on:
+    # deactivated
+jobs:
+  test:
+    # runs all tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install all packages
+      working-directory: ./sharetopia-frontend
+      run: npm ci
+    - name: Run unit tests
+      working-directory: ./sharetopia-frontend
+      run: npm run test:unit
+
+  deploy: 
+    # runs all tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      # Install NodeJS
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - name: Install all packages
+        working-directory: ./sharetopia-frontend
+        run: npm ci
+  
+      - name: Run build
+        working-directory: ./sharetopia-frontend
+        run: npm run build
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: save build to dist
+          path: ./sharetopia-frontend/dist
+          
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=./sharetopia-frontend/dist --functions=functions
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          
+      - name: Publish 2
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=./sharetopia-frontend/dist --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}    
+          
+      - uses: jsmrcaga/action-netlify-deploy@v1.1.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          build_directory: ./sharetopia-frontend/dist
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './sharetopia-frontend/dist'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1

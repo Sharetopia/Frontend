@@ -29,6 +29,7 @@ import { SearchModel } from "../model/SearchModel";
 import { Factory } from "@/utils/factory";
 import PopUp from "@/uiElements/PopUp.vue";
 import { useRoutes } from "@/composables/useRoutes";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 @Options({
   props: {},
@@ -59,6 +60,10 @@ export default class SearchComponent extends Vue {
     if (model) {
       this.searchModel = model;
     }
+  }
+
+  mounted(): void {
+    useAnalytics("Search", "SearchComponent.vue");
   }
 
   closeModal(): void {

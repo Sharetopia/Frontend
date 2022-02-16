@@ -5,7 +5,7 @@
       <div
         class="text-left flex flex-row gap-8 pt-4"
         :key="request.id"
-        v-for="request in rentRequestModels"
+        v-for="request in props.rentRequestModels"
       >
         <ContactDetailView
           :user-id="request.requestUserId"
@@ -41,6 +41,7 @@ import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import { useRentRequest } from "@/composables/useRents";
 import { defineEmits, defineProps } from "vue";
 import { useMyAdverts } from "@/composables/useMyAdverts";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const emit = defineEmits(["reload"]);
 const props = defineProps({
@@ -50,7 +51,7 @@ const props = defineProps({
 });
 
 const { answerRentRequest } = useRentRequest();
-const { loadMyAdverts } = useMyAdverts();
+useMyAdverts();
 
 function acceptRequestWith(
   requestedProductId: string,
@@ -67,4 +68,6 @@ function rejectRequestWith(
   answerRentRequest(requestedProductId, requestId, false);
   emit("reload");
 }
+
+useAnalytics("Rent requests overview", "RentRequestsComponent.vue");
 </script>

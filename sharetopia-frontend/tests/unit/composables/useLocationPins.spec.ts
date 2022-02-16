@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { ProductModel } from "@/model/ProductModel";
 
@@ -21,10 +20,7 @@ describe("useLocationPins.ts", () => {
     ];
     createLocationPins([dummyBike, dummyCar]);
 
-    expect(locationPins.value).to.deep.equals(
-      expectedLocationPins,
-      "The location pins does not match"
-    );
+    expect(locationPins.value).toMatchObject(expectedLocationPins);
   });
 
   it("should use as center location pin the first product, because this would be the most suitable", () => {
@@ -43,10 +39,7 @@ describe("useLocationPins.ts", () => {
     ];
     createLocationPins([dummyBike, dummyCar]);
 
-    expect(centerPin.value).to.deep.equals(
-      expectedLocationPins[0],
-      "The location pins does not match"
-    );
+    expect(centerPin.value).toMatchObject(expectedLocationPins[0]);
   });
 });
 

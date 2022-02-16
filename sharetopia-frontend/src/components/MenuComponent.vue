@@ -93,16 +93,17 @@ import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 import { useRoutes } from "@/composables/useRoutes";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const showProfile = ref(false);
 const router = useRouter();
 const logout = async (): Promise<void> => {
   const { pushLoginRoute } = useRoutes(router);
   await Auth.signOut().then(
-    (success) => {
+    () => {
       pushLoginRoute();
     },
-    (failure) => {
+    () => {
       pushLoginRoute();
     }
   );
@@ -123,4 +124,6 @@ const showMyProfile = (): void => {
 const hideMyProfile = (): void => {
   showProfile.value = false;
 };
+
+useAnalytics("Menu", "MenuComponent.vue");
 </script>

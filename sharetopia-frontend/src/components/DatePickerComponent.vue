@@ -16,7 +16,10 @@
 <script lang="ts" setup>
 import { DatePickerModel } from "@/model/DatePickerModel";
 import { DatePicker } from "v-calendar";
-import { defineProps } from "vue";
+import {defineProps, ref} from "vue";
+import 'v-calendar/dist/style.css';
+
+const picked = ref(new Date());
 
 const props = defineProps({
   datePickerModel: {

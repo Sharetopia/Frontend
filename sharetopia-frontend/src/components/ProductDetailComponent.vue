@@ -54,6 +54,7 @@ import { useDatePicker } from "@/composables/useDatePicker";
 import { useProduct } from "@/composables/useProduct";
 import { useRentRequest } from "@/composables/useRents";
 import { useRoutes } from "@/composables/useRoutes";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const route = useRoute();
 const router = useRouter();
@@ -79,4 +80,6 @@ async function requestRent() {
     pushMyBookingsRoute();
   }
 }
+
+useAnalytics("Product Detail", "ProductDetailComponent.vue");
 </script>

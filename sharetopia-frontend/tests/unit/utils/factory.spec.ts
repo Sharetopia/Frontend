@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { Factory } from "@/utils/factory.ts";
 import { MyAdvertModel } from "@/model/MyAdvertModel";
 import { MyRentModel } from "@/model/RentModel";
@@ -9,27 +8,21 @@ describe("Factory.ts", () => {
     const date = new Date(2022, 10, 12, 12, 0, 0, 0);
     const expectedOutput = "2022-11-12";
     const output = Factory.createDateForApi(date);
-    expect(output).to.equals(expectedOutput, "The date format is not correct.");
+    expect(output).toMatch(expectedOutput);
   });
 
   it("should create MyAdvertModel from ApiMyAdvertModel object", () => {
     const apiModel = apiMyAdvertModel;
     const expectedOutput = expectedMyAdvertModel;
     const output = Factory.createMyAdvertModelFrom(apiModel);
-    expect(output).to.deep.equals(
-      expectedOutput,
-      "The my rent model is not correct"
-    );
+    expect(output).toMatchObject(expectedOutput);
   });
 
   it("should create MyRentModel from ApiMyRentModel object", () => {
     const apiModel = apiMyRentModel;
     const expectedOutput = expectedMyRentModel;
     const output = Factory.createMyRentModelFrom(apiModel);
-    expect(output).to.deep.equals(
-      expectedOutput,
-      "The my rent model is not correct"
-    );
+    expect(output).toMatchObject(expectedOutput);
   });
 });
 
