@@ -3,26 +3,7 @@
     <Menu as="div" class="">
       <div class="">
         <MenuButton
-          class="
-            inline-flex
-            items-center
-            w-full
-            border border-gray-300
-            shadow-sm
-            px-4
-            py-2
-            bg-white
-            text-sm
-            font-medium
-            text-gray-700
-            hover:bg-gray-50
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-offset-gray-100
-            focus:ring-indigo-500
-            rounded-full
-          "
+          class="inline-flex items-center w-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 rounded-full"
         >
           <img src="../assets/burgerMenu.svg" class="mr-6" />
           <img
@@ -40,19 +21,7 @@
         leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-          class="
-            origin-top-right
-            absolute
-            right-8
-            mt-2
-            w-56
-            card
-            bg-white
-            ring-1 ring-black ring-opacity-5
-            focus:outline-none
-            divide-y divide-gray-250
-            z-10
-          "
+          class="origin-top-right absolute right-8 mt-2 w-56 card bg-white ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-250 z-10"
         >
           <div class="py-1">
             <MenuItem v-slot="{ active }">
@@ -124,6 +93,7 @@ import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 import { useRoutes } from "@/composables/useRoutes";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const showProfile = ref(false);
 const router = useRouter();
@@ -154,4 +124,6 @@ const showMyProfile = (): void => {
 const hideMyProfile = (): void => {
   showProfile.value = false;
 };
+
+useAnalytics("Menu", "MenuComponent.vue");
 </script>

@@ -13,16 +13,7 @@
       <div
         v-for="tag in product.tags"
         :key="tag"
-        class="
-          inline-block
-          smallText
-          px-2
-          py-0
-          rounded-md
-          my-4
-          text-white
-          bg-gray-500
-        "
+        class="inline-block smallText px-2 py-0 rounded-md my-4 text-white bg-gray-500"
         :class="getBackgroundColor()"
       >
         {{ tag }}

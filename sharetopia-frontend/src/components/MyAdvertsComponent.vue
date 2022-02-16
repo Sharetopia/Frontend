@@ -33,6 +33,7 @@ import AdvertEditComponent from "@/components/AdvertEditComponent.vue";
 import { useProduct } from "@/composables/useProduct";
 import { ProductModel } from "@/model/ProductModel";
 import { ref } from "vue";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const { myAdverts, loadMyAdverts } = useMyAdverts();
 const { uploadProduct, createEmptyProductModel } = useProduct(undefined);
@@ -54,4 +55,6 @@ const createNewProduct = async () => {
   await loadMyAdverts();
   closeCreateAdvertPopUp();
 };
+
+useAnalytics("My adverts", "MyAdvertsComponent.vue");
 </script>

@@ -19,8 +19,7 @@ describe("useRouteQueries.ts", () => {
         end: new Date(2022, 1, 11),
       },
     };
-    expect(searchModel).toMatchObject(
-      expectedSearchModel);
+    expect(searchModel).toMatchObject(expectedSearchModel);
   });
 
   it("should not create a searchModel from wrong locationQuery", () => {
@@ -33,7 +32,6 @@ describe("useRouteQueries.ts", () => {
     const locationQuery = { id: "123456" };
     const { productId } = useRouteQueries(locationQuery);
     const expectedValue = "123456";
-    expect(productId).toMatch(
-      expectedValue);
+    expect(productId).toMatch(expectedValue);
   });
 });

@@ -12,6 +12,8 @@
 <script lang="ts" setup>
 import MyRentsListItemView from "@/views/MyRentsListItemView.vue";
 import { useMyRents } from "@/composables/useRents";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const { myRents, loadMyRents } = useMyRents();
+useAnalytics("My rents", "MyRentsComponent.vue");
 </script>

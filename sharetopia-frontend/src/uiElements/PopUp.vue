@@ -24,17 +24,7 @@
             leave-to="opacity-0 scale-95"
           >
             <div
-              class="
-                inline-block
-                w-fit
-                h-screen
-                overflow-hidden
-                align-middle
-                transition-all
-                transform
-                flex
-                justify-center
-              "
+              class="inline-block w-fit h-screen overflow-hidden align-middle transition-all transform flex justify-center"
             >
               <div
                 class="fixed top-0 bottom-0 left-0 right-0 backdrop-blur-md"

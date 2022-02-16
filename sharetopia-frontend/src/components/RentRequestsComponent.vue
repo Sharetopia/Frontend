@@ -41,6 +41,7 @@ import SecondaryButton from "@/uiElements/SecondaryButton.vue";
 import { useRentRequest } from "@/composables/useRents";
 import { defineEmits, defineProps } from "vue";
 import { useMyAdverts } from "@/composables/useMyAdverts";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const emit = defineEmits(["reload"]);
 const props = defineProps({
@@ -67,4 +68,6 @@ function rejectRequestWith(
   answerRentRequest(requestedProductId, requestId, false);
   emit("reload");
 }
+
+useAnalytics("Rent requests overview", "RentRequestsComponent.vue");
 </script>
