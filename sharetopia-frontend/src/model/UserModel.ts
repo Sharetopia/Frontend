@@ -4,7 +4,17 @@ export type UserModel = {
   surname: string;
   address: string;
   city: string;
-  postalCode?: number;
-  rating: number;
+  postalCode?: string;
+  rating: string;
   profilePictureURL?: string;
+};
+
+export const EmptyUserModel: UserModel = {
+  forename: "",
+  surname: "",
+  address: "",
+  city: "",
+  postalCode: "",
+  rating: "",
+  profilePictureURL: "",
 };
