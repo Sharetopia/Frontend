@@ -100,10 +100,10 @@ const router = useRouter();
 const logout = async (): Promise<void> => {
   const { pushLoginRoute } = useRoutes(router);
   await Auth.signOut().then(
-    (success) => {
+    () => {
       pushLoginRoute();
     },
-    (failure) => {
+    () => {
       pushLoginRoute();
     }
   );

@@ -5,7 +5,7 @@
       <div
         class="text-left flex flex-row gap-8 pt-4"
         :key="request.id"
-        v-for="request in rentRequestModels"
+        v-for="request in props.rentRequestModels"
       >
         <ContactDetailView
           :user-id="request.requestUserId"
@@ -51,7 +51,7 @@ const props = defineProps({
 });
 
 const { answerRentRequest } = useRentRequest();
-const { loadMyAdverts } = useMyAdverts();
+useMyAdverts();
 
 function acceptRequestWith(
   requestedProductId: string,
