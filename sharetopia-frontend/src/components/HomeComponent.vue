@@ -16,8 +16,11 @@ import ProductListItemView from "@/views/ProductListItemView.vue";
 import { useProducts } from "@/composables/useProduct";
 import { useRouter } from "vue-router";
 import { useRoutes } from "@/composables/useRoutes";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const router = useRouter();
 const { products } = useProducts();
 const { pushProductDetail } = useRoutes(router);
+
+useAnalytics("Home", "HomeComponent.vue");
 </script>

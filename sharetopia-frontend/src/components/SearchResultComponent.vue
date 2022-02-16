@@ -5,7 +5,7 @@
         :key="searchResult.id"
         v-for="searchResult in searchResults"
         :productModel="searchResult"
-        @click="showProductDetail(searchResult.id)"
+        @click="pushProductDetail(searchResult.id)"
         class="mb-6"
       />
     </div>
@@ -32,6 +32,7 @@ import { useProductSearch } from "@/composables/useProduct";
 import { useLocationPins } from "@/composables/useLocationPins";
 import { watch } from "vue";
 import { ProductModel } from "@/model/ProductModel";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const route = useRoute();
 const router = useRouter();
@@ -45,4 +46,6 @@ watch(products, (newValue) => {
   const products = newValue as ProductModel[];
   createLocationPins(products);
 });
+
+useAnalytics("Search results list", "SearchResultComponent.vue");
 </script>

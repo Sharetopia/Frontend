@@ -70,6 +70,7 @@
 import PrimaryButton from "@/uiElements/PrimaryButton.vue";
 import { ref, defineExpose } from "vue";
 import { useUser } from "@/composables/useUser";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 const { currentUser, createUser } = useUser();
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -89,4 +90,6 @@ const pickFile = (): void => {
     };
   }
 };
+
+useAnalytics("Profile edit", "ProfileEditComponent.vue");
 </script>

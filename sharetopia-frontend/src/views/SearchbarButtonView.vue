@@ -1,16 +1,6 @@
 <template>
   <div
-    class="
-      flex
-      center-items
-      p-2
-      pl-6
-      bg-white
-      rounded-full
-      border border-gray-300
-      text-left
-      mx-12
-    "
+    class="flex center-items p-2 pl-6 bg-white rounded-full border border-gray-300 text-left mx-12"
   >
     <div v-if="queryIsNotEmpty()" class="flex flex-1 divide-x items-center">
       <div class="flex flex-col flex-1">

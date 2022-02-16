@@ -26,6 +26,7 @@
     "autoprefixer": "^9",
     "aws-amplify": "^4.3.11",
     "core-js": "^3.6.5",
+    "firebase": "^9.6.6",
     "leaflet": "^1.7.1",
     "postcss": "^7",
     "register-service-worker": "^1.7.1",

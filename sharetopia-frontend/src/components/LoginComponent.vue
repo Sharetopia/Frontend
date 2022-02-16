@@ -14,6 +14,7 @@ import {
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 import ProfileEditComponent from "@/components/ProfileEditComponent.vue";
 import { useRoutes } from "@/composables/useRoutes";
+import { useAnalytics } from "@/composables/useAnalytics";
 
 I18n.setLanguage("de");
 I18n.putVocabularies(translations);
@@ -66,6 +67,7 @@ export default class LoginComponent extends Vue {
         });
       },
     };
+    useAnalytics("Authentication", "LoginComponent.vue");
   }
 }
 </script>

@@ -15,8 +15,7 @@ describe("Factory.ts", () => {
     const apiModel = apiMyAdvertModel;
     const expectedOutput = expectedMyAdvertModel;
     const output = Factory.createMyAdvertModelFrom(apiModel);
-    expect(output).toMatchObject(
-      expectedOutput);
+    expect(output).toMatchObject(expectedOutput);
   });
 
   it("should create MyRentModel from ApiMyRentModel object", () => {
