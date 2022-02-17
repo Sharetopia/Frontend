@@ -25,15 +25,6 @@ jobs:
     needs: test
     name: build and deploy (productive)
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-          cache: 'npm'
-      - name: Install all packages
-        working-directory: ./sharetopia-frontend
-        run: npm ci
       - name: build
         working-directory: ./sharetopia-frontend
         run: npm run build
