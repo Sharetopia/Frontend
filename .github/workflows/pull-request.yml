@@ -7,15 +7,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 16.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           cache: 'npm'
       - name: Install all packages
         working-directory: ./sharetopia-frontend
@@ -34,6 +31,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
+          cache: 'npm'
       - name: Install all packages
         working-directory: ./sharetopia-frontend
         run: npm ci
