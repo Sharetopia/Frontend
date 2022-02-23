@@ -3,7 +3,7 @@
     <div class="w-1/2 pr-4">
       <ProductListItemView
         :key="searchResult.id"
-        v-for="searchResult in searchResults"
+        v-for="searchResult in products"
         :productModel="searchResult"
         @click="pushProductDetail(searchResult.id)"
         class="mb-6"
@@ -33,6 +33,8 @@ import { useLocationPins } from "@/composables/useLocationPins";
 import { watch } from "vue";
 import { ProductModel } from "@/model/ProductModel";
 import { useAnalytics } from "@/composables/useAnalytics";
+import ProductListItemView from "@/views/ProductListItemView.vue";
+import LeafletMapComponent from "@/components/LeafletMapComponent.vue";
 
 const route = useRoute();
 const router = useRouter();
