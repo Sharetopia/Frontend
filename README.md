@@ -1,5 +1,17 @@
-# Vue Single Web Page Application
+# sharetopia
+## Vue Single Web Page Application
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/03d266ae-db71-4592-87c5-f49b9884ab8e/deploy-status)](https://app.netlify.com/sites/sharetopia/deploys)
+This repository includes the Vue.js frontend web-application an all including design of the students project sharetopia at hdm in WS21/22.
+The project was part of the Lectures: Web Application Architecture and System Engineering.
 
-This repository includes the Vue.js frontend web-application an all including design
+To start the application run the following code in /sharetopia-frontend
+```console
+npm install
+npm run serve
+```
+
+To build the application run the following code in /sharetopia-frontend
+```console
+npm build
+```
+
